@@ -1,11 +1,15 @@
-import { neon, NeonQueryFunction } from '@neondatabase/serverless';
+import postgres from 'postgres';
 
-let _sql: NeonQueryFunction<false, false> | null = null;
+let _sql: ReturnType<typeof postgres> | null = null;
 
-export function sql(): NeonQueryFunction<false, false> {
+export function sql(): ReturnType<typeof postgres> {
   if (!_sql) {
     if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
-    _sql = neon(process.env.DATABASE_URL);
+    _sql = postgres(process.env.DATABASE_URL, {
+      // Disable prepare for compatibility with connection poolers (Vercel/Neon).
+      // For local dev with direct connections, this is harmless.
+      prepare: false,
+    });
   }
   return _sql;
 }

@@ -12,12 +12,12 @@
     "@ai-sdk/anthropic": "^3.0.72",
     "@ai-sdk/google": "^3.0.65",
     "@ai-sdk/openai": "^3.0.54",
-    "@neondatabase/serverless": "^1.1.0",
     "@tanstack/react-query": "^5.100.6",
     "@upstash/redis": "^1.37.0",
     "ai": "^6.0.170",
     "jose": "^6.2.3",
     "next": "16.2.4",
+    "postgres": "^3.4.9",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "zod": "^4.4.1"
