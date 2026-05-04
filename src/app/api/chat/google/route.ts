@@ -1,5 +1,4 @@
 import { streamText } from 'ai';
-import { google } from '@ai-sdk/google';
 import { headers } from 'next/headers';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { z } from 'zod';
@@ -37,8 +36,11 @@ export async function POST(req: Request) {
   }
 
   const result = streamText({
-    model: google('gemini-2.5-pro'),
+    model: 'google/gemini-2.5-pro',
     messages: parsed.data.messages,
+    providerOptions: {
+      gateway: { user: userId, tags: ['feature:chat', 'provider:google'] },
+    },
   });
 
   const response = result.toTextStreamResponse();

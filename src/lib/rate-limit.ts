@@ -22,7 +22,7 @@ export async function checkRateLimit(userId: string): Promise<{ allowed: boolean
 
 export async function getRateLimitStatus(userId: string): Promise<{ used: number; remaining: number; limit: number }> {
   const key = todayKey(userId);
-  const raw = await redis.get<number>(key);
-  const used = raw ?? 0;
+  const raw = await redis.get(key);
+  const used = raw ? parseInt(raw, 10) : 0;
   return { used, remaining: Math.max(0, DAILY_LIMIT - used), limit: DAILY_LIMIT };
 }

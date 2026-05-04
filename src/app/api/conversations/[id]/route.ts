@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
-import { sql } from '@/lib/db';
+import {
+  deleteConversation,
+  getConversationById,
+} from '@/db/queries/conversations';
+import { listTurnsByConversation } from '@/db/queries/turns';
 
 export const runtime = 'nodejs';
 
@@ -13,18 +17,11 @@ export async function GET(_req: Request, { params }: Params) {
   if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { id } = await params;
-  const db = sql();
+  const conversation = await getConversationById(id, userId);
+  if (!conversation) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
-  const convRows = await db`
-    SELECT * FROM conversations WHERE id = ${id} AND user_id = ${userId} LIMIT 1
-  `;
-  if (!convRows[0]) return NextResponse.json({ error: 'Not found' }, { status: 404 });
-
-  const turns = await db`
-    SELECT * FROM turns WHERE conversation_id = ${id} ORDER BY created_at ASC
-  `;
-
-  return NextResponse.json({ conversation: convRows[0], turns });
+  const turns = await listTurnsByConversation(id);
+  return NextResponse.json({ conversation, turns });
 }
 
 // DELETE /api/conversations/:id
@@ -34,8 +31,6 @@ export async function DELETE(_req: Request, { params }: Params) {
   if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { id } = await params;
-  const db = sql();
-
-  await db`DELETE FROM conversations WHERE id = ${id} AND user_id = ${userId}`;
+  await deleteConversation(id, userId);
   return new Response(null, { status: 204 });
 }

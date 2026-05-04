@@ -1,5 +1,4 @@
 import { streamText } from 'ai';
-import { anthropic } from '@ai-sdk/anthropic';
 import { headers } from 'next/headers';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { z } from 'zod';
@@ -37,8 +36,11 @@ export async function POST(req: Request) {
   }
 
   const result = streamText({
-    model: anthropic('claude-sonnet-4-6'),
+    model: 'anthropic/claude-sonnet-4.6',
     messages: parsed.data.messages,
+    providerOptions: {
+      gateway: { user: userId, tags: ['feature:chat', 'provider:anthropic'] },
+    },
   });
 
   const response = result.toTextStreamResponse();

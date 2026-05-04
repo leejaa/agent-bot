@@ -8,7 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 type Conversation = {
   id: string;
   title: string | null;
-  updated_at: string;
+  updatedAt: string | null;
 };
 
 type Props = {

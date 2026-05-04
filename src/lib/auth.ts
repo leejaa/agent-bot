@@ -1,6 +1,5 @@
 import { cookies } from 'next/headers';
 import crypto from 'crypto';
-import { sql } from './db';
 import {
   COOKIE_NAME,
   SESSION_DURATION_SECS,
@@ -10,6 +9,7 @@ import {
 } from './session';
 
 export type { SessionPayload };
+export { getUserByEmail, createUser, type User } from '@/db/queries/users';
 
 export async function getSession(): Promise<SessionPayload | null> {
   const cookieStore = await cookies();
@@ -58,25 +58,3 @@ export async function verifyPassword(password: string, hash: string): Promise<bo
   });
 }
 
-export type User = {
-  id: string;
-  email: string;
-  password_hash: string;
-  created_at: Date;
-};
-
-export async function getUserByEmail(email: string): Promise<User | null> {
-  const db = sql();
-  const rows = await db`SELECT * FROM users WHERE email = ${email} LIMIT 1`;
-  return (rows[0] as User) ?? null;
-}
-
-export async function createUser(email: string, passwordHash: string): Promise<User> {
-  const db = sql();
-  const rows = await db`
-    INSERT INTO users (email, password_hash)
-    VALUES (${email}, ${passwordHash})
-    RETURNING *
-  `;
-  return rows[0] as User;
-}

@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: '이메일 또는 비밀번호가 올바르지 않습니다.' }, { status: 401 });
   }
 
-  const valid = await verifyPassword(password, user.password_hash);
+  const valid = await verifyPassword(password, user.passwordHash);
   if (!valid) {
     return NextResponse.json({ error: '이메일 또는 비밀번호가 올바르지 않습니다.' }, { status: 401 });
   }

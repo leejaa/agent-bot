@@ -1,6 +1,7 @@
 import { redirect, notFound } from 'next/navigation';
 import { getSession } from '@/lib/auth';
-import { sql } from '@/lib/db';
+import { getConversationById, listConversationsForUser } from '@/db/queries/conversations';
+import { listTurnsByConversation } from '@/db/queries/turns';
 import Sidebar from '@/components/sidebar/Sidebar';
 import ChatView from '@/components/chat/ChatView';
 import { Turn } from '@/components/chat/useChat';
@@ -12,28 +13,27 @@ export default async function ConversationPage({ params }: PageProps) {
   if (!session) redirect('/login');
 
   const { id } = await params;
-  const db = sql();
 
-  const [convRows, turns, conversations] = await Promise.all([
-    db`SELECT * FROM conversations WHERE id = ${id} AND user_id = ${session.userId} LIMIT 1`,
-    db`SELECT * FROM turns WHERE conversation_id = ${id} ORDER BY created_at ASC`,
-    db`SELECT id, title, updated_at FROM conversations WHERE user_id = ${session.userId} ORDER BY updated_at DESC LIMIT 50`,
+  const [conversation, turns, conversations] = await Promise.all([
+    getConversationById(id, session.userId),
+    listTurnsByConversation(id),
+    listConversationsForUser(session.userId),
   ]);
 
-  if (!convRows[0]) notFound();
+  if (!conversation) notFound();
 
-  const initialTurns: Turn[] = (turns as any[]).map((t) => ({
+  const initialTurns: Turn[] = turns.map((t) => ({
     id: t.id,
-    userMessage: t.user_message,
-    openai: { text: t.openai_response ?? '', streaming: false },
-    anthropic: { text: t.anthropic_response ?? '', streaming: false },
-    google: { text: t.google_response ?? '', streaming: false },
+    userMessage: t.userMessage,
+    openai: { text: t.openaiResponse ?? '', streaming: false },
+    anthropic: { text: t.anthropicResponse ?? '', streaming: false },
+    google: { text: t.googleResponse ?? '', streaming: false },
   }));
 
   return (
     <div className="flex h-screen bg-zinc-900 text-white">
       <Sidebar
-        initialConversations={conversations as any[]}
+        initialConversations={conversations}
         userEmail={session.email}
       />
       <main className="flex-1 min-w-0 flex flex-col">

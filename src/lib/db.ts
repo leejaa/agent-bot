@@ -1,15 +1,21 @@
 import postgres from 'postgres';
+import { drizzle } from 'drizzle-orm/postgres-js';
+import * as schema from '@/db/schema';
+import * as relations from '@/db/relations';
 
-let _sql: ReturnType<typeof postgres> | null = null;
+const fullSchema = { ...schema, ...relations };
 
-export function sql(): ReturnType<typeof postgres> {
-  if (!_sql) {
-    if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
-    _sql = postgres(process.env.DATABASE_URL, {
-      // Disable prepare for compatibility with connection poolers (Vercel/Neon).
-      // For local dev with direct connections, this is harmless.
-      prepare: false,
-    });
-  }
-  return _sql;
+declare global {
+  var __pgClient: ReturnType<typeof postgres> | undefined;
 }
+
+if (!process.env.DATABASE_URL) {
+  throw new Error('DATABASE_URL is not set');
+}
+
+const client =
+  globalThis.__pgClient ??
+  (globalThis.__pgClient = postgres(process.env.DATABASE_URL, { prepare: false }));
+
+export const db = drizzle(client, { schema: fullSchema, casing: 'snake_case' });
+export type DB = typeof db;

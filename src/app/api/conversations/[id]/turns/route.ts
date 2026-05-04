@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
-import { sql } from '@/lib/db';
 import { z } from 'zod';
+import { getConversationById } from '@/db/queries/conversations';
+import { saveTurnAndTouchConversation } from '@/db/queries/turns';
 
 export const runtime = 'nodejs';
 
@@ -21,32 +22,20 @@ export async function POST(req: Request, { params }: Params) {
   if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { id } = await params;
-  const db = sql();
-
-  const convRows = await db`
-    SELECT id FROM conversations WHERE id = ${id} AND user_id = ${userId} LIMIT 1
-  `;
-  if (!convRows[0]) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  const conversation = await getConversationById(id, userId);
+  if (!conversation) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
   const body = await req.json().catch(() => null);
   const parsed = schema.safeParse(body);
   if (!parsed.success) return NextResponse.json({ error: 'Invalid body' }, { status: 400 });
 
-  const { user_message, openai_response, anthropic_response, google_response } = parsed.data;
+  const turn = await saveTurnAndTouchConversation({
+    conversationId: id,
+    userMessage: parsed.data.user_message,
+    openaiResponse: parsed.data.openai_response ?? null,
+    anthropicResponse: parsed.data.anthropic_response ?? null,
+    googleResponse: parsed.data.google_response ?? null,
+  });
 
-  const turnRows = await db`
-    INSERT INTO turns (conversation_id, user_message, openai_response, anthropic_response, google_response)
-    VALUES (${id}, ${user_message}, ${openai_response ?? null}, ${anthropic_response ?? null}, ${google_response ?? null})
-    RETURNING *
-  `;
-
-  await db`UPDATE conversations SET updated_at = now() WHERE id = ${id}`;
-
-  const convCheck = await db`SELECT title FROM conversations WHERE id = ${id}`;
-  if (!convCheck[0]?.title) {
-    const autoTitle = user_message.slice(0, 60);
-    await db`UPDATE conversations SET title = ${autoTitle} WHERE id = ${id}`;
-  }
-
-  return NextResponse.json(turnRows[0], { status: 201 });
+  return NextResponse.json(turn, { status: 201 });
 }

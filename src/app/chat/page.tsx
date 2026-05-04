@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/auth';
-import { sql } from '@/lib/db';
+import { listConversationsForUser } from '@/db/queries/conversations';
 import Sidebar from '@/components/sidebar/Sidebar';
 import ChatView from '@/components/chat/ChatView';
 
@@ -8,19 +8,12 @@ export default async function ChatPage() {
   const session = await getSession();
   if (!session) redirect('/login');
 
-  const db = sql();
-  const conversations = await db`
-    SELECT id, title, updated_at
-    FROM conversations
-    WHERE user_id = ${session.userId}
-    ORDER BY updated_at DESC
-    LIMIT 50
-  `;
+  const conversations = await listConversationsForUser(session.userId);
 
   return (
     <div className="flex h-screen bg-zinc-900 text-white">
       <Sidebar
-        initialConversations={conversations as any[]}
+        initialConversations={conversations}
         userEmail={session.email}
       />
       <main className="flex-1 min-w-0 flex flex-col">

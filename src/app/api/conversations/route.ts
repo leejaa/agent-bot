@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
-import { sql } from '@/lib/db';
+import {
+  createConversation,
+  listConversationsForUser,
+} from '@/db/queries/conversations';
 
 export const runtime = 'nodejs';
 
@@ -10,14 +13,7 @@ export async function GET() {
   const userId = headersList.get('x-user-id');
   if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const db = sql();
-  const rows = await db`
-    SELECT id, title, created_at, updated_at
-    FROM conversations
-    WHERE user_id = ${userId}
-    ORDER BY updated_at DESC
-    LIMIT 50
-  `;
+  const rows = await listConversationsForUser(userId);
   return NextResponse.json(rows);
 }
 
@@ -30,11 +26,6 @@ export async function POST(req: Request) {
   const body = await req.json().catch(() => ({}));
   const title: string | null = body?.title ?? null;
 
-  const db = sql();
-  const rows = await db`
-    INSERT INTO conversations (user_id, title)
-    VALUES (${userId}, ${title})
-    RETURNING *
-  `;
-  return NextResponse.json(rows[0], { status: 201 });
+  const row = await createConversation(userId, title);
+  return NextResponse.json(row, { status: 201 });
 }

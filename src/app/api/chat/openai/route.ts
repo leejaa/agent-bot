@@ -1,5 +1,4 @@
 import { streamText } from 'ai';
-import { openai } from '@ai-sdk/openai';
 import { headers } from 'next/headers';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { z } from 'zod';
@@ -37,8 +36,11 @@ export async function POST(req: Request) {
   }
 
   const result = streamText({
-    model: openai('gpt-4o'),
+    model: 'openai/gpt-4o',
     messages: parsed.data.messages,
+    providerOptions: {
+      gateway: { user: userId, tags: ['feature:chat', 'provider:openai'] },
+    },
   });
 
   const response = result.toTextStreamResponse();

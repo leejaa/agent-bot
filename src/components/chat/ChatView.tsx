@@ -13,9 +13,9 @@ type Props = {
 };
 
 const MODELS = [
-  { key: 'openai' as const, name: 'GPT-4o', modelId: 'gpt-4o' },
-  { key: 'anthropic' as const, name: 'Claude', modelId: 'claude-sonnet-4-6' },
-  { key: 'google' as const, name: 'Gemini', modelId: 'gemini-2.5-pro' },
+  { key: 'openai' as const, name: 'GPT-4o', modelId: 'openai/gpt-4o' },
+  { key: 'anthropic' as const, name: 'Claude', modelId: 'anthropic/claude-sonnet-4.6' },
+  { key: 'google' as const, name: 'Gemini', modelId: 'google/gemini-2.5-pro' },
 ];
 
 async function createConversation(): Promise<{ id: string }> {
