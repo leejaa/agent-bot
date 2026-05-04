@@ -30,6 +30,7 @@ export async function POST(req: Request, { params }: Params) {
   if (!parsed.success) return NextResponse.json({ error: 'Invalid body' }, { status: 400 });
 
   const turn = await saveTurnAndTouchConversation({
+    userId,
     conversationId: id,
     userMessage: parsed.data.user_message,
     openaiResponse: parsed.data.openai_response ?? null,

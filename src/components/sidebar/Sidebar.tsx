@@ -6,6 +6,7 @@ import { signOut } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 import { Link, useRouter, usePathname } from '@/i18n/navigation';
 import Logo from '@/components/brand/Logo';
+import CreditBalance from './CreditBalance';
 
 type Conversation = {
   id: string;
@@ -176,6 +177,8 @@ export default function Sidebar({
             );
           })}
         </nav>
+
+        <CreditBalance />
 
         <div className="px-3 py-3 border-t border-[rgba(0,0,0,0.06)]">
           <div className="flex items-center gap-2 px-2 py-1.5 rounded-[var(--radius-button)] hover:bg-ghost-white transition-colors group">

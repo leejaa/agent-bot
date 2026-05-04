@@ -1,7 +1,7 @@
 import { streamText } from 'ai';
 import { headers } from 'next/headers';
-import { checkRateLimit } from '@/lib/rate-limit';
 import { z } from 'zod';
+import { getBalance } from '@/db/queries/credits';
 
 export const runtime = 'nodejs';
 
@@ -27,11 +27,11 @@ export async function POST(req: Request) {
     return new Response('Invalid request body', { status: 400 });
   }
 
-  const { allowed, remaining } = await checkRateLimit(userId);
-  if (!allowed) {
+  const balance = await getBalance(userId);
+  if (balance <= 0) {
     return new Response(
-      JSON.stringify({ error: '일일 메시지 한도에 도달했습니다. 내일 다시 시도해주세요.' }),
-      { status: 429, headers: { 'Content-Type': 'application/json' } }
+      JSON.stringify({ error: 'No credits remaining. Buy more to continue.' }),
+      { status: 402, headers: { 'Content-Type': 'application/json' } }
     );
   }
 
@@ -44,6 +44,6 @@ export async function POST(req: Request) {
   });
 
   const response = result.toTextStreamResponse();
-  response.headers.set('x-ratelimit-remaining', String(remaining));
+  response.headers.set('x-credits-remaining', String(balance));
   return response;
 }

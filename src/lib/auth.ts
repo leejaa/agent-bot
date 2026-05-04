@@ -5,6 +5,7 @@ import { DrizzleAdapter } from '@auth/drizzle-adapter';
 import { db } from './db';
 import { users, accounts, sessions, verificationTokens } from '@/db/schema';
 import { generateAppleClientSecret } from './apple-client-secret';
+import { addCredits, SIGNUP_BONUS } from '@/db/queries/credits';
 
 const appleClientSecret = await generateAppleClientSecret();
 
@@ -30,6 +31,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   session: { strategy: 'jwt' },
   pages: {
     signIn: '/sign-in',
+  },
+  events: {
+    async createUser({ user }) {
+      if (!user.id) return;
+      await addCredits(user.id, SIGNUP_BONUS, 'signup_bonus', `signup:${user.id}`);
+    },
   },
   callbacks: {
     async jwt({ token, user }) {

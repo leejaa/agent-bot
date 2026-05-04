@@ -24,6 +24,14 @@
     "openMenu": "메뉴 열기",
     "closeMenu": "메뉴 닫기"
   },
+  "Credits": {
+    "label": "크레딧",
+    "buy": "크레딧 구매",
+    "buying": "이동 중…",
+    "lowWarning": "곧 소진됩니다",
+    "outTitle": "크레딧이 없습니다",
+    "outBody": "크레딧 팩을 구매하면 계속 질문할 수 있어요."
+  },
   "Chat": {
     "emptyTitle": "어떤 질문이든 던져보세요",
     "emptySubtitle": "GPT-4o · Claude Sonnet · Gemini 2.5 Pro가 동시에 답합니다",

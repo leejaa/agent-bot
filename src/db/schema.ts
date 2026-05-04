@@ -100,3 +100,30 @@ export const turns = pgTable(
     }).onDelete('cascade'),
   ]
 );
+
+// Per-user credit balance. One row per user.
+export const credits = pgTable('credits', {
+  userId: text('user_id')
+    .primaryKey()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  balance: integer('balance').notNull().default(0),
+  totalPurchased: integer('total_purchased').notNull().default(0),
+  createdAt: timestamp('created_at', { withTimezone: true, mode: 'string' }).defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true, mode: 'string' }).defaultNow(),
+});
+
+// Append-only history of every credit movement (signup bonus, purchase, usage, refund).
+export const creditLedger = pgTable(
+  'credit_ledger',
+  {
+    id: uuid('id').defaultRandom().primaryKey().notNull(),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    delta: integer('delta').notNull(),
+    reason: text('reason').notNull(),
+    reference: text('reference'),
+    createdAt: timestamp('created_at', { withTimezone: true, mode: 'string' }).defaultNow(),
+  },
+  (table) => [index('credit_ledger_user_id_idx').on(table.userId)]
+);

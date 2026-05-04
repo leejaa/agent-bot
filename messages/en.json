@@ -24,6 +24,14 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
   },
+  "Credits": {
+    "label": "credits",
+    "buy": "Buy credits",
+    "buying": "Loading…",
+    "lowWarning": "Running low",
+    "outTitle": "Out of credits",
+    "outBody": "Buy a credit pack to keep asking."
+  },
   "Chat": {
     "emptyTitle": "Ask anything",
     "emptySubtitle": "GPT-4o · Claude Sonnet · Gemini 2.5 Pro answer in parallel",
