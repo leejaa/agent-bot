@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEvent, useEffect, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 
 type Props = {
   value: string;
@@ -18,6 +19,7 @@ export default function ChatInput({
   isStreaming = false,
 }: Props) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const t = useTranslations('Chat');
 
   useEffect(() => {
     const el = textareaRef.current;
@@ -51,7 +53,7 @@ export default function ChatInput({
           }}
           disabled={disabled || isStreaming}
           rows={1}
-          placeholder="질문을 입력하세요"
+          placeholder={t('placeholder')}
           className="w-full resize-none bg-transparent px-4 sm:px-5 pt-3.5 sm:pt-4 pb-3 pr-16 text-deep-graphite placeholder:text-cool-gray focus:outline-none disabled:opacity-60"
           style={{
             fontSize: 'var(--text-body)',
@@ -65,7 +67,7 @@ export default function ChatInput({
         <button
           type="submit"
           disabled={!canSend}
-          aria-label="전송"
+          aria-label={t('sendAria')}
           className="absolute right-2 bottom-2 sm:right-3 sm:bottom-3 w-11 h-11 sm:w-9 sm:h-9 flex items-center justify-center rounded-[var(--radius-button)] bg-primary text-paper-white hover:brightness-110 disabled:bg-cool-gray disabled:cursor-not-allowed transition-all"
         >
           {isStreaming ? (

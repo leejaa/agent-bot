@@ -1,18 +1,21 @@
-import { redirect, notFound } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { auth } from '@/lib/auth';
+import { redirect } from '@/i18n/navigation';
 import { getConversationById, listConversationsForUser } from '@/db/queries/conversations';
 import { listTurnsByConversation } from '@/db/queries/turns';
 import AppShell from '@/components/layout/AppShell';
 import ChatView from '@/components/chat/ChatView';
 import { Turn } from '@/components/chat/useChat';
 
-type PageProps = { params: Promise<{ id: string }> };
+type PageProps = { params: Promise<{ id: string; locale: string }> };
 
 export default async function ConversationPage({ params }: PageProps) {
+  const { id, locale } = await params;
   const session = await auth();
-  if (!session?.user?.id) redirect('/sign-in');
-
-  const { id } = await params;
+  if (!session?.user?.id) {
+    redirect({ href: '/sign-in', locale: locale as 'en' | 'ko' });
+    return null;
+  }
 
   const [conversation, turns, conversations] = await Promise.all([
     getConversationById(id, session.user.id),

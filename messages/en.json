@@ -1,0 +1,59 @@
+{
+  "Brand": {
+    "name": "Agent Bot",
+    "tagline": "Compare 3 AI models with one question",
+    "subtagline": "GPT-4o · Claude Sonnet · Gemini 2.5 Pro answer in parallel"
+  },
+  "Metadata": {
+    "title": "Agent Bot — Compare 3 AI models",
+    "description": "Ask one question and compare answers from GPT-4o, Claude Sonnet, and Gemini 2.5 Pro side by side."
+  },
+  "SignIn": {
+    "title": "Sign in",
+    "subtitle": "No account needed — you'll be signed up automatically.",
+    "google": "Continue with Google",
+    "apple": "Continue with Apple",
+    "error": "Sign in failed. Please try again.",
+    "terms": "By continuing, you agree to the terms of service."
+  },
+  "Sidebar": {
+    "newChat": "New chat",
+    "recentLabel": "Recent",
+    "empty": "No conversations yet",
+    "logout": "Sign out",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "Chat": {
+    "emptyTitle": "Ask anything",
+    "emptySubtitle": "GPT-4o · Claude Sonnet · Gemini 2.5 Pro answer in parallel",
+    "suggestion1": "How would three models answer the same question differently?",
+    "suggestion2": "Common React useEffect mistakes — summarize.",
+    "suggestion3": "Help me summarize meeting notes in 3 lines.",
+    "questionLabel": "Question",
+    "waiting": "Waiting…",
+    "placeholder": "Ask a question",
+    "sendAria": "Send",
+    "rateLimitError": "Daily message limit reached. Please try again tomorrow.",
+    "errorPrefix": "Error"
+  },
+  "Landing": {
+    "hero": "Compare 3 AI models with one question",
+    "heroSub": "Stop guessing which model is best. Ask once, get three answers side by side.",
+    "ctaPrimary": "Get started",
+    "ctaSecondary": "Sign in",
+    "feature1Title": "Three minds, one question",
+    "feature1Body": "Send one prompt to GPT-4o, Claude Sonnet, and Gemini 2.5 Pro. See their answers stream in parallel.",
+    "feature2Title": "Compare side by side",
+    "feature2Body": "Spot strengths, blind spots, and disagreements at a glance.",
+    "feature3Title": "Save what works",
+    "feature3Body": "Conversations are saved per account so you can revisit and refine.",
+    "pricingTitle": "Simple pricing",
+    "pricingFree": "Free",
+    "pricingFreeDesc": "10 messages a day",
+    "pricingPro": "Pro",
+    "pricingProPrice": "$5/month",
+    "pricingProDesc": "200 messages a day",
+    "footerNote": "Built with the AI SDK on Vercel"
+  }
+}

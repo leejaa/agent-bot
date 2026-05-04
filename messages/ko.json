@@ -1,0 +1,59 @@
+{
+  "Brand": {
+    "name": "Agent Bot",
+    "tagline": "한 질문, 세 AI의 답변",
+    "subtagline": "GPT-4o · Claude Sonnet · Gemini 2.5 Pro가 동시에 답합니다"
+  },
+  "Metadata": {
+    "title": "Agent Bot — 3 AI 동시 비교",
+    "description": "GPT-4o, Claude Sonnet, Gemini 2.5 Pro에게 한 번에 묻고 답을 나란히 비교하세요."
+  },
+  "SignIn": {
+    "title": "로그인",
+    "subtitle": "계정이 없어도 자동으로 가입됩니다.",
+    "google": "Google로 계속",
+    "apple": "Apple로 계속",
+    "error": "로그인에 실패했습니다. 다시 시도해주세요.",
+    "terms": "계속하면 서비스 이용에 동의하는 것으로 간주됩니다."
+  },
+  "Sidebar": {
+    "newChat": "새 대화",
+    "recentLabel": "최근 대화",
+    "empty": "아직 대화가 없습니다",
+    "logout": "로그아웃",
+    "openMenu": "메뉴 열기",
+    "closeMenu": "메뉴 닫기"
+  },
+  "Chat": {
+    "emptyTitle": "어떤 질문이든 던져보세요",
+    "emptySubtitle": "GPT-4o · Claude Sonnet · Gemini 2.5 Pro가 동시에 답합니다",
+    "suggestion1": "같은 질문에 세 모델이 어떻게 다르게 답할까?",
+    "suggestion2": "리액트 useEffect 자주 하는 실수 정리해줘",
+    "suggestion3": "회의록 핵심만 3줄로 요약하는 법",
+    "questionLabel": "질문",
+    "waiting": "대기 중…",
+    "placeholder": "질문을 입력하세요",
+    "sendAria": "전송",
+    "rateLimitError": "일일 메시지 한도에 도달했습니다. 내일 다시 시도해주세요.",
+    "errorPrefix": "오류"
+  },
+  "Landing": {
+    "hero": "한 질문, 세 AI의 답변",
+    "heroSub": "어떤 모델이 가장 좋을지 추측하지 마세요. 한 번 묻고, 세 답을 나란히 받아보세요.",
+    "ctaPrimary": "시작하기",
+    "ctaSecondary": "로그인",
+    "feature1Title": "세 모델, 하나의 질문",
+    "feature1Body": "GPT-4o, Claude Sonnet, Gemini 2.5 Pro에게 동시에 보냅니다. 세 답변이 실시간으로 동시 스트리밍됩니다.",
+    "feature2Title": "나란히 비교",
+    "feature2Body": "강점·맹점·이견을 한눈에 확인할 수 있습니다.",
+    "feature3Title": "필요한 답은 보관",
+    "feature3Body": "대화는 계정별로 저장되어 언제든 다시 보고 다듬을 수 있습니다.",
+    "pricingTitle": "심플한 가격",
+    "pricingFree": "Free",
+    "pricingFreeDesc": "하루 10건",
+    "pricingPro": "Pro",
+    "pricingProPrice": "$5/월",
+    "pricingProDesc": "하루 200건",
+    "footerNote": "Vercel에서 AI SDK로 만들었습니다"
+  }
+}

@@ -1,4 +1,5 @@
 import { signIn } from '@/lib/auth';
+import { getTranslations } from 'next-intl/server';
 import Logo from '@/components/brand/Logo';
 import GoogleButton from './GoogleButton';
 import AppleButton from './AppleButton';
@@ -10,6 +11,8 @@ type PageProps = {
 export default async function SignInPage({ searchParams }: PageProps) {
   const { next, error } = await searchParams;
   const callbackUrl = next ?? '/chat';
+  const t = await getTranslations('SignIn');
+  const tBrand = await getTranslations('Brand');
 
   return (
     <div className="w-full max-w-[360px] flex flex-col items-center gap-8">
@@ -24,7 +27,7 @@ export default async function SignInPage({ searchParams }: PageProps) {
               letterSpacing: 'var(--text-heading-sm--letter-spacing)',
             }}
           >
-            Agent Bot
+            {tBrand('name')}
           </h1>
           <p
             className="text-deep-slate mt-1"
@@ -34,7 +37,7 @@ export default async function SignInPage({ searchParams }: PageProps) {
               letterSpacing: 'var(--text-body-sm--letter-spacing)',
             }}
           >
-            세 가지 AI에게 동시에 묻고 비교해보세요
+            {tBrand('subtagline')}
           </p>
         </div>
       </div>
@@ -51,7 +54,7 @@ export default async function SignInPage({ searchParams }: PageProps) {
               letterSpacing: 'var(--text-body-sm--letter-spacing)',
             }}
           >
-            로그인에 실패했습니다. 다시 시도해주세요.
+            {t('error')}
           </p>
         )}
 
@@ -61,7 +64,7 @@ export default async function SignInPage({ searchParams }: PageProps) {
             await signIn('google', { redirectTo: callbackUrl });
           }}
         >
-          <GoogleButton />
+          <GoogleButton label={t('google')} />
         </form>
 
         <form
@@ -70,7 +73,7 @@ export default async function SignInPage({ searchParams }: PageProps) {
             await signIn('apple', { redirectTo: callbackUrl });
           }}
         >
-          <AppleButton />
+          <AppleButton label={t('apple')} />
         </form>
       </div>
 
@@ -82,7 +85,7 @@ export default async function SignInPage({ searchParams }: PageProps) {
           letterSpacing: 'var(--text-caption--letter-spacing)',
         }}
       >
-        계속하면 서비스 이용에 동의하는 것으로 간주됩니다
+        {t('terms')}
       </p>
     </div>
   );

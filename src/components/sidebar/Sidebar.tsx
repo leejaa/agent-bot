@@ -1,10 +1,10 @@
 'use client';
 
-import Link from 'next/link';
-import { useRouter, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { signOut } from 'next-auth/react';
+import { useTranslations } from 'next-intl';
+import { Link, useRouter, usePathname } from '@/i18n/navigation';
 import Logo from '@/components/brand/Logo';
 
 type Conversation = {
@@ -35,6 +35,8 @@ export default function Sidebar({
   const router = useRouter();
   const pathname = usePathname();
   const [loggingOut, setLoggingOut] = useState(false);
+  const t = useTranslations('Sidebar');
+  const tBrand = useTranslations('Brand');
 
   const { data: conversations = initialConversations } = useQuery({
     queryKey: ['conversations'],
@@ -43,7 +45,6 @@ export default function Sidebar({
     refetchOnWindowFocus: true,
   });
 
-  // Close drawer with Escape
   useEffect(() => {
     if (!mobileOpen || !onMobileClose) return;
     const onKey = (e: KeyboardEvent) => {
@@ -69,7 +70,6 @@ export default function Sidebar({
 
   return (
     <>
-      {/* Backdrop (mobile only when drawer open) */}
       <div
         className={`lg:hidden fixed inset-0 z-40 bg-black/40 transition-opacity duration-200 ${
           mobileOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -89,7 +89,6 @@ export default function Sidebar({
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         `}
       >
-        {/* Brand */}
         <div className="px-4 pt-5 pb-3 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <Logo size={26} />
@@ -100,14 +99,13 @@ export default function Sidebar({
                 letterSpacing: 'var(--text-body--letter-spacing)',
               }}
             >
-              Agent Bot
+              {tBrand('name')}
             </span>
           </div>
-          {/* Close button on mobile only */}
           <button
             type="button"
             onClick={onMobileClose}
-            aria-label="메뉴 닫기"
+            aria-label={t('closeMenu')}
             className="lg:hidden w-9 h-9 flex items-center justify-center rounded-[var(--radius-button)] text-deep-slate hover:bg-ghost-white transition-colors"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8} aria-hidden>
@@ -116,7 +114,6 @@ export default function Sidebar({
           </button>
         </div>
 
-        {/* New chat CTA */}
         <div className="px-3 pb-2">
           <button
             onClick={handleNewChat}
@@ -129,7 +126,7 @@ export default function Sidebar({
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8} aria-hidden>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
             </svg>
-            새 대화
+            {t('newChat')}
           </button>
         </div>
 
@@ -141,11 +138,10 @@ export default function Sidebar({
               letterSpacing: '0.04em',
             }}
           >
-            최근 대화
+            {t('recentLabel')}
           </p>
         </div>
 
-        {/* Conversation list */}
         <nav className="flex-1 overflow-y-auto px-2 pb-2 space-y-0.5">
           {conversations.length === 0 && (
             <p
@@ -155,7 +151,7 @@ export default function Sidebar({
                 letterSpacing: 'var(--text-body-sm--letter-spacing)',
               }}
             >
-              아직 대화가 없습니다
+              {t('empty')}
             </p>
           )}
           {conversations.map((c) => {
@@ -175,13 +171,12 @@ export default function Sidebar({
                   letterSpacing: 'var(--text-body-sm--letter-spacing)',
                 }}
               >
-                {c.title ?? '새 대화'}
+                {c.title ?? t('newChat')}
               </Link>
             );
           })}
         </nav>
 
-        {/* User footer */}
         <div className="px-3 py-3 border-t border-[rgba(0,0,0,0.06)]">
           <div className="flex items-center gap-2 px-2 py-1.5 rounded-[var(--radius-button)] hover:bg-ghost-white transition-colors group">
             <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center shrink-0">
@@ -201,7 +196,7 @@ export default function Sidebar({
             <button
               onClick={handleLogout}
               disabled={loggingOut}
-              aria-label="로그아웃"
+              aria-label={t('logout')}
               className="text-cool-gray hover:text-deep-graphite transition-colors shrink-0 w-9 h-9 flex items-center justify-center rounded-[var(--radius-button)]"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8} aria-hidden>

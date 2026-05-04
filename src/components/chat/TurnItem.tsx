@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import ModelColumn from './ModelColumn';
 import type { Turn } from './useChat';
 
@@ -14,9 +15,10 @@ type Props = {
 };
 
 export default function TurnItem({ turn }: Props) {
+  const t = useTranslations('Chat');
+
   return (
     <div className="px-4 sm:px-6 pt-6 pb-4">
-      {/* User message */}
       <div className="mb-4 flex items-start gap-3">
         <span
           className="shrink-0 px-2 py-0.5 rounded-[var(--radius-pill)] bg-ghost-white text-deep-slate"
@@ -25,7 +27,7 @@ export default function TurnItem({ turn }: Props) {
             letterSpacing: 'var(--text-caption--letter-spacing)',
           }}
         >
-          질문
+          {t('questionLabel')}
         </span>
         <p
           className="text-deep-graphite flex-1 pt-0.5"
@@ -39,7 +41,6 @@ export default function TurnItem({ turn }: Props) {
         </p>
       </div>
 
-      {/* Responses: horizontal swipe on mobile, grid on md+ */}
       <div
         className="
           flex md:grid md:grid-cols-3

@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import Logo from '@/components/brand/Logo';
 
 type Props = {
@@ -7,12 +8,15 @@ type Props = {
 };
 
 export default function MobileHeader({ onMenuToggle }: Props) {
+  const t = useTranslations('Sidebar');
+  const tBrand = useTranslations('Brand');
+
   return (
     <header className="lg:hidden h-14 shrink-0 px-2 flex items-center gap-1 border-b border-[rgba(0,0,0,0.06)] bg-paper-white sticky top-0 z-30">
       <button
         type="button"
         onClick={onMenuToggle}
-        aria-label="메뉴 열기"
+        aria-label={t('openMenu')}
         className="w-11 h-11 flex items-center justify-center rounded-[var(--radius-button)] text-deep-graphite hover:bg-ghost-white transition-colors"
       >
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8} aria-hidden>
@@ -29,7 +33,7 @@ export default function MobileHeader({ onMenuToggle }: Props) {
             letterSpacing: 'var(--text-body-sm--letter-spacing)',
           }}
         >
-          Agent Bot
+          {tBrand('name')}
         </span>
       </div>
     </header>

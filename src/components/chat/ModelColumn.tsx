@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 type Props = {
   name: string;
   modelId: string;
@@ -9,9 +11,10 @@ type Props = {
 };
 
 export default function ModelColumn({ name, modelId, text, streaming, error }: Props) {
+  const t = useTranslations('Chat');
+
   return (
     <div className="flex flex-col h-full min-w-0 rounded-[var(--radius-card)] bg-paper-white border border-[rgba(0,0,0,0.06)] overflow-hidden">
-      {/* Header */}
       <div className="px-5 py-3 border-b border-[rgba(0,0,0,0.04)] flex items-center gap-2 shrink-0">
         <span
           className="text-deep-graphite"
@@ -32,7 +35,7 @@ export default function ModelColumn({ name, modelId, text, streaming, error }: P
           {modelId}
         </span>
         {streaming && (
-          <span className="ml-auto flex gap-1" aria-label="응답 중">
+          <span className="ml-auto flex gap-1">
             <span className="w-1 h-1 rounded-full bg-primary animate-pulse [animation-delay:0ms] [animation-duration:1.2s]" />
             <span className="w-1 h-1 rounded-full bg-primary animate-pulse [animation-delay:200ms] [animation-duration:1.2s]" />
             <span className="w-1 h-1 rounded-full bg-primary animate-pulse [animation-delay:400ms] [animation-duration:1.2s]" />
@@ -40,7 +43,6 @@ export default function ModelColumn({ name, modelId, text, streaming, error }: P
         )}
       </div>
 
-      {/* Content */}
       <div
         className="flex-1 overflow-y-auto px-5 py-4 text-deep-graphite whitespace-pre-wrap"
         style={{
@@ -54,7 +56,7 @@ export default function ModelColumn({ name, modelId, text, streaming, error }: P
         ) : text ? (
           text
         ) : streaming ? null : (
-          <span className="text-cool-gray italic">대기 중…</span>
+          <span className="text-cool-gray italic">{t('waiting')}</span>
         )}
       </div>
     </div>
