@@ -10,28 +10,51 @@ type Props = {
 
 export default function ModelColumn({ name, modelId, text, streaming, error }: Props) {
   return (
-    <div className="flex flex-col h-full min-w-0">
+    <div className="flex flex-col h-full min-w-0 rounded-[var(--radius-card)] bg-paper-white border border-[rgba(0,0,0,0.06)] overflow-hidden">
       {/* Header */}
-      <div className="px-4 py-3 border-b border-zinc-800 flex items-center gap-2 shrink-0">
-        <span className="text-sm font-medium text-white">{name}</span>
-        <span className="text-xs text-zinc-500">{modelId}</span>
+      <div className="px-5 py-3 border-b border-[rgba(0,0,0,0.04)] flex items-center gap-2 shrink-0">
+        <span
+          className="text-deep-graphite"
+          style={{
+            fontSize: 'var(--text-body-sm)',
+            letterSpacing: 'var(--text-body-sm--letter-spacing)',
+          }}
+        >
+          {name}
+        </span>
+        <span
+          className="text-cool-gray"
+          style={{
+            fontSize: 'var(--text-caption)',
+            letterSpacing: 'var(--text-caption--letter-spacing)',
+          }}
+        >
+          {modelId}
+        </span>
         {streaming && (
-          <span className="ml-auto flex gap-0.5">
-            <span className="w-1 h-1 rounded-full bg-blue-400 animate-bounce [animation-delay:0ms]" />
-            <span className="w-1 h-1 rounded-full bg-blue-400 animate-bounce [animation-delay:150ms]" />
-            <span className="w-1 h-1 rounded-full bg-blue-400 animate-bounce [animation-delay:300ms]" />
+          <span className="ml-auto flex gap-1" aria-label="응답 중">
+            <span className="w-1 h-1 rounded-full bg-action-indigo animate-pulse [animation-delay:0ms] [animation-duration:1.2s]" />
+            <span className="w-1 h-1 rounded-full bg-action-indigo animate-pulse [animation-delay:200ms] [animation-duration:1.2s]" />
+            <span className="w-1 h-1 rounded-full bg-action-indigo animate-pulse [animation-delay:400ms] [animation-duration:1.2s]" />
           </span>
         )}
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto p-4 text-sm text-zinc-200 whitespace-pre-wrap leading-relaxed">
+      <div
+        className="flex-1 overflow-y-auto px-5 py-4 text-deep-graphite whitespace-pre-wrap"
+        style={{
+          fontSize: 'var(--text-body-sm)',
+          lineHeight: 'var(--text-body-sm--line-height)',
+          letterSpacing: 'var(--text-body-sm--letter-spacing)',
+        }}
+      >
         {error ? (
-          <span className="text-red-400">{error}</span>
+          <span className="text-alert-red">{error}</span>
         ) : text ? (
           text
         ) : streaming ? null : (
-          <span className="text-zinc-600 italic">대기 중...</span>
+          <span className="text-cool-gray italic">대기 중…</span>
         )}
       </div>
     </div>

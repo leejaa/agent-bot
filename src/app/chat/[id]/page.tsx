@@ -31,7 +31,7 @@ export default async function ConversationPage({ params }: PageProps) {
   }));
 
   return (
-    <div className="flex h-screen bg-zinc-900 text-white">
+    <div className="flex h-screen bg-ghost-white text-deep-graphite">
       <Sidebar
         initialConversations={conversations}
         userEmail={session.user.email ?? ''}
