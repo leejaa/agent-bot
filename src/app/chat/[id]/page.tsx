@@ -2,7 +2,7 @@ import { redirect, notFound } from 'next/navigation';
 import { auth } from '@/lib/auth';
 import { getConversationById, listConversationsForUser } from '@/db/queries/conversations';
 import { listTurnsByConversation } from '@/db/queries/turns';
-import Sidebar from '@/components/sidebar/Sidebar';
+import AppShell from '@/components/layout/AppShell';
 import ChatView from '@/components/chat/ChatView';
 import { Turn } from '@/components/chat/useChat';
 
@@ -31,18 +31,15 @@ export default async function ConversationPage({ params }: PageProps) {
   }));
 
   return (
-    <div className="flex h-screen bg-ghost-white text-deep-graphite">
-      <Sidebar
-        initialConversations={conversations}
+    <AppShell
+      initialConversations={conversations}
+      userEmail={session.user.email ?? ''}
+    >
+      <ChatView
+        conversationId={id}
+        initialTurns={initialTurns}
         userEmail={session.user.email ?? ''}
       />
-      <main className="flex-1 min-w-0 flex flex-col">
-        <ChatView
-          conversationId={id}
-          initialTurns={initialTurns}
-          userEmail={session.user.email ?? ''}
-        />
-      </main>
-    </div>
+    </AppShell>
   );
 }

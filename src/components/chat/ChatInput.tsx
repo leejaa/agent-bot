@@ -34,7 +34,7 @@ export default function ChatInput({
   const canSend = !disabled && !isStreaming && value.trim().length > 0;
 
   return (
-    <div className="px-6 pt-2 pb-6">
+    <div className="px-4 sm:px-6 pt-2 pb-4 sm:pb-6">
       <form
         onSubmit={handleSubmit}
         className="relative max-w-4xl mx-auto rounded-[var(--radius-card)] bg-paper-white border border-[rgba(0,0,0,0.08)] focus-within:border-primary focus-within:shadow-[0_0_0_3px_rgba(255,138,51,0.16)] transition-shadow"
@@ -51,8 +51,8 @@ export default function ChatInput({
           }}
           disabled={disabled || isStreaming}
           rows={1}
-          placeholder="질문을 입력하세요  ⌥  Shift + Enter 줄바꿈"
-          className="w-full resize-none bg-transparent px-5 pt-4 pb-3 pr-14 text-deep-graphite placeholder:text-cool-gray focus:outline-none disabled:opacity-60"
+          placeholder="질문을 입력하세요"
+          className="w-full resize-none bg-transparent px-4 sm:px-5 pt-3.5 sm:pt-4 pb-3 pr-16 text-deep-graphite placeholder:text-cool-gray focus:outline-none disabled:opacity-60"
           style={{
             fontSize: 'var(--text-body)',
             lineHeight: 'var(--text-body--line-height)',
@@ -66,7 +66,7 @@ export default function ChatInput({
           type="submit"
           disabled={!canSend}
           aria-label="전송"
-          className="absolute right-3 bottom-3 w-9 h-9 flex items-center justify-center rounded-[var(--radius-button)] bg-primary text-paper-white hover:brightness-110 disabled:bg-cool-gray disabled:cursor-not-allowed transition-all"
+          className="absolute right-2 bottom-2 sm:right-3 sm:bottom-3 w-11 h-11 sm:w-9 sm:h-9 flex items-center justify-center rounded-[var(--radius-button)] bg-primary text-paper-white hover:brightness-110 disabled:bg-cool-gray disabled:cursor-not-allowed transition-all"
         >
           {isStreaming ? (
             <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden>

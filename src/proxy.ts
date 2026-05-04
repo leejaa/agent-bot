@@ -16,10 +16,15 @@ export default auth((req) => {
     return NextResponse.redirect(signInUrl);
   }
 
-  const response = NextResponse.next();
-  if (req.auth.user?.id) response.headers.set('x-user-id', req.auth.user.id);
-  if (req.auth.user?.email) response.headers.set('x-user-email', req.auth.user.email);
-  return response;
+  // Forward auth info to downstream route handlers via REQUEST headers
+  // (response.headers.set() would only reach the browser, not the route).
+  const requestHeaders = new Headers(req.headers);
+  if (req.auth.user?.id) requestHeaders.set('x-user-id', req.auth.user.id);
+  if (req.auth.user?.email) requestHeaders.set('x-user-email', req.auth.user.email);
+
+  return NextResponse.next({
+    request: { headers: requestHeaders },
+  });
 });
 
 export const config = {

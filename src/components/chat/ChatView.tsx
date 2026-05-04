@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import EmptyState from './EmptyState';
 import TurnItem from './TurnItem';
@@ -44,7 +43,6 @@ async function saveTurn(
 }
 
 export default function ChatView({ conversationId, initialTurns, userEmail: _userEmail }: Props) {
-  const router = useRouter();
   const queryClient = useQueryClient();
   const [convId, setConvId] = useState<string | null>(conversationId);
   const [input, setInput] = useState('');
@@ -56,7 +54,10 @@ export default function ChatView({ conversationId, initialTurns, userEmail: _use
     mutationFn: createConversation,
     onSuccess: (data) => {
       setConvId(data.id);
-      router.push(`/chat/${data.id}`);
+      // Update URL without triggering a Next.js navigation. router.push would
+      // unmount this ChatView and lose the in-flight streaming state, making
+      // the chat appear to "bounce" back to empty.
+      window.history.replaceState(null, '', `/chat/${data.id}`);
       queryClient.invalidateQueries({ queryKey: ['conversations'] });
     },
   });

@@ -15,7 +15,7 @@ type Props = {
 
 export default function TurnItem({ turn }: Props) {
   return (
-    <div className="px-6 pt-6 pb-4">
+    <div className="px-4 sm:px-6 pt-6 pb-4">
       {/* User message */}
       <div className="mb-4 flex items-start gap-3">
         <span
@@ -39,17 +39,34 @@ export default function TurnItem({ turn }: Props) {
         </p>
       </div>
 
-      {/* 3-column model responses */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 min-h-[160px]">
+      {/* Responses: horizontal swipe on mobile, grid on md+ */}
+      <div
+        className="
+          flex md:grid md:grid-cols-3
+          overflow-x-auto md:overflow-visible
+          snap-x snap-mandatory md:snap-none
+          gap-3
+          -mx-4 sm:-mx-6 md:mx-0
+          px-4 sm:px-6 md:px-0
+          pb-2 md:pb-0
+          [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden
+        "
+      >
         {MODELS.map((m) => (
-          <ModelColumn
+          <div
             key={m.key}
-            name={m.name}
-            modelId={m.modelId}
-            text={turn[m.key].text}
-            streaming={turn[m.key].streaming}
-            error={turn[m.key].error}
-          />
+            className="snap-center shrink-0 w-[86vw] sm:w-[60vw] md:w-auto md:shrink flex"
+          >
+            <div className="flex-1 flex">
+              <ModelColumn
+                name={m.name}
+                modelId={m.modelId}
+                text={turn[m.key].text}
+                streaming={turn[m.key].streaming}
+                error={turn[m.key].error}
+              />
+            </div>
+          </div>
         ))}
       </div>
     </div>
