@@ -37,7 +37,7 @@ export default function ChatInput({
     <div className="px-6 pt-2 pb-6">
       <form
         onSubmit={handleSubmit}
-        className="relative max-w-4xl mx-auto rounded-[var(--radius-card)] bg-paper-white border border-[rgba(0,0,0,0.08)] focus-within:border-action-indigo focus-within:shadow-[0_0_0_3px_rgba(69,93,211,0.12)] transition-shadow"
+        className="relative max-w-4xl mx-auto rounded-[var(--radius-card)] bg-paper-white border border-[rgba(0,0,0,0.08)] focus-within:border-primary focus-within:shadow-[0_0_0_3px_rgba(255,138,51,0.16)] transition-shadow"
       >
         <textarea
           ref={textareaRef}
@@ -66,7 +66,7 @@ export default function ChatInput({
           type="submit"
           disabled={!canSend}
           aria-label="전송"
-          className="absolute right-3 bottom-3 w-9 h-9 flex items-center justify-center rounded-[var(--radius-button)] bg-action-indigo text-paper-white hover:brightness-110 disabled:bg-cool-gray disabled:cursor-not-allowed transition-all"
+          className="absolute right-3 bottom-3 w-9 h-9 flex items-center justify-center rounded-[var(--radius-button)] bg-primary text-paper-white hover:brightness-110 disabled:bg-cool-gray disabled:cursor-not-allowed transition-all"
         >
           {isStreaming ? (
             <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden>

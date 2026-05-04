@@ -33,9 +33,9 @@ export default function ModelColumn({ name, modelId, text, streaming, error }: P
         </span>
         {streaming && (
           <span className="ml-auto flex gap-1" aria-label="응답 중">
-            <span className="w-1 h-1 rounded-full bg-action-indigo animate-pulse [animation-delay:0ms] [animation-duration:1.2s]" />
-            <span className="w-1 h-1 rounded-full bg-action-indigo animate-pulse [animation-delay:200ms] [animation-duration:1.2s]" />
-            <span className="w-1 h-1 rounded-full bg-action-indigo animate-pulse [animation-delay:400ms] [animation-duration:1.2s]" />
+            <span className="w-1 h-1 rounded-full bg-primary animate-pulse [animation-delay:0ms] [animation-duration:1.2s]" />
+            <span className="w-1 h-1 rounded-full bg-primary animate-pulse [animation-delay:200ms] [animation-duration:1.2s]" />
+            <span className="w-1 h-1 rounded-full bg-primary animate-pulse [animation-delay:400ms] [animation-duration:1.2s]" />
           </span>
         )}
       </div>

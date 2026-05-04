@@ -124,7 +124,7 @@ export default function Sidebar({ initialConversations, userEmail }: Props) {
       {/* User footer */}
       <div className="px-3 py-3 border-t border-[rgba(0,0,0,0.06)]">
         <div className="flex items-center gap-2 px-2 py-1.5 rounded-[var(--radius-button)] hover:bg-ghost-white transition-colors group">
-          <div className="w-7 h-7 rounded-full bg-action-indigo flex items-center justify-center shrink-0">
+          <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center shrink-0">
             <span className="text-paper-white" style={{ fontSize: '12px' }}>
               {(userEmail[0] ?? 'U').toUpperCase()}
             </span>

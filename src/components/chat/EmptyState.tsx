@@ -47,7 +47,7 @@ export default function EmptyState({ onPick }: Props) {
               key={s}
               type="button"
               onClick={() => onPick(s)}
-              className="text-left px-4 py-3 rounded-[var(--radius-card)] bg-paper-white border border-[rgba(0,0,0,0.06)] hover:border-action-indigo/40 hover:bg-ghost-white transition-colors text-deep-graphite"
+              className="text-left px-4 py-3 rounded-[var(--radius-card)] bg-paper-white border border-[rgba(0,0,0,0.06)] hover:border-primary/40 hover:bg-ghost-white transition-colors text-deep-graphite"
               style={{
                 fontSize: 'var(--text-body-sm)',
                 lineHeight: 'var(--text-body-sm--line-height)',

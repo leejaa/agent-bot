@@ -5,7 +5,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         className="pointer-events-none fixed inset-0"
         style={{
           background:
-            'radial-gradient(60% 50% at 50% 0%, rgba(69, 93, 211, 0.06) 0%, transparent 70%)',
+            'radial-gradient(60% 50% at 50% 0%, rgba(255, 138, 51, 0.08) 0%, transparent 70%)',
         }}
         aria-hidden
       />

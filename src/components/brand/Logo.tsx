@@ -19,9 +19,9 @@ export default function Logo({ size = 32, className }: Props) {
       className={className}
       aria-label="Agent Bot"
     >
-      <rect x="6.75" y="10" width="3.5" height="12" rx="1.75" fill="var(--color-action-indigo)" />
-      <rect x="14.25" y="5" width="3.5" height="22" rx="1.75" fill="var(--color-action-indigo)" />
-      <rect x="21.75" y="8" width="3.5" height="16" rx="1.75" fill="var(--color-action-indigo)" />
+      <rect x="6.75" y="10" width="3.5" height="12" rx="1.75" fill="var(--color-primary)" />
+      <rect x="14.25" y="5" width="3.5" height="22" rx="1.75" fill="var(--color-primary)" />
+      <rect x="21.75" y="8" width="3.5" height="16" rx="1.75" fill="var(--color-primary)" />
     </svg>
   );
 }
