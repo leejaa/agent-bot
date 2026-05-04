@@ -1,5 +1,5 @@
 import { redirect, notFound } from 'next/navigation';
-import { getSession } from '@/lib/auth';
+import { auth } from '@/lib/auth';
 import { getConversationById, listConversationsForUser } from '@/db/queries/conversations';
 import { listTurnsByConversation } from '@/db/queries/turns';
 import Sidebar from '@/components/sidebar/Sidebar';
@@ -9,15 +9,15 @@ import { Turn } from '@/components/chat/useChat';
 type PageProps = { params: Promise<{ id: string }> };
 
 export default async function ConversationPage({ params }: PageProps) {
-  const session = await getSession();
-  if (!session) redirect('/login');
+  const session = await auth();
+  if (!session?.user?.id) redirect('/sign-in');
 
   const { id } = await params;
 
   const [conversation, turns, conversations] = await Promise.all([
-    getConversationById(id, session.userId),
+    getConversationById(id, session.user.id),
     listTurnsByConversation(id),
-    listConversationsForUser(session.userId),
+    listConversationsForUser(session.user.id),
   ]);
 
   if (!conversation) notFound();
@@ -34,13 +34,13 @@ export default async function ConversationPage({ params }: PageProps) {
     <div className="flex h-screen bg-zinc-900 text-white">
       <Sidebar
         initialConversations={conversations}
-        userEmail={session.email}
+        userEmail={session.user.email ?? ''}
       />
       <main className="flex-1 min-w-0 flex flex-col">
         <ChatView
           conversationId={id}
           initialTurns={initialTurns}
-          userEmail={session.email}
+          userEmail={session.user.email ?? ''}
         />
       </main>
     </div>

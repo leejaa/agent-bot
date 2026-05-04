@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { signOut } from 'next-auth/react';
 
 type Conversation = {
   id: string;
@@ -36,8 +37,7 @@ export default function Sidebar({ initialConversations, userEmail }: Props) {
 
   async function handleLogout() {
     setLoggingOut(true);
-    await fetch('/api/auth/logout', { method: 'POST' });
-    router.push('/login');
+    await signOut({ redirectTo: '/sign-in' });
   }
 
   return (
