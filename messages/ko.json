@@ -27,9 +27,9 @@
   "Chat": {
     "emptyTitle": "어떤 질문이든 던져보세요",
     "emptySubtitle": "GPT-4o · Claude Sonnet · Gemini 2.5 Pro가 동시에 답합니다",
-    "suggestion1": "같은 질문에 세 모델이 어떻게 다르게 답할까?",
-    "suggestion2": "리액트 useEffect 자주 하는 실수 정리해줘",
-    "suggestion3": "회의록 핵심만 3줄로 요약하는 법",
+    "suggestion1": "도쿄 3박4일 여행 코스 짜줘",
+    "suggestion2": "회의 거절하는 정중한 이메일 써줘",
+    "suggestion3": "밤에 잠 잘 오는 법 알려줘",
     "questionLabel": "질문",
     "waiting": "대기 중…",
     "placeholder": "질문을 입력하세요",

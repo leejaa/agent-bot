@@ -27,9 +27,9 @@
   "Chat": {
     "emptyTitle": "Ask anything",
     "emptySubtitle": "GPT-4o · Claude Sonnet · Gemini 2.5 Pro answer in parallel",
-    "suggestion1": "How would three models answer the same question differently?",
-    "suggestion2": "Common React useEffect mistakes — summarize.",
-    "suggestion3": "Help me summarize meeting notes in 3 lines.",
+    "suggestion1": "Plan a 3-day weekend trip to Tokyo",
+    "suggestion2": "Write a polite email declining a meeting",
+    "suggestion3": "How can I sleep better at night?",
     "questionLabel": "Question",
     "waiting": "Waiting…",
     "placeholder": "Ask a question",
