@@ -29,6 +29,9 @@ export default async function Image() {
         <div
           style={{
             marginTop: 56,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             fontSize: 72,
             fontWeight: 600,
             letterSpacing: '-0.035em',
@@ -37,14 +40,14 @@ export default async function Image() {
             lineHeight: 1.1,
           }}
         >
-          Compare 3 AI models
-          <br />
-          with one question
+          <div style={{ display: 'flex' }}>Compare 3 AI models</div>
+          <div style={{ display: 'flex' }}>with one question</div>
         </div>
 
         <div
           style={{
             marginTop: 32,
+            display: 'flex',
             fontSize: 28,
             color: '#615d59',
             letterSpacing: '-0.011em',
