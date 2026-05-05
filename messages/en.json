@@ -56,12 +56,16 @@
     "feature2Body": "Spot strengths, blind spots, and disagreements at a glance.",
     "feature3Title": "Save what works",
     "feature3Body": "Conversations are saved per account so you can revisit and refine.",
-    "pricingTitle": "Simple pricing",
-    "pricingFree": "Free",
-    "pricingFreeDesc": "10 messages a day",
-    "pricingPro": "Pro",
-    "pricingProPrice": "$5/month",
-    "pricingProDesc": "200 messages a day",
+    "pricingTitle": "Pay as you go",
+    "pricingSubtitle": "No subscription. Buy credits when you need them.",
+    "pricingFree": "Free trial",
+    "pricingFreePrice": "10 credits",
+    "pricingFreeDesc": "Sign up and start asking. No card required.",
+    "pricingPro": "Starter pack",
+    "pricingProPrice": "$5",
+    "pricingProUnit": "for 50 credits",
+    "pricingProDesc": "1 credit = 1 question, answered by all three models in parallel.",
+    "pricingNeverExpire": "Credits never expire while your account is active.",
     "footerNote": "Built with the AI SDK on Vercel"
   }
 }

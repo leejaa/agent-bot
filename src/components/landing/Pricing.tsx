@@ -7,16 +7,28 @@ export default async function Pricing() {
   return (
     <section id="pricing" className="px-4 sm:px-6 py-16 sm:py-20">
       <div className="max-w-4xl mx-auto">
-        <h2
-          className="text-deep-graphite text-center mb-8 sm:mb-10"
-          style={{
-            fontSize: 'var(--text-heading)',
-            lineHeight: 'var(--text-heading--line-height)',
-            letterSpacing: 'var(--text-heading--letter-spacing)',
-          }}
-        >
-          {t('pricingTitle')}
-        </h2>
+        <div className="text-center mb-8 sm:mb-10">
+          <h2
+            className="text-deep-graphite"
+            style={{
+              fontSize: 'var(--text-heading)',
+              lineHeight: 'var(--text-heading--line-height)',
+              letterSpacing: 'var(--text-heading--letter-spacing)',
+            }}
+          >
+            {t('pricingTitle')}
+          </h2>
+          <p
+            className="text-deep-slate mt-2"
+            style={{
+              fontSize: 'var(--text-body)',
+              lineHeight: 'var(--text-body--line-height)',
+              letterSpacing: 'var(--text-body--letter-spacing)',
+            }}
+          >
+            {t('pricingSubtitle')}
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="rounded-[var(--radius-card)] bg-paper-white border border-[rgba(0,0,0,0.06)] p-6 flex flex-col gap-4">
@@ -38,7 +50,7 @@ export default async function Pricing() {
                   letterSpacing: 'var(--text-heading-sm--letter-spacing)',
                 }}
               >
-                $0
+                {t('pricingFreePrice')}
               </p>
               <p
                 className="text-deep-slate mt-2"
@@ -71,7 +83,7 @@ export default async function Pricing() {
                 letterSpacing: '0.04em',
               }}
             >
-              PRO
+              {t('pricingPro').toUpperCase()}
             </span>
             <div>
               <p
@@ -83,16 +95,27 @@ export default async function Pricing() {
               >
                 {t('pricingPro').toUpperCase()}
               </p>
-              <p
-                className="text-deep-graphite mt-1"
-                style={{
-                  fontSize: 'var(--text-heading-sm)',
-                  lineHeight: 'var(--text-heading-sm--line-height)',
-                  letterSpacing: 'var(--text-heading-sm--letter-spacing)',
-                }}
-              >
-                {t('pricingProPrice')}
-              </p>
+              <div className="flex items-baseline gap-2 mt-1">
+                <p
+                  className="text-deep-graphite"
+                  style={{
+                    fontSize: 'var(--text-heading-sm)',
+                    lineHeight: 'var(--text-heading-sm--line-height)',
+                    letterSpacing: 'var(--text-heading-sm--letter-spacing)',
+                  }}
+                >
+                  {t('pricingProPrice')}
+                </p>
+                <p
+                  className="text-deep-slate"
+                  style={{
+                    fontSize: 'var(--text-body-sm)',
+                    letterSpacing: 'var(--text-body-sm--letter-spacing)',
+                  }}
+                >
+                  {t('pricingProUnit')}
+                </p>
+              </div>
               <p
                 className="text-deep-slate mt-2"
                 style={{
@@ -104,19 +127,29 @@ export default async function Pricing() {
                 {t('pricingProDesc')}
               </p>
             </div>
-            <button
-              type="button"
-              disabled
-              className="mt-auto inline-flex items-center justify-center h-10 rounded-[var(--radius-button)] bg-cool-gray text-paper-white opacity-70 cursor-not-allowed"
+            <Link
+              href="/sign-in"
+              className="mt-auto inline-flex items-center justify-center h-10 rounded-[var(--radius-button)] bg-primary text-paper-white hover:brightness-110 transition-all"
               style={{
                 fontSize: 'var(--text-body-sm)',
                 letterSpacing: 'var(--text-body-sm--letter-spacing)',
               }}
             >
-              Coming soon
-            </button>
+              {t('ctaPrimary')}
+            </Link>
           </div>
         </div>
+
+        <p
+          className="text-cool-gray text-center mt-6"
+          style={{
+            fontSize: 'var(--text-caption)',
+            lineHeight: 'var(--text-caption--line-height)',
+            letterSpacing: 'var(--text-caption--letter-spacing)',
+          }}
+        >
+          {t('pricingNeverExpire')}
+        </p>
       </div>
     </section>
   );

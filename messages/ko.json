@@ -56,12 +56,16 @@
     "feature2Body": "강점·맹점·이견을 한눈에 확인할 수 있습니다.",
     "feature3Title": "필요한 답은 보관",
     "feature3Body": "대화는 계정별로 저장되어 언제든 다시 보고 다듬을 수 있습니다.",
-    "pricingTitle": "심플한 가격",
-    "pricingFree": "Free",
-    "pricingFreeDesc": "하루 10건",
-    "pricingPro": "Pro",
-    "pricingProPrice": "$5/월",
-    "pricingProDesc": "하루 200건",
+    "pricingTitle": "쓴 만큼만 결제",
+    "pricingSubtitle": "구독 없음. 필요할 때 크레딧만 구매하세요.",
+    "pricingFree": "무료 체험",
+    "pricingFreePrice": "10 크레딧",
+    "pricingFreeDesc": "가입만 하면 바로 시작. 카드 등록 필요 없음.",
+    "pricingPro": "스타터 팩",
+    "pricingProPrice": "$5",
+    "pricingProUnit": "50 크레딧",
+    "pricingProDesc": "1 크레딧 = 1 질문, 세 모델이 동시에 답변합니다.",
+    "pricingNeverExpire": "계정이 살아 있는 동안 크레딧은 만료되지 않습니다.",
     "footerNote": "Vercel에서 AI SDK로 만들었습니다"
   }
 }
