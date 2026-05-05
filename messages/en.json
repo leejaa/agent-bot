@@ -65,7 +65,6 @@
     "pricingProPrice": "$5",
     "pricingProUnit": "for 50 credits",
     "pricingProDesc": "1 credit = 1 question, answered by all three models in parallel.",
-    "pricingNeverExpire": "Credits never expire while your account is active.",
-    "footerNote": "Built with the AI SDK on Vercel"
+    "pricingNeverExpire": "Credits never expire while your account is active."
   }
 }

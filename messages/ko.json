@@ -65,7 +65,6 @@
     "pricingProPrice": "$5",
     "pricingProUnit": "50 크레딧",
     "pricingProDesc": "1 크레딧 = 1 질문, 세 모델이 동시에 답변합니다.",
-    "pricingNeverExpire": "계정이 살아 있는 동안 크레딧은 만료되지 않습니다.",
-    "footerNote": "Vercel에서 AI SDK로 만들었습니다"
+    "pricingNeverExpire": "계정이 살아 있는 동안 크레딧은 만료되지 않습니다."
   }
 }
