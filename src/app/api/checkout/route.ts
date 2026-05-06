@@ -20,6 +20,17 @@ export async function POST(req: Request) {
 
   const headersList = await headers();
   const referer = headersList.get('referer') ?? `${SITE_URL}/chat`;
+  // Append a marker so the client invalidates the credit-balance query as soon
+  // as the user lands back on the app after the LS redirect.
+  const redirectUrl = (() => {
+    try {
+      const u = new URL(referer);
+      u.searchParams.set('purchased', '1');
+      return u.toString();
+    } catch {
+      return `${SITE_URL}/chat?purchased=1`;
+    }
+  })();
 
   ensureLemonSqueezy();
 
@@ -33,7 +44,7 @@ export async function POST(req: Request) {
       custom: { user_id: session.user.id },
     },
     productOptions: {
-      redirectUrl: referer,
+      redirectUrl,
       receiptThankYouNote: 'Thanks for your purchase! Your credits are now available.',
     },
     checkoutOptions: {

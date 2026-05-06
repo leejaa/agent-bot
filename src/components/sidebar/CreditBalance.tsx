@@ -1,6 +1,7 @@
 'use client';
 
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useEffect } from 'react';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 
 async function fetchBalance(): Promise<{ balance: number }> {
@@ -17,14 +18,29 @@ async function startCheckout(): Promise<{ url: string }> {
 
 export default function CreditBalance() {
   const t = useTranslations('Credits');
+  const queryClient = useQueryClient();
 
-  const { data } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ['credit-balance'],
     queryFn: fetchBalance,
+    placeholderData: { balance: 0 },
+    refetchOnMount: 'always',
     refetchOnWindowFocus: true,
     refetchInterval: 30_000,
-    initialData: { balance: 0 },
+    staleTime: 0,
   });
+
+  // Right after returning from a Lemon Squeezy checkout, the redirect URL has
+  // ?purchased=1 — invalidate the cached balance immediately and clean the URL.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const url = new URL(window.location.href);
+    if (url.searchParams.get('purchased') !== '1') return;
+
+    queryClient.invalidateQueries({ queryKey: ['credit-balance'] });
+    url.searchParams.delete('purchased');
+    window.history.replaceState(null, '', url.toString());
+  }, [queryClient]);
 
   const checkoutMutation = useMutation({
     mutationFn: startCheckout,
@@ -35,7 +51,7 @@ export default function CreditBalance() {
 
   const balance = data?.balance ?? 0;
   const isLow = balance > 0 && balance <= 3;
-  const isOut = balance <= 0;
+  const isOut = !isPending && balance <= 0;
 
   const tone = isOut
     ? 'bg-[rgba(247,116,99,0.08)] border-[rgba(247,116,99,0.2)]'
