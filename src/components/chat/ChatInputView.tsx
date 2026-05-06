@@ -1,0 +1,100 @@
+'use client';
+
+import { FormEvent, useEffect, useRef } from 'react';
+
+type Props = {
+  value: string;
+  onChange?: (v: string) => void;
+  onSubmit?: () => void;
+  disabled?: boolean;
+  isStreaming?: boolean;
+  placeholder: string;
+  sendAriaLabel: string;
+  readOnly?: boolean;
+};
+
+/**
+ * Pure presentation of the chat composer. No translations, no form state —
+ * the parent provides every label and behaviour via props. Used both by the
+ * real chat (`ChatInput`) and by the landing-page demo so visual changes here
+ * propagate to both surfaces.
+ */
+export default function ChatInputView({
+  value,
+  onChange,
+  onSubmit,
+  disabled = false,
+  isStreaming = false,
+  placeholder,
+  sendAriaLabel,
+  readOnly = false,
+}: Props) {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = 'auto';
+    el.style.height = `${Math.min(el.scrollHeight, 160)}px`;
+  }, [value]);
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    if (onSubmit) onSubmit();
+  }
+
+  const canSend = !disabled && !isStreaming && value.trim().length > 0;
+
+  return (
+    <div className="px-4 sm:px-6 pt-2 pb-4 sm:pb-6">
+      <form
+        onSubmit={handleSubmit}
+        className="relative max-w-4xl mx-auto rounded-[var(--radius-card)] bg-paper-white border border-[rgba(0,0,0,0.08)] focus-within:border-primary focus-within:shadow-[0_0_0_3px_rgba(255,138,51,0.16)] transition-shadow"
+      >
+        <textarea
+          ref={textareaRef}
+          value={value}
+          onChange={(e) => onChange?.(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              if (canSend && onSubmit) onSubmit();
+            }
+          }}
+          disabled={disabled || isStreaming}
+          readOnly={readOnly}
+          rows={1}
+          placeholder={placeholder}
+          className="w-full resize-none bg-transparent px-4 sm:px-5 pt-3.5 sm:pt-4 pb-3 pr-16 text-deep-graphite placeholder:text-cool-gray focus:outline-none disabled:opacity-60"
+          style={{
+            fontSize: 'var(--text-body)',
+            lineHeight: 'var(--text-body--line-height)',
+            letterSpacing: 'var(--text-body--letter-spacing)',
+            maxHeight: '160px',
+            overflowY: 'auto',
+          }}
+          tabIndex={readOnly ? -1 : undefined}
+        />
+
+        <button
+          type="submit"
+          disabled={!canSend || readOnly}
+          aria-label={sendAriaLabel}
+          tabIndex={readOnly ? -1 : undefined}
+          className="absolute right-2 bottom-2 sm:right-3 sm:bottom-3 w-11 h-11 sm:w-9 sm:h-9 flex items-center justify-center rounded-[var(--radius-button)] bg-primary text-paper-white hover:brightness-110 disabled:bg-cool-gray disabled:cursor-not-allowed transition-all"
+        >
+          {isStreaming ? (
+            <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
+              <path className="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+            </svg>
+          ) : (
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 12l14-7-7 14-2-6-5-1z" />
+            </svg>
+          )}
+        </button>
+      </form>
+    </div>
+  );
+}
