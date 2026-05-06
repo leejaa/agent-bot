@@ -10,7 +10,7 @@
 export const IS_BETA = true;
 
 export const BETA_FEEDBACK_EMAIL = 'leejahun0@gmail.com';
-export const BETA_SIGNUP_BONUS = 50;
+export const BETA_SIGNUP_BONUS = 200;
 
 /** Server-side error returned by chat APIs when a user is out of credits. */
 export function noCreditsErrorMessage(): string {
