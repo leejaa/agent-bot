@@ -36,10 +36,13 @@ export async function POST(req: Request) {
   }
 
   const result = streamText({
-    model: 'openai/gpt-4o',
+    model: 'openai/gpt-5.5',
     messages: parsed.data.messages,
     providerOptions: {
       gateway: { user: userId, tags: ['feature:chat', 'provider:openai'] },
+    },
+    onError: ({ error }) => {
+      console.error('[chat:openai] stream error', { message: (error as Error)?.message, error });
     },
   });
 

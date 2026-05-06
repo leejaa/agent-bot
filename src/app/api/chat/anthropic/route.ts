@@ -36,10 +36,13 @@ export async function POST(req: Request) {
   }
 
   const result = streamText({
-    model: 'anthropic/claude-sonnet-4.6',
+    model: 'anthropic/claude-opus-4.7',
     messages: parsed.data.messages,
     providerOptions: {
       gateway: { user: userId, tags: ['feature:chat', 'provider:anthropic'] },
+    },
+    onError: ({ error }) => {
+      console.error('[chat:anthropic] stream error', { message: (error as Error)?.message, error });
     },
   });
 

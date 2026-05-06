@@ -36,10 +36,13 @@ export async function POST(req: Request) {
   }
 
   const result = streamText({
-    model: 'google/gemini-2.5-pro',
+    model: 'google/gemini-3-pro-preview',
     messages: parsed.data.messages,
     providerOptions: {
       gateway: { user: userId, tags: ['feature:chat', 'provider:google'] },
+    },
+    onError: ({ error }) => {
+      console.error('[chat:google] stream error', { message: (error as Error)?.message, error });
     },
   });
 

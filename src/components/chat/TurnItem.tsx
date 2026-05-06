@@ -5,9 +5,9 @@ import ModelColumn from './ModelColumn';
 import type { Turn } from './useChat';
 
 const MODELS = [
-  { key: 'openai' as const, name: 'GPT-4o', modelId: 'openai/gpt-4o' },
-  { key: 'anthropic' as const, name: 'Claude', modelId: 'anthropic/claude-sonnet-4.6' },
-  { key: 'google' as const, name: 'Gemini', modelId: 'google/gemini-2.5-pro' },
+  { key: 'openai' as const, name: 'GPT-5.5', modelId: 'openai/gpt-5.5' },
+  { key: 'anthropic' as const, name: 'Claude Opus 4.7', modelId: 'anthropic/claude-opus-4.7' },
+  { key: 'google' as const, name: 'Gemini 3 Pro', modelId: 'google/gemini-3-pro-preview' },
 ];
 
 type Props = {
