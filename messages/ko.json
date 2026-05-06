@@ -64,8 +64,8 @@
     "pricingFreePrice": "10 크레딧",
     "pricingFreeDesc": "가입만 하면 바로 시작. 카드 등록 필요 없음.",
     "pricingPro": "스타터 팩",
-    "pricingProPrice": "$5",
-    "pricingProUnit": "50 크레딧",
+    "pricingProPrice": "$9.99",
+    "pricingProUnit": "25 크레딧",
     "pricingProDesc": "1 크레딧 = 1 질문, 모든 모델이 동시에 답변합니다.",
     "pricingNeverExpire": "계정이 살아 있는 동안 크레딧은 만료되지 않습니다."
   }

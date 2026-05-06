@@ -3,7 +3,7 @@ import { db } from '@/lib/db';
 import { credits, creditLedger } from '@/db/schema';
 
 export const SIGNUP_BONUS = 10;
-export const CREDITS_PER_STARTER_PACK = 50;
+export const CREDITS_PER_STARTER_PACK = 25;
 
 export type LedgerReason =
   | 'signup_bonus'

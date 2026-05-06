@@ -64,8 +64,8 @@
     "pricingFreePrice": "10 credits",
     "pricingFreeDesc": "Sign up and start asking. No card required.",
     "pricingPro": "Starter pack",
-    "pricingProPrice": "$5",
-    "pricingProUnit": "for 50 credits",
+    "pricingProPrice": "$9.99",
+    "pricingProUnit": "for 25 credits",
     "pricingProDesc": "1 credit = 1 question, answered by every model in parallel.",
     "pricingNeverExpire": "Credits never expire while your account is active."
   }
