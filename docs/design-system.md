@@ -1,4 +1,4 @@
-# Agent Bot Design System
+# Polymind Design System
 
 > Source of truth for visual design. Claude Code should consult this file before any UI work.
 > Raw extraction data: `docs/refero-notion.json`

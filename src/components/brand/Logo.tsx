@@ -4,9 +4,13 @@ type Props = {
 };
 
 /**
- * Trio Pulse — three vertical capsule bars at varied heights, evoking three
- * AI voices responding in parallel. No enclosing shape; the rhythm itself is
- * the mark.
+ * Polymind Synapse — a small neural constellation.
+ *
+ * One central hub (the user's question / the synthesis) connected to five
+ * outer nodes (multiple minds answering in parallel) by thin lines. The
+ * asymmetric placement reads as a living network rather than a regular
+ * polygon, capturing the "poly + mind" identity: many distinct intelligences
+ * in conversation.
  */
 export default function Logo({ size = 32, className }: Props) {
   return (
@@ -17,11 +21,25 @@ export default function Logo({ size = 32, className }: Props) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      aria-label="Agent Bot"
+      aria-label="Polymind"
     >
-      <rect x="6.75" y="10" width="3.5" height="12" rx="1.75" fill="var(--color-primary)" />
-      <rect x="14.25" y="5" width="3.5" height="22" rx="1.75" fill="var(--color-primary)" />
-      <rect x="21.75" y="8" width="3.5" height="16" rx="1.75" fill="var(--color-primary)" />
+      <g
+        stroke="var(--color-primary)"
+        strokeWidth="1.1"
+        strokeLinecap="round"
+      >
+        <line x1="16" y1="16" x2="16" y2="5" />
+        <line x1="16" y1="16" x2="27" y2="10" />
+        <line x1="16" y1="16" x2="24.5" y2="25.5" />
+        <line x1="16" y1="16" x2="8" y2="26" />
+        <line x1="16" y1="16" x2="5" y2="13" />
+      </g>
+      <circle cx="16" cy="16" r="3" fill="var(--color-primary)" />
+      <circle cx="16" cy="5" r="1.9" fill="var(--color-primary)" />
+      <circle cx="27" cy="10" r="1.9" fill="var(--color-primary)" />
+      <circle cx="24.5" cy="25.5" r="1.9" fill="var(--color-primary)" />
+      <circle cx="8" cy="26" r="1.9" fill="var(--color-primary)" />
+      <circle cx="5" cy="13" r="1.9" fill="var(--color-primary)" />
     </svg>
   );
 }

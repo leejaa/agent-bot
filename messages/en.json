@@ -1,11 +1,11 @@
 {
   "Brand": {
-    "name": "Agent Bot",
-    "tagline": "Compare 3 AI models with one question",
+    "name": "Polymind",
+    "tagline": "Compare top AI models with one question",
     "subtagline": "{models} answer in parallel"
   },
   "Metadata": {
-    "title": "Agent Bot — Compare 3 AI models",
+    "title": "Polymind — Compare top AI models",
     "description": "Ask one question and compare answers from the latest GPT, Claude, and Gemini side by side."
   },
   "SignIn": {
@@ -48,7 +48,7 @@
     "errorPrefix": "Error"
   },
   "Landing": {
-    "hero": "Compare 3 AI models with one question",
+    "hero": "Compare top AI models with one question",
     "heroSub": "Stop guessing which model is best. Ask once, get three answers side by side.",
     "ctaPrimary": "Get started",
     "ctaSecondary": "Sign in",
@@ -66,7 +66,7 @@
     "pricingPro": "Starter pack",
     "pricingProPrice": "$5",
     "pricingProUnit": "for 50 credits",
-    "pricingProDesc": "1 credit = 1 question, answered by all three models in parallel.",
+    "pricingProDesc": "1 credit = 1 question, answered by every model in parallel.",
     "pricingNeverExpire": "Credits never expire while your account is active."
   }
 }

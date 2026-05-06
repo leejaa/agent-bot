@@ -1,11 +1,11 @@
 {
   "Brand": {
-    "name": "Agent Bot",
-    "tagline": "한 질문, 세 AI의 답변",
+    "name": "Polymind",
+    "tagline": "한 질문, 여러 AI의 답변",
     "subtagline": "{models}가 동시에 답합니다"
   },
   "Metadata": {
-    "title": "Agent Bot — 3 AI 동시 비교",
+    "title": "Polymind — 최상위 AI 모델 비교",
     "description": "최신 GPT, Claude, Gemini에게 한 번에 묻고 답을 나란히 비교하세요."
   },
   "SignIn": {
@@ -48,7 +48,7 @@
     "errorPrefix": "오류"
   },
   "Landing": {
-    "hero": "한 질문, 세 AI의 답변",
+    "hero": "한 질문, 여러 AI의 답변",
     "heroSub": "어떤 모델이 가장 좋을지 추측하지 마세요. 한 번 묻고, 세 답을 나란히 받아보세요.",
     "ctaPrimary": "시작하기",
     "ctaSecondary": "로그인",
@@ -66,7 +66,7 @@
     "pricingPro": "스타터 팩",
     "pricingProPrice": "$5",
     "pricingProUnit": "50 크레딧",
-    "pricingProDesc": "1 크레딧 = 1 질문, 세 모델이 동시에 답변합니다.",
+    "pricingProDesc": "1 크레딧 = 1 질문, 모든 모델이 동시에 답변합니다.",
     "pricingNeverExpire": "계정이 살아 있는 동안 크레딧은 만료되지 않습니다."
   }
 }

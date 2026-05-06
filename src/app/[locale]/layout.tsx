@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       type: 'website',
-      siteName: 'Agent Bot',
+      siteName: 'Polymind',
       title,
       description,
       url,
