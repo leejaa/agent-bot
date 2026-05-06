@@ -53,7 +53,7 @@ export default async function Image() {
             letterSpacing: '-0.011em',
           }}
         >
-          GPT-4o · Claude Sonnet · Gemini 2.5 Pro
+          GPT · Claude · Gemini
         </div>
       </div>
     ),

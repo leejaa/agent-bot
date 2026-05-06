@@ -3,18 +3,14 @@
 import { useTranslations } from 'next-intl';
 import ModelColumn from './ModelColumn';
 import type { Turn } from './useChat';
-
-const MODELS = [
-  { key: 'openai' as const, name: 'GPT-5.5', modelId: 'openai/gpt-5.5' },
-  { key: 'anthropic' as const, name: 'Claude Opus 4.7', modelId: 'anthropic/claude-opus-4.7' },
-  { key: 'google' as const, name: 'Gemini 3 Pro', modelId: 'google/gemini-3-pro-preview' },
-];
+import type { ModelEntry } from '@/lib/models';
 
 type Props = {
   turn: Turn;
+  models: ModelEntry[];
 };
 
-export default function TurnItem({ turn }: Props) {
+export default function TurnItem({ turn, models }: Props) {
   const t = useTranslations('Chat');
 
   return (
@@ -53,14 +49,14 @@ export default function TurnItem({ turn }: Props) {
           [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden
         "
       >
-        {MODELS.map((m) => (
+        {models.map((m) => (
           <div
             key={m.key}
             className="snap-center shrink-0 w-[86vw] sm:w-[60vw] md:w-auto md:shrink flex"
           >
             <div className="flex-1 flex">
               <ModelColumn
-                name={m.name}
+                name={m.displayName}
                 modelId={m.modelId}
                 text={turn[m.key].text}
                 streaming={turn[m.key].streaming}

@@ -3,6 +3,7 @@ import { auth } from '@/lib/auth';
 import { redirect } from '@/i18n/navigation';
 import { getConversationById, listConversationsForUser } from '@/db/queries/conversations';
 import { listTurnsByConversation } from '@/db/queries/turns';
+import { getModels } from '@/lib/models';
 import AppShell from '@/components/layout/AppShell';
 import ChatView from '@/components/chat/ChatView';
 import { Turn } from '@/components/chat/useChat';
@@ -17,10 +18,11 @@ export default async function ConversationPage({ params }: PageProps) {
     return null;
   }
 
-  const [conversation, turns, conversations] = await Promise.all([
+  const [conversation, turns, conversations, models] = await Promise.all([
     getConversationById(id, session.user.id),
     listTurnsByConversation(id),
     listConversationsForUser(session.user.id),
+    getModels(),
   ]);
 
   if (!conversation) notFound();
@@ -42,6 +44,7 @@ export default async function ConversationPage({ params }: PageProps) {
         conversationId={id}
         initialTurns={initialTurns}
         userEmail={session.user.email ?? ''}
+        models={models}
       />
     </AppShell>
   );

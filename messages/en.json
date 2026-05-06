@@ -2,11 +2,11 @@
   "Brand": {
     "name": "Agent Bot",
     "tagline": "Compare 3 AI models with one question",
-    "subtagline": "GPT-4o · Claude Sonnet · Gemini 2.5 Pro answer in parallel"
+    "subtagline": "{models} answer in parallel"
   },
   "Metadata": {
     "title": "Agent Bot — Compare 3 AI models",
-    "description": "Ask one question and compare answers from GPT-4o, Claude Sonnet, and Gemini 2.5 Pro side by side."
+    "description": "Ask one question and compare answers from the latest GPT, Claude, and Gemini side by side."
   },
   "SignIn": {
     "title": "Sign in",
@@ -36,7 +36,7 @@
   },
   "Chat": {
     "emptyTitle": "Ask anything",
-    "emptySubtitle": "GPT-4o · Claude Sonnet · Gemini 2.5 Pro answer in parallel",
+    "emptySubtitle": "{models} answer in parallel",
     "suggestion1": "Plan a 3-day weekend trip to Tokyo",
     "suggestion2": "Write a polite email declining a meeting",
     "suggestion3": "How can I sleep better at night?",
@@ -53,7 +53,7 @@
     "ctaPrimary": "Get started",
     "ctaSecondary": "Sign in",
     "feature1Title": "Three minds, one question",
-    "feature1Body": "Send one prompt to GPT-4o, Claude Sonnet, and Gemini 2.5 Pro. See their answers stream in parallel.",
+    "feature1Body": "Send one prompt to the latest GPT, Claude, and Gemini. See their answers stream in parallel.",
     "feature2Title": "Compare side by side",
     "feature2Body": "Spot strengths, blind spots, and disagreements at a glance.",
     "feature3Title": "Save what works",

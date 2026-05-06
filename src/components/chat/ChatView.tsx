@@ -6,11 +6,13 @@ import EmptyState from './EmptyState';
 import TurnItem from './TurnItem';
 import ChatInput from './ChatInput';
 import { useMultiChat, Turn } from './useChat';
+import type { ModelEntry } from '@/lib/models';
 
 type Props = {
   conversationId: string | null;
   initialTurns?: Turn[];
   userEmail: string;
+  models: ModelEntry[];
 };
 
 async function createConversation(): Promise<{ id: string }> {
@@ -42,7 +44,7 @@ async function saveTurn(
   return res.json();
 }
 
-export default function ChatView({ conversationId, initialTurns, userEmail: _userEmail }: Props) {
+export default function ChatView({ conversationId, initialTurns, userEmail: _userEmail, models }: Props) {
   const queryClient = useQueryClient();
   const [convId, setConvId] = useState<string | null>(conversationId);
   const [input, setInput] = useState('');
@@ -109,11 +111,11 @@ export default function ChatView({ conversationId, initialTurns, userEmail: _use
     <div className="flex flex-col h-full">
       <div className="flex-1 overflow-y-auto">
         {isEmpty ? (
-          <EmptyState onPick={(s) => setInput(s)} />
+          <EmptyState onPick={(s) => setInput(s)} models={models} />
         ) : (
           <div className="divide-y divide-[rgba(0,0,0,0.06)]">
             {turns.map((turn) => (
-              <TurnItem key={turn.id} turn={turn} />
+              <TurnItem key={turn.id} turn={turn} models={models} />
             ))}
           </div>
         )}

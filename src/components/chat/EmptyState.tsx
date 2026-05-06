@@ -2,18 +2,17 @@
 
 import { useTranslations } from 'next-intl';
 import Logo from '@/components/brand/Logo';
+import type { ModelEntry } from '@/lib/models';
 
 type Props = {
   onPick: (text: string) => void;
+  models: ModelEntry[];
 };
 
-export default function EmptyState({ onPick }: Props) {
+export default function EmptyState({ onPick, models }: Props) {
   const t = useTranslations('Chat');
-  const suggestions = [
-    t('suggestion1'),
-    t('suggestion2'),
-    t('suggestion3'),
-  ];
+  const suggestions = [t('suggestion1'), t('suggestion2'), t('suggestion3')];
+  const modelLabel = models.map((m) => m.displayName).join(' · ');
 
   return (
     <div className="h-full flex items-center justify-center px-6">
@@ -39,7 +38,7 @@ export default function EmptyState({ onPick }: Props) {
               letterSpacing: 'var(--text-body-sm--letter-spacing)',
             }}
           >
-            {t('emptySubtitle')}
+            {t('emptySubtitle', { models: modelLabel })}
           </p>
         </div>
 

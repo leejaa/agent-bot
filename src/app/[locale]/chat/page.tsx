@@ -1,6 +1,7 @@
 import { auth } from '@/lib/auth';
 import { redirect } from '@/i18n/navigation';
 import { listConversationsForUser } from '@/db/queries/conversations';
+import { getModels } from '@/lib/models';
 import AppShell from '@/components/layout/AppShell';
 import ChatView from '@/components/chat/ChatView';
 
@@ -16,14 +17,21 @@ export default async function ChatPage({ params }: Props) {
     return null;
   }
 
-  const conversations = await listConversationsForUser(session.user.id);
+  const [conversations, models] = await Promise.all([
+    listConversationsForUser(session.user.id),
+    getModels(),
+  ]);
 
   return (
     <AppShell
       initialConversations={conversations}
       userEmail={session.user.email ?? ''}
     >
-      <ChatView conversationId={null} userEmail={session.user.email ?? ''} />
+      <ChatView
+        conversationId={null}
+        userEmail={session.user.email ?? ''}
+        models={models}
+      />
     </AppShell>
   );
 }

@@ -2,6 +2,7 @@ import { streamText } from 'ai';
 import { headers } from 'next/headers';
 import { z } from 'zod';
 import { getBalance } from '@/db/queries/credits';
+import { getModel, getModels } from '@/lib/models';
 
 export const runtime = 'nodejs';
 
@@ -35,8 +36,11 @@ export async function POST(req: Request) {
     );
   }
 
+  const models = await getModels();
+  const { modelId } = getModel(models, 'google');
+
   const result = streamText({
-    model: 'google/gemini-3-pro-preview',
+    model: modelId,
     messages: parsed.data.messages,
     providerOptions: {
       gateway: { user: userId, tags: ['feature:chat', 'provider:google'] },

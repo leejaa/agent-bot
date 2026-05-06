@@ -2,11 +2,11 @@
   "Brand": {
     "name": "Agent Bot",
     "tagline": "한 질문, 세 AI의 답변",
-    "subtagline": "GPT-4o · Claude Sonnet · Gemini 2.5 Pro가 동시에 답합니다"
+    "subtagline": "{models}가 동시에 답합니다"
   },
   "Metadata": {
     "title": "Agent Bot — 3 AI 동시 비교",
-    "description": "GPT-4o, Claude Sonnet, Gemini 2.5 Pro에게 한 번에 묻고 답을 나란히 비교하세요."
+    "description": "최신 GPT, Claude, Gemini에게 한 번에 묻고 답을 나란히 비교하세요."
   },
   "SignIn": {
     "title": "로그인",
@@ -36,7 +36,7 @@
   },
   "Chat": {
     "emptyTitle": "어떤 질문이든 던져보세요",
-    "emptySubtitle": "GPT-4o · Claude Sonnet · Gemini 2.5 Pro가 동시에 답합니다",
+    "emptySubtitle": "{models}가 동시에 답합니다",
     "suggestion1": "도쿄 3박4일 여행 코스 짜줘",
     "suggestion2": "회의 거절하는 정중한 이메일 써줘",
     "suggestion3": "밤에 잠 잘 오는 법 알려줘",
@@ -53,7 +53,7 @@
     "ctaPrimary": "시작하기",
     "ctaSecondary": "로그인",
     "feature1Title": "세 모델, 하나의 질문",
-    "feature1Body": "GPT-4o, Claude Sonnet, Gemini 2.5 Pro에게 동시에 보냅니다. 세 답변이 실시간으로 동시 스트리밍됩니다.",
+    "feature1Body": "최신 GPT, Claude, Gemini에게 동시에 보냅니다. 세 답변이 실시간으로 동시 스트리밍됩니다.",
     "feature2Title": "나란히 비교",
     "feature2Body": "강점·맹점·이견을 한눈에 확인할 수 있습니다.",
     "feature3Title": "필요한 답은 보관",

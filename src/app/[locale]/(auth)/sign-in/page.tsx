@@ -1,5 +1,6 @@
 import { signIn } from '@/lib/auth';
 import { getTranslations } from 'next-intl/server';
+import { getModels } from '@/lib/models';
 import Logo from '@/components/brand/Logo';
 import GoogleButton from './GoogleButton';
 import AppleButton from './AppleButton';
@@ -11,8 +12,12 @@ type PageProps = {
 export default async function SignInPage({ searchParams }: PageProps) {
   const { next, error } = await searchParams;
   const callbackUrl = next ?? '/chat';
-  const t = await getTranslations('SignIn');
-  const tBrand = await getTranslations('Brand');
+  const [t, tBrand, models] = await Promise.all([
+    getTranslations('SignIn'),
+    getTranslations('Brand'),
+    getModels(),
+  ]);
+  const modelLabel = models.map((m) => m.displayName).join(' · ');
 
   return (
     <div className="w-full max-w-[360px] flex flex-col items-center gap-8">
@@ -37,7 +42,7 @@ export default async function SignInPage({ searchParams }: PageProps) {
               letterSpacing: 'var(--text-body-sm--letter-spacing)',
             }}
           >
-            {tBrand('subtagline')}
+            {tBrand('subtagline', { models: modelLabel })}
           </p>
         </div>
       </div>
