@@ -22,7 +22,9 @@
     "empty": "No conversations yet",
     "logout": "Sign out",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "delete": "Delete",
+    "deleteConfirm": "Delete this conversation? This cannot be undone."
   },
   "Credits": {
     "label": "credits",

@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { signOut } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
-import { Link, useRouter, usePathname } from '@/i18n/navigation';
+import { useRouter } from '@/i18n/navigation';
 import Logo from '@/components/brand/Logo';
 import CreditBalance from './CreditBalance';
+import ConversationItem from './ConversationItem';
 
 type Conversation = {
   id: string;
@@ -34,7 +35,6 @@ export default function Sidebar({
   onMobileClose,
 }: Props) {
   const router = useRouter();
-  const pathname = usePathname();
   const [loggingOut, setLoggingOut] = useState(false);
   const t = useTranslations('Sidebar');
   const tBrand = useTranslations('Brand');
@@ -155,27 +155,13 @@ export default function Sidebar({
               {t('empty')}
             </p>
           )}
-          {conversations.map((c) => {
-            const active = pathname === `/chat/${c.id}`;
-            return (
-              <Link
-                key={c.id}
-                href={`/chat/${c.id}`}
-                onClick={handleNavClick}
-                className={`block truncate rounded-[var(--radius-button)] px-3 py-2.5 lg:py-1.5 transition-colors ${
-                  active
-                    ? 'bg-ghost-white text-deep-graphite'
-                    : 'text-deep-slate hover:bg-ghost-white hover:text-deep-graphite'
-                }`}
-                style={{
-                  fontSize: 'var(--text-body-sm)',
-                  letterSpacing: 'var(--text-body-sm--letter-spacing)',
-                }}
-              >
-                {c.title ?? t('newChat')}
-              </Link>
-            );
-          })}
+          {conversations.map((c) => (
+            <ConversationItem
+              key={c.id}
+              conversation={c}
+              onNav={handleNavClick}
+            />
+          ))}
         </nav>
 
         <CreditBalance />

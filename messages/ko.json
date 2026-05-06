@@ -22,7 +22,9 @@
     "empty": "아직 대화가 없습니다",
     "logout": "로그아웃",
     "openMenu": "메뉴 열기",
-    "closeMenu": "메뉴 닫기"
+    "closeMenu": "메뉴 닫기",
+    "delete": "삭제",
+    "deleteConfirm": "이 대화를 삭제하시겠어요? 되돌릴 수 없습니다."
   },
   "Credits": {
     "label": "크레딧",
