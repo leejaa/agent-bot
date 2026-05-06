@@ -1,8 +1,9 @@
 import { and, eq, gt, sql } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import { credits, creditLedger } from '@/db/schema';
+import { IS_BETA, BETA_SIGNUP_BONUS } from '@/lib/beta';
 
-export const SIGNUP_BONUS = 10;
+export const SIGNUP_BONUS = IS_BETA ? BETA_SIGNUP_BONUS : 10;
 export const CREDITS_PER_STARTER_PACK = 25;
 
 export type LedgerReason =

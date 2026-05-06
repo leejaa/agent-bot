@@ -1,11 +1,13 @@
 import { auth } from '@/lib/auth';
 import { redirect } from '@/i18n/navigation';
 import { getModels } from '@/lib/models';
+import { IS_BETA } from '@/lib/beta';
 import LandingNav from '@/components/landing/LandingNav';
 import Hero from '@/components/landing/Hero';
 import HeroDemo from '@/components/landing/HeroDemo';
 import Features from '@/components/landing/Features';
 import Pricing from '@/components/landing/Pricing';
+import BetaNotice from '@/components/landing/BetaNotice';
 import LandingFooter from '@/components/landing/LandingFooter';
 
 type Props = {
@@ -31,7 +33,7 @@ export default async function RootPage({ params }: Props) {
         <Hero />
         <HeroDemo models={models} />
         <Features />
-        <Pricing />
+        {IS_BETA ? <BetaNotice /> : <Pricing />}
       </main>
       <LandingFooter />
     </div>

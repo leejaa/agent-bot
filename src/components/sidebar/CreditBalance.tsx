@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
+import { IS_BETA, BETA_FEEDBACK_EMAIL } from '@/lib/beta';
 
 async function fetchBalance(): Promise<{ balance: number }> {
   const res = await fetch('/api/credits/balance');
@@ -97,19 +98,35 @@ export default function CreditBalance() {
             </p>
           )}
         </div>
-        <button
-          type="button"
-          onClick={() => checkoutMutation.mutate()}
-          disabled={checkoutMutation.isPending}
-          className="shrink-0 px-2.5 h-7 rounded-[var(--radius-button)] bg-primary text-paper-white hover:brightness-110 disabled:opacity-60 transition-all"
-          style={{
-            fontSize: '11px',
-            letterSpacing: '0.01em',
-            fontWeight: 500,
-          }}
-        >
-          {checkoutMutation.isPending ? t('buying') : t('buy')}
-        </button>
+        {IS_BETA ? (
+          isOut && (
+            <a
+              href={`mailto:${BETA_FEEDBACK_EMAIL}`}
+              className="shrink-0 px-2.5 h-7 inline-flex items-center rounded-[var(--radius-button)] bg-primary text-paper-white hover:brightness-110 transition-all"
+              style={{
+                fontSize: '11px',
+                letterSpacing: '0.01em',
+                fontWeight: 500,
+              }}
+            >
+              Email us
+            </a>
+          )
+        ) : (
+          <button
+            type="button"
+            onClick={() => checkoutMutation.mutate()}
+            disabled={checkoutMutation.isPending}
+            className="shrink-0 px-2.5 h-7 rounded-[var(--radius-button)] bg-primary text-paper-white hover:brightness-110 disabled:opacity-60 transition-all"
+            style={{
+              fontSize: '11px',
+              letterSpacing: '0.01em',
+              fontWeight: 500,
+            }}
+          >
+            {checkoutMutation.isPending ? t('buying') : t('buy')}
+          </button>
+        )}
       </div>
     </div>
   );

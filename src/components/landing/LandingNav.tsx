@@ -2,10 +2,12 @@ import { getTranslations } from 'next-intl/server';
 import Logo from '@/components/brand/Logo';
 import LocaleSwitcher from '@/components/layout/LocaleSwitcher';
 import { Link } from '@/i18n/navigation';
+import { IS_BETA } from '@/lib/beta';
 
 export default async function LandingNav() {
   const tBrand = await getTranslations('Brand');
   const tLanding = await getTranslations('Landing');
+  const tBeta = await getTranslations('Beta');
 
   return (
     <header className="sticky top-0 z-30 bg-ghost-white/80 backdrop-blur-md border-b border-[rgba(0,0,0,0.04)]">
@@ -21,6 +23,18 @@ export default async function LandingNav() {
           >
             {tBrand('name')}
           </span>
+          {IS_BETA && (
+            <span
+              className="px-1.5 py-0.5 rounded-[var(--radius-pill)] bg-primary/10 text-primary"
+              style={{
+                fontSize: '10px',
+                letterSpacing: '0.06em',
+                fontWeight: 500,
+              }}
+            >
+              {tBeta('badge')}
+            </span>
+          )}
         </Link>
 
         <div className="flex items-center gap-3">

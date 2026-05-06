@@ -3,6 +3,7 @@ import { headers } from 'next/headers';
 import { z } from 'zod';
 import { getBalance } from '@/db/queries/credits';
 import { getModel, getModels } from '@/lib/models';
+import { noCreditsErrorMessage } from '@/lib/beta';
 
 export const runtime = 'nodejs';
 
@@ -31,7 +32,7 @@ export async function POST(req: Request) {
   const balance = await getBalance(userId);
   if (balance <= 0) {
     return new Response(
-      JSON.stringify({ error: 'No credits remaining. Buy more to continue.' }),
+      JSON.stringify({ error: noCreditsErrorMessage() }),
       { status: 402, headers: { 'Content-Type': 'application/json' } }
     );
   }

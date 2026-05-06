@@ -32,7 +32,8 @@
     "buying": "Loading…",
     "lowWarning": "Running low",
     "outTitle": "Out of credits",
-    "outBody": "Buy a credit pack to keep asking."
+    "outBody": "Buy a credit pack to keep asking.",
+    "outBodyBeta": "Email {email} for more — beta credits are on the house."
   },
   "Chat": {
     "emptyTitle": "Ask anything",
@@ -68,5 +69,14 @@
     "pricingProUnit": "for 25 credits",
     "pricingProDesc": "1 credit = 1 question, answered by every model in parallel.",
     "pricingNeverExpire": "Credits never expire while your account is active."
+  },
+  "Beta": {
+    "badge": "BETA",
+    "noticeTitle": "Free during beta",
+    "noticeBody": "Polymind is in open beta. Try every feature for free — your feedback shapes v1.",
+    "noticeCta": "Send feedback"
+  },
+  "Footer": {
+    "feedback": "Have feedback? Email {email}"
   }
 }
