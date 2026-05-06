@@ -20,8 +20,8 @@ function localePrefix(pathname: string): string {
 export default auth((req) => {
   const { pathname } = req.nextUrl;
 
-  // 1. Auth.js callback routes — fully public, no rewriting
-  if (pathname.startsWith('/api/auth')) {
+  // 1. Auth.js callbacks + external webhooks — fully public, no rewriting
+  if (pathname.startsWith('/api/auth') || pathname.startsWith('/api/webhooks/')) {
     return NextResponse.next();
   }
 
