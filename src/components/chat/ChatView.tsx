@@ -74,6 +74,7 @@ export default function ChatView({ conversationId, initialTurns, userEmail: _use
     }) => saveTurn(convId, userMessage, results),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['conversations'] });
+      queryClient.invalidateQueries({ queryKey: ['credit-balance'] });
     },
   });
 
