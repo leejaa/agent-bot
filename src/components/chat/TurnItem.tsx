@@ -43,6 +43,7 @@ export default function TurnItem({ turn, models, renderPicker }: Props) {
       <div
         className="
           flex md:grid md:grid-cols-3
+          items-start
           overflow-x-auto md:overflow-visible
           snap-x snap-mandatory md:snap-none
           gap-3
@@ -55,18 +56,16 @@ export default function TurnItem({ turn, models, renderPicker }: Props) {
         {models.map((m) => (
           <div
             key={m.key}
-            className="snap-center shrink-0 w-[86vw] sm:w-[60vw] md:w-auto md:shrink flex"
+            className="snap-center shrink-0 w-[86vw] sm:w-[60vw] md:w-auto"
           >
-            <div className="flex-1 flex">
-              <ModelColumn
-                name={m.displayName}
-                modelId={m.modelId}
-                text={turn[m.key].text}
-                streaming={turn[m.key].streaming}
-                error={turn[m.key].error}
-                picker={renderPicker?.(m.key, m)}
-              />
-            </div>
+            <ModelColumn
+              name={m.displayName}
+              modelId={m.modelId}
+              text={turn[m.key].text}
+              streaming={turn[m.key].streaming}
+              error={turn[m.key].error}
+              picker={renderPicker?.(m.key, m)}
+            />
           </div>
         ))}
       </div>

@@ -20,7 +20,7 @@ export default function ModelColumn({ name, modelId, text, streaming, error, pic
   const t = useTranslations('Chat');
 
   return (
-    <div className="flex flex-col h-full min-w-0 rounded-[var(--radius-card)] bg-paper-white border border-[rgba(0,0,0,0.06)] overflow-hidden">
+    <div className="flex flex-col min-w-0 rounded-[var(--radius-card)] bg-paper-white border border-[rgba(0,0,0,0.06)] overflow-hidden">
       <div className="px-5 py-3 border-b border-[rgba(0,0,0,0.04)] flex items-center gap-2 shrink-0">
         {picker ?? (
           <span
@@ -52,7 +52,7 @@ export default function ModelColumn({ name, modelId, text, streaming, error, pic
       </div>
 
       <div
-        className="flex-1 overflow-y-auto px-5 py-4 text-deep-graphite whitespace-pre-wrap"
+        className="px-5 py-4 text-deep-graphite whitespace-pre-wrap"
         style={{
           fontSize: 'var(--text-body-sm)',
           lineHeight: 'var(--text-body-sm--line-height)',
