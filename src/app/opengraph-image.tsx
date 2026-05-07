@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
-export const alt = 'Polymind — Compare top AI models';
+export const alt = 'Polymind — One prompt to every top AI';
 
 export default async function Image() {
   return new ImageResponse(
@@ -64,7 +64,7 @@ export default async function Image() {
             letterSpacing: '-0.024em',
           }}
         >
-          Compare top AI models
+          One prompt. Every top AI.
         </div>
 
         <div
@@ -76,7 +76,7 @@ export default async function Image() {
             letterSpacing: '-0.011em',
           }}
         >
-          GPT · Claude · Gemini, side by side
+          Pick the best — GPT · Claude · Gemini
         </div>
       </div>
     ),

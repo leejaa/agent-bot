@@ -1,12 +1,12 @@
 {
   "Brand": {
     "name": "Polymind",
-    "tagline": "Compare top AI models with one question",
-    "subtagline": "{models} answer in parallel"
+    "tagline": "One prompt. Every top AI. Pick the best.",
+    "subtagline": "{models}, side by side."
   },
   "Metadata": {
-    "title": "Polymind — Compare top AI models",
-    "description": "Ask one question and compare answers from the latest GPT, Claude, and Gemini side by side."
+    "title": "Polymind — One prompt to every top AI",
+    "description": "Send one prompt to every top AI — GPT, Claude, Gemini — and compare answers side by side. Skip the copy-paste."
   },
   "SignIn": {
     "title": "Sign in",
@@ -49,8 +49,8 @@
     "errorPrefix": "Error"
   },
   "Landing": {
-    "hero": "Compare top AI models with one question",
-    "heroSub": "Stop guessing which model is best. Ask once, get three answers side by side.",
+    "hero": "One prompt. Every top AI. Pick the best.",
+    "heroSub": "Skip the tab-juggling. Send one prompt to every top AI and pick the answer that fits.",
     "ctaPrimary": "Get started",
     "ctaSecondary": "Sign in",
     "feature1Title": "Three minds, one question",
