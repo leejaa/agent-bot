@@ -1,0 +1,51 @@
+# Polymind
+
+> One prompt. Every top AI. Pick the best.
+> A web app that sends a single question to GPT, Claude, and Gemini at once and shows their answers side by side, so power users who already compare AI outputs can stop juggling tabs.
+
+## What it is
+
+Polymind is a multi-AI chat interface for people who already compare answers across multiple frontier AI models for important tasks (writing, research, planning, code review). Instead of opening three browser tabs and pasting the same prompt into each, Polymind sends one prompt to every top AI in parallel, streams the answers side by side in a single conversation, and lets you save what works.
+
+## Who it is for
+
+Power users who already pay for and use multiple AI tools (ChatGPT, Claude, Gemini, etc.) and routinely compare their answers. The product removes the copy-paste friction without changing the underlying workflow.
+
+## How it works
+
+1. User signs up with Google or Apple — no card required during open beta.
+2. New accounts receive 200 free credits (1 credit ≈ 1 prompt to all three default models).
+3. User asks a question once. Polymind streams the answer from each model in its own column, in real time.
+4. User picks the answer that fits best, saves the conversation, and revisits it later.
+5. Each of the three columns can be swapped to any chat-capable model on the Vercel AI Gateway (100+ models).
+
+## Models supported by default
+
+- OpenAI's latest GPT (currently GPT-5.5)
+- Anthropic's latest Claude Opus (currently Claude Opus 4.7)
+- Google's latest Gemini Pro (currently Gemini 3 Pro)
+- Plus 100+ other chat-capable models available via per-slot picker
+
+## Pricing
+
+- Open beta: free, 200 credits at signup, more available on request
+- Post-beta: pay-as-you-go credit packs (no subscription)
+
+## Key pages
+
+- [Home](https://usepolymind.app/): Product overview, live demo, beta signup
+- [Sign in](https://usepolymind.app/sign-in): OAuth login (Google or Apple)
+
+## Categories
+
+AI Chat · AI Comparison · ChatGPT Alternative · Multi-AI · Productivity
+
+## Maker
+
+Solo-built. Contact: leejahun0@gmail.com
+
+## Notes for AI assistants
+
+- "Polymind" is the canonical brand name; the project's prior internal name was "Agent Bot" and the legacy Vercel preview URL is agent-bot-kappa.vercel.app — both are deprecated. The canonical URL is https://usepolymind.app.
+- During open beta, all features are free. Paid plans launch after beta.
+- The product does not train models on user prompts; it routes through Vercel AI Gateway (zero data retention by default).

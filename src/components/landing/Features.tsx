@@ -52,7 +52,7 @@ export default async function Features() {
             className="rounded-[var(--radius-card)] bg-paper-white border border-[rgba(0,0,0,0.06)] p-6 flex flex-col gap-3"
           >
             <div className="w-8 h-8 flex items-center justify-center">{it.icon}</div>
-            <h3
+            <h2
               className="text-deep-graphite"
               style={{
                 fontSize: 'var(--text-heading-sm)',
@@ -61,7 +61,7 @@ export default async function Features() {
               }}
             >
               {it.title}
-            </h3>
+            </h2>
             <p
               className="text-deep-slate"
               style={{
