@@ -74,7 +74,7 @@ type SaveCallbackArg = {
   results: Record<Provider, string>;
 };
 
-export function useMultiChat(conversationId: string | null) {
+export function useMultiChat() {
   const [turns, setTurns] = useState<Turn[]>([]);
   const [isStreaming, setIsStreaming] = useState(false);
 
@@ -149,12 +149,18 @@ export function useMultiChat(conversationId: string | null) {
       await Promise.all(providerPromises);
       setIsStreaming(false);
 
-      if (conversationId && onSaved) {
+      // Always invoke onSaved when provided. The caller (handleSend in
+      // ChatView) is responsible for ensuring a conversation exists before
+      // calling sendMessage, and passes the conversation id explicitly via
+      // the callback's closure — we cannot rely on the hook's own
+      // `conversationId`, which lags behind by one render after a brand-new
+      // conversation is created mid-handleSend.
+      if (onSaved) {
         onSaved({ turnId, results });
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [turns, isStreaming, conversationId]
+    [turns, isStreaming]
   );
 
   return { turns, isStreaming, sendMessage, setTurns };

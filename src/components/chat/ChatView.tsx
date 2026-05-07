@@ -112,7 +112,7 @@ export default function ChatView({
     return initialModels;
   }, [userModelsQuery.data, initialModels]);
 
-  const { turns, isStreaming, sendMessage, setTurns } = useMultiChat(convId);
+  const { turns, isStreaming, sendMessage, setTurns } = useMultiChat();
 
   const createConvMutation = useMutation({
     mutationFn: createConversation,
