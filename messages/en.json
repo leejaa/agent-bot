@@ -53,12 +53,12 @@
     "heroSub": "Skip the tab-juggling. Send one prompt to every top AI and pick the answer that fits.",
     "ctaPrimary": "Get started",
     "ctaSecondary": "Sign in",
-    "feature1Title": "Three minds, one question",
-    "feature1Body": "Send one prompt to the latest GPT, Claude, and Gemini. See their answers stream in parallel.",
-    "feature2Title": "Compare side by side",
-    "feature2Body": "Spot strengths, blind spots, and disagreements at a glance.",
-    "feature3Title": "Save what works",
-    "feature3Body": "Conversations are saved per account so you can revisit and refine.",
+    "feature1Title": "One prompt, every top AI",
+    "feature1Body": "Send one question to the latest GPT, Claude, and Gemini in parallel. No more switching between three AI chat tabs.",
+    "feature2Title": "Compare GPT, Claude, and Gemini",
+    "feature2Body": "See where models agree, where they disagree, and where each one shines. The fastest way to compare top AI models side by side.",
+    "feature3Title": "Keep the answers that work",
+    "feature3Body": "Every conversation is saved to your account. Revisit, refine, and reuse the AI answers that fit best — across ChatGPT, Claude, Gemini, and any other model you've added.",
     "pricingTitle": "Pay as you go",
     "pricingSubtitle": "No subscription. Buy credits when you need them.",
     "pricingFree": "Free trial",
@@ -78,5 +78,20 @@
   },
   "Footer": {
     "feedback": "Have feedback? Email {email}"
+  },
+  "FAQ": {
+    "title": "Frequently asked questions",
+    "q1": "What is Polymind?",
+    "a1": "A multi-AI chat that sends one prompt to GPT, Claude, and Gemini at the same time. You see all three answers side by side and pick the one that fits — without juggling tabs or copy-pasting.",
+    "q2": "Why not just use ChatGPT, Claude, or Gemini directly?",
+    "a2": "Because no single AI is best at everything. If you already check answers across multiple models for important tasks, Polymind removes the friction — same workflow, but in one chat instead of three tabs.",
+    "q3": "Is Polymind really free?",
+    "a3": "Yes, completely free during open beta. New accounts get 200 credits (1 credit ≈ 1 prompt to all three models). For more credits during beta, email {email}.",
+    "q4": "Will you charge later?",
+    "a4": "Yes — paid plans launch when beta ends. Pricing will be pay-as-you-go credit packs, not subscription. Beta users keep their feedback-shaping influence on the v1 launch.",
+    "q5": "Where does my data go?",
+    "a5": "Prompts and responses are stored in your account so you can revisit them. They're never used to train models — Polymind routes through Vercel AI Gateway, which has zero data retention by default. You can delete any conversation anytime.",
+    "q6": "Can I switch which AI models Polymind uses?",
+    "a6": "Yes — each of the three columns can be set to any chat-capable model on Vercel AI Gateway (100+ models). The default is the latest frontier GPT, Claude, and Gemini. Click any column header to swap."
   }
 }

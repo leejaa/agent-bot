@@ -8,6 +8,7 @@ import HeroDemo from '@/components/landing/HeroDemo';
 import Features from '@/components/landing/Features';
 import Pricing from '@/components/landing/Pricing';
 import BetaNotice from '@/components/landing/BetaNotice';
+import FAQ from '@/components/landing/FAQ';
 import LandingFooter from '@/components/landing/LandingFooter';
 
 type Props = {
@@ -33,6 +34,7 @@ export default async function RootPage({ params }: Props) {
         <Hero />
         <HeroDemo models={models} />
         <Features />
+        <FAQ />
         {IS_BETA ? <BetaNotice /> : <Pricing />}
       </main>
       <LandingFooter />
