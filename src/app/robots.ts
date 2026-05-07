@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const SITE_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://agent-bot-kappa.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://usepolymind.app';
 
 export default function robots(): MetadataRoute.Robots {
   return {

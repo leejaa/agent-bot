@@ -38,7 +38,7 @@
 | Phase | Status | Notes |
 |---|---|---|
 | Asset preparation (tagline, descriptions, FAQ, logo, demo video, screenshots) | ✅ Done — 2026-05-07 | `docs/marketing-assets.md` + `public/` |
-| AI directory — top 10 priority | 🟡 In progress | See table below |
+| AI directory — top 10 priority | 🟡 Paused (2/10 submitted, 3/10 blocked, 5/10 not attempted) | See table + analysis below |
 | AI directory — long tail (40+) | ⚪ Pending | Consider bulk submission service ($20-50) after top 10 |
 | Product Hunt launch | ⚪ Pending | Target launch date: TBD (Tue/Wed/Thu PST 0:01 ≈ KST 17:01) |
 | Hacker News (Show HN) | ⚪ Pending | Same day as PH or following day |
@@ -54,16 +54,16 @@ Submit using copy from `docs/marketing-assets.md`. Logo: `public/brand/polymind-
 
 | Date | Site | Status | Live URL | Notes |
 |---|---|---|---|---|
-| | TheresAnAIForThat (theresanaiforthat.com) | pending |  | Highest-priority AI directory; long approval queue |
-| | Future Tools (futuretools.io) | pending |  | Matt Wolfe curated; submit via form |
-| | AlternativeTo (alternativeto.net) | pending |  | List as "ChatGPT alternative" for SEO |
-| | Toolify (toolify.ai) | pending |  |  |
-| | AI Tool Hunt (aitoolhunt.com) | pending |  |  |
-| | Top AI Tools (topai.tools) | pending |  | Quick approval typically |
-| | AI Library (library.phygital.plus) | pending |  |  |
-| | AI Scout (aiscout.net) | pending |  |  |
-| | AItoolKit (aitoolkit.org) | pending |  |  |
-| | Insidr AI (insidr.ai/ai-tools) | pending |  | Strong Google ranking |
+| 2026-05-07 | TheresAnAIForThat (theresanaiforthat.com) | submitted |  | Approval queue 2-4 weeks. Submitted via Claude Desktop computer use. |
+| 2026-05-07 | Future Tools (futuretools.io) | submitted |  | Matt Wolfe manually curates; awaiting his review. |
+| 2026-05-07 | AlternativeTo (alternativeto.net) | blocked |  | IP banned during signup attempt — anti-bot detection. Retry manually from a different network later. |
+| 2026-05-07 | Toolify (toolify.ai) | blocked |  | Paid-only listing ($99). No free submission option. Skip unless we decide to pay. |
+| 2026-05-07 | AI Tool Hunt (aitoolhunt.com) | blocked |  | Site 404'd at the time (LiteSpeed error page). Recheck in a few days. |
+| | Top AI Tools (topai.tools) | pending |  | Not attempted — paused submissions after blockers above. |
+| | AI Library (library.phygital.plus) | pending |  | Not attempted. |
+| | AI Scout (aiscout.net) | pending |  | Not attempted. |
+| | AItoolKit (aitoolkit.org) | pending |  | Not attempted. |
+| | Insidr AI (insidr.ai/ai-tools) | pending |  | Not attempted. |
 
 ## AI Directories — long tail (after top 10)
 
@@ -142,7 +142,12 @@ Suggested title patterns: `Show HN: Polymind – One prompt to GPT, Claude, and 
 - ✅ Demo video rendered (Remotion, 30 s, 1920×1080) → `public/demo.mp4`
 - ✅ 3 screenshots captured → `public/screenshots/`
 - ✅ Marketing log file created (this file) — `docs/marketing-log.md`
-- 🟡 Starting AI directory top 10 submissions (begin with TheresAnAIForThat)
+- ✅ TheresAnAIForThat — submitted via Claude Desktop computer use (awaiting review)
+- ✅ Future Tools — submitted via Claude Desktop computer use (awaiting Matt Wolfe review)
+- 🚫 AlternativeTo — IP blocked during automated signup; needs manual attempt later
+- 🚫 Toolify — paid-only ($99); skipped
+- 🚫 AI Tool Hunt — site returning 404; recheck in a few days
+- ⏸️  AI directory campaign paused after 5 attempts (2 success, 3 blocked). Reassessing strategy before continuing the remaining 5.
 
 ---
 
