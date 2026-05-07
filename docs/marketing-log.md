@@ -42,7 +42,7 @@
 | AI directory — long tail (40+) | ⚪ Pending | Consider bulk submission service ($20-50) after top 10 |
 | SEO Phase 0 (technical foundations) | ✅ Done — 2026-05-07 | proxy/sitemap/llms.txt/JSON-LD/OG image/headings live |
 | Google Search Console | ✅ Verified — 2026-05-07 | Domain property; sitemap submitted (queued for fetch) |
-| Bing Webmaster | 🟡 Pending — Bing outage as of 2026-05-07 | Resume "Import from GSC" once Bing recovers |
+| Bing Webmaster | ✅ Verified — 2026-05-08 | HTML meta tag method; sitemap submitted (Processing) |
 | Product Hunt launch | ⚪ Pending | Target launch date: TBD (Tue/Wed/Thu PST 0:01 ≈ KST 17:01) |
 | Hacker News (Show HN) | ⚪ Pending | Same day as PH or following day |
 | Reddit posts (r/SideProject, r/ChatGPT, r/SaaS) | ⚪ Pending | Same week as PH |
@@ -154,6 +154,10 @@ Suggested title patterns: `Show HN: Polymind – One prompt to GPT, Claude, and 
 - ✅ SEO Phase 0 — proxy matcher fix, OG/Twitter image, fallback URLs, JSON-LD (3 schemas), llms.txt, heading hierarchy → all live on production
 - ✅ Google Search Console — property `usepolymind.app` (Domain type) verified via DNS TXT, sitemap submitted (4 URLs, status "Couldn't fetch" — Google will retry within 24h)
 - ⏸️ Bing Webmaster — account signed in (Google SSO), Import-from-GSC blocked by Bing outage; retry later
+
+### 2026-05-08
+- ✅ Bing Webmaster — verified `usepolymind.app/` via HTML meta tag (`msvalidate.01`); sitemap submitted, status "Processing" (normal — Bing will crawl within hours)
+- 🔍 Minor finding: `<meta name="msvalidate.01">` renders on `/` and `/ko` but not on `/en`. Likely a next-intl `localePrefix: 'as-needed'` quirk where `/en` is non-canonical. Bing fetches `/` (the registered URL) so verification works. Logged for later investigation.
 
 ---
 
