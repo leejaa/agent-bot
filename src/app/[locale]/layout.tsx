@@ -62,6 +62,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       images: [OG_IMAGE_URL],
     },
+    verification: {
+      // Bing Webmaster Tools — emitted as <meta name="msvalidate.01" content="...">
+      other: {
+        'msvalidate.01': 'E433F7571B215BFD6DF88924238BF409',
+      },
+    },
   };
 }
 

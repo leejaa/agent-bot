@@ -40,6 +40,9 @@
 | Asset preparation (tagline, descriptions, FAQ, logo, demo video, screenshots) | ✅ Done — 2026-05-07 | `docs/marketing-assets.md` + `public/` |
 | AI directory — top 10 priority | 🟡 Paused (2/10 submitted, 3/10 blocked, 5/10 not attempted) | See table + analysis below |
 | AI directory — long tail (40+) | ⚪ Pending | Consider bulk submission service ($20-50) after top 10 |
+| SEO Phase 0 (technical foundations) | ✅ Done — 2026-05-07 | proxy/sitemap/llms.txt/JSON-LD/OG image/headings live |
+| Google Search Console | ✅ Verified — 2026-05-07 | Domain property; sitemap submitted (queued for fetch) |
+| Bing Webmaster | 🟡 Pending — Bing outage as of 2026-05-07 | Resume "Import from GSC" once Bing recovers |
 | Product Hunt launch | ⚪ Pending | Target launch date: TBD (Tue/Wed/Thu PST 0:01 ≈ KST 17:01) |
 | Hacker News (Show HN) | ⚪ Pending | Same day as PH or following day |
 | Reddit posts (r/SideProject, r/ChatGPT, r/SaaS) | ⚪ Pending | Same week as PH |
@@ -148,6 +151,9 @@ Suggested title patterns: `Show HN: Polymind – One prompt to GPT, Claude, and 
 - 🚫 Toolify — paid-only ($99); skipped
 - 🚫 AI Tool Hunt — site returning 404; recheck in a few days
 - ⏸️  AI directory campaign paused after 5 attempts (2 success, 3 blocked). Reassessing strategy before continuing the remaining 5.
+- ✅ SEO Phase 0 — proxy matcher fix, OG/Twitter image, fallback URLs, JSON-LD (3 schemas), llms.txt, heading hierarchy → all live on production
+- ✅ Google Search Console — property `usepolymind.app` (Domain type) verified via DNS TXT, sitemap submitted (4 URLs, status "Couldn't fetch" — Google will retry within 24h)
+- ⏸️ Bing Webmaster — account signed in (Google SSO), Import-from-GSC blocked by Bing outage; retry later
 
 ---
 
