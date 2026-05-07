@@ -1,0 +1,75 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Polymind Polymind BETA" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Polymind" [ref=e6]
+          - generic [ref=e18]: Polymind
+          - generic [ref=e19]: BETA
+        - generic [ref=e20]:
+          - group "Language" [ref=e21]:
+            - button "EN" [disabled] [ref=e22]
+            - button "KO" [ref=e23]
+          - link "Sign in" [ref=e24] [cursor=pointer]:
+            - /url: /sign-in
+    - main [ref=e25]:
+      - generic [ref=e27]:
+        - heading "One prompt. Every top AI. Pick the best." [level=1] [ref=e28]
+        - paragraph [ref=e29]: Skip the tab-juggling. Send one prompt to every top AI and pick the answer that fits.
+        - link "Get started" [ref=e31] [cursor=pointer]:
+          - /url: /sign-in
+      - generic [ref=e33]:
+        - generic [ref=e39]: polymind.app
+        - generic [ref=e40]:
+          - generic [ref=e98]:
+            - generic [ref=e99]:
+              - generic [ref=e100]: Question
+              - paragraph [ref=e101]: Write a follow-up email after my job interview
+            - generic [ref=e102]:
+              - generic [ref=e104]:
+                - generic [ref=e105]:
+                  - generic [ref=e106]: GPT 5.5
+                  - generic [ref=e107]: openai/gpt-5.5
+                - generic [ref=e112]: "Subject: Thank you for today Hi Sarah, Really enjoyed our conversation about the team's roadmap. I'm excited about the role — especially the chance to work on the ana"
+              - generic [ref=e114]:
+                - generic [ref=e115]:
+                  - generic [ref=e116]: Claude Opus 4.7
+                  - generic [ref=e117]: anthropic/claude-opus-4.7
+                - generic [ref=e122]: Hi Sarah, Thanks for the chat today — your point about how the team prototypes ideas really stuck with me. I came away ev
+              - generic [ref=e124]:
+                - generic [ref=e125]:
+                  - generic [ref=e126]: Gemini 3.1 Pro
+                  - generic [ref=e127]: google/gemini-3.1-pro-preview
+                - generic [ref=e132]: "Best practices: send within 24h, reference one specific moment, reiterate your fit. Sample: Hi Sarah, thanks for today. Our discussion about cross-team collaboration reinforced my interest. My background in product analy"
+          - generic [ref=e45]:
+            - textbox "Ask anything..." [disabled] [ref=e46]
+            - button "Send" [disabled] [ref=e47]:
+              - img [ref=e48]
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - img [ref=e54]
+          - heading "Three minds, one question" [level=3] [ref=e58]
+          - paragraph [ref=e59]: Send one prompt to the latest GPT, Claude, and Gemini. See their answers stream in parallel.
+        - generic [ref=e60]:
+          - img [ref=e62]
+          - heading "Compare side by side" [level=3] [ref=e66]
+          - paragraph [ref=e67]: Spot strengths, blind spots, and disagreements at a glance.
+        - generic [ref=e68]:
+          - img [ref=e70]
+          - heading "Save what works" [level=3] [ref=e72]
+          - paragraph [ref=e73]: Conversations are saved per account so you can revisit and refine.
+      - generic [ref=e75]:
+        - generic [ref=e76]: BETA
+        - heading "Free during beta" [level=2] [ref=e77]
+        - paragraph [ref=e78]: Polymind is in open beta. Try every feature for free — your feedback shapes v1.
+        - link "Send feedback" [ref=e79] [cursor=pointer]:
+          - /url: mailto:leejahun0@gmail.com
+    - contentinfo [ref=e80]:
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - img "Polymind" [ref=e83]
+          - generic [ref=e95]: Polymind
+        - link "Have feedback? Email leejahun0@gmail.com" [ref=e96] [cursor=pointer]:
+          - /url: mailto:leejahun0@gmail.com
+  - alert [ref=e97]
