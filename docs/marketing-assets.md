@@ -2,6 +2,8 @@
 
 Single source of truth for copy and creative used across Product Hunt, AI directories, social, and outreach. Update this file *first* when wording changes, then propagate to the site (`messages/en.json`, `opengraph-image.tsx`) and external listings.
 
+> **Where, when, status of submissions/posts:** `docs/marketing-log.md` — every action goes there.
+
 ---
 
 ## Brand basics
