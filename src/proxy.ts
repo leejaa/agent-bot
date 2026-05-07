@@ -63,6 +63,6 @@ export const config = {
     // Skip Next.js internals, well-known SEO files, OG/Twitter images, and any
     // request with a static-asset-style file extension. The remaining paths
     // are user-facing pages and API routes that need auth + i18n handling.
-    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|llms.txt|opengraph-image|twitter-image|.*\\.(svg|png|jpg|jpeg|gif|webp|ico|txt|xml|json|woff|woff2|ttf)).*)',
+    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|llms.txt|opengraph-image|twitter-image|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|txt|xml|json|woff|woff2|ttf)).*)',
   ],
 };
