@@ -8,25 +8,33 @@ type Props = {
   text: string;
   streaming: boolean;
   error?: string;
+  /**
+   * Optional clickable picker that replaces the static `name` label in the
+   * header. When omitted (e.g. landing-page demo, historical turns rendered
+   * server-side), the static name is shown.
+   */
+  picker?: React.ReactNode;
 };
 
-export default function ModelColumn({ name, modelId, text, streaming, error }: Props) {
+export default function ModelColumn({ name, modelId, text, streaming, error, picker }: Props) {
   const t = useTranslations('Chat');
 
   return (
     <div className="flex flex-col h-full min-w-0 rounded-[var(--radius-card)] bg-paper-white border border-[rgba(0,0,0,0.06)] overflow-hidden">
       <div className="px-5 py-3 border-b border-[rgba(0,0,0,0.04)] flex items-center gap-2 shrink-0">
+        {picker ?? (
+          <span
+            className="text-deep-graphite"
+            style={{
+              fontSize: 'var(--text-body-sm)',
+              letterSpacing: 'var(--text-body-sm--letter-spacing)',
+            }}
+          >
+            {name}
+          </span>
+        )}
         <span
-          className="text-deep-graphite"
-          style={{
-            fontSize: 'var(--text-body-sm)',
-            letterSpacing: 'var(--text-body-sm--letter-spacing)',
-          }}
-        >
-          {name}
-        </span>
-        <span
-          className="text-cool-gray"
+          className="text-cool-gray truncate"
           style={{
             fontSize: 'var(--text-caption)',
             letterSpacing: 'var(--text-caption--letter-spacing)',

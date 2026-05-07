@@ -3,14 +3,17 @@
 import { useTranslations } from 'next-intl';
 import ModelColumn from './ModelColumn';
 import type { Turn } from './useChat';
-import type { ModelEntry } from '@/lib/models';
+import type { ModelEntry, ProviderKey } from '@/lib/models';
 
 type Props = {
   turn: Turn;
   models: ModelEntry[];
+  /** Optional per-slot picker renderer. When provided, the column header
+   *  becomes interactive; when omitted (HeroDemo, etc.) the static name shows. */
+  renderPicker?: (slot: ProviderKey, model: ModelEntry) => React.ReactNode;
 };
 
-export default function TurnItem({ turn, models }: Props) {
+export default function TurnItem({ turn, models, renderPicker }: Props) {
   const t = useTranslations('Chat');
 
   return (
@@ -61,6 +64,7 @@ export default function TurnItem({ turn, models }: Props) {
                 text={turn[m.key].text}
                 streaming={turn[m.key].streaming}
                 error={turn[m.key].error}
+                picker={renderPicker?.(m.key, m)}
               />
             </div>
           </div>

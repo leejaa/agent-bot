@@ -7,6 +7,7 @@ import {
   index,
   primaryKey,
   foreignKey,
+  numeric,
 } from 'drizzle-orm/pg-core';
 import type { AdapterAccountType } from 'next-auth/adapters';
 
@@ -89,6 +90,11 @@ export const turns = pgTable(
     openaiResponse: text('openai_response'),
     anthropicResponse: text('anthropic_response'),
     googleResponse: text('google_response'),
+    // Per-turn cost accounting (nullable for legacy rows that pre-date dynamic billing)
+    inputTokensTotal: integer('input_tokens_total'),
+    outputTokensTotal: integer('output_tokens_total'),
+    costUsd: numeric('cost_usd', { precision: 10, scale: 6 }),
+    creditsCharged: integer('credits_charged'),
     createdAt: timestamp('created_at', { withTimezone: true, mode: 'string' }).defaultNow(),
   },
   (table) => [
@@ -100,6 +106,21 @@ export const turns = pgTable(
     }).onDelete('cascade'),
   ]
 );
+
+/**
+ * Per-user override of which model fills each of the three columns. NULL slots
+ * mean "use the latest default for that provider" — see getModels() in
+ * src/lib/models.ts. Slots are 1-to-1 with the columns rendered in TurnItem.
+ */
+export const userModelSelections = pgTable('user_model_selections', {
+  userId: text('user_id')
+    .primaryKey()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  slot1: text('slot_1'),
+  slot2: text('slot_2'),
+  slot3: text('slot_3'),
+  updatedAt: timestamp('updated_at', { withTimezone: true, mode: 'string' }).defaultNow(),
+});
 
 // Per-user credit balance. One row per user.
 export const credits = pgTable('credits', {

@@ -3,7 +3,7 @@ import { auth } from '@/lib/auth';
 import { redirect } from '@/i18n/navigation';
 import { getConversationById, listConversationsForUser } from '@/db/queries/conversations';
 import { listTurnsByConversation } from '@/db/queries/turns';
-import { getModels } from '@/lib/models';
+import { resolveActiveModels } from '@/db/queries/userModelSelection';
 import AppShell from '@/components/layout/AppShell';
 import ChatView from '@/components/chat/ChatView';
 import { Turn } from '@/components/chat/useChat';
@@ -22,7 +22,7 @@ export default async function ConversationPage({ params }: PageProps) {
     getConversationById(id, session.user.id),
     listTurnsByConversation(id),
     listConversationsForUser(session.user.id),
-    getModels(),
+    resolveActiveModels(session.user.id),
   ]);
 
   if (!conversation) notFound();

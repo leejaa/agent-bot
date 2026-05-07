@@ -5,7 +5,7 @@ import { useState, useCallback } from 'react';
 export type ModelMessage = { role: 'user' | 'assistant'; content: string };
 
 export type Turn = {
-  id: string; // client-side temp id
+  id: string; // client-side temp id, doubles as the server-side turnId for usage cache
   userMessage: string;
   openai: { text: string; streaming: boolean; error?: string };
   anthropic: { text: string; streaming: boolean; error?: string };
@@ -20,9 +20,15 @@ const ENDPOINTS: Record<Provider, string> = {
   google: '/api/chat/google',
 };
 
+type StreamRequestBody = {
+  messages: ModelMessage[];
+  modelId: string;
+  turnId: string;
+};
+
 async function streamProvider(
   endpoint: string,
-  messages: ModelMessage[],
+  body: StreamRequestBody,
   onChunk: (text: string) => void,
   onError: (err: string) => void,
   onDone: (full: string) => void
@@ -31,7 +37,7 @@ async function streamProvider(
     const res = await fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages }),
+      body: JSON.stringify(body),
     });
 
     if (!res.ok) {
@@ -61,6 +67,13 @@ async function streamProvider(
   }
 }
 
+type SlotModelMap = Record<Provider, string>;
+
+type SaveCallbackArg = {
+  turnId: string;
+  results: Record<Provider, string>;
+};
+
 export function useMultiChat(conversationId: string | null) {
   const [turns, setTurns] = useState<Turn[]>([]);
   const [isStreaming, setIsStreaming] = useState(false);
@@ -77,17 +90,21 @@ export function useMultiChat(conversationId: string | null) {
   }
 
   const sendMessage = useCallback(
-    async (userMessage: string, onSaved?: (turnData: { openai: string; anthropic: string; google: string }) => void) => {
+    async (
+      userMessage: string,
+      slotModels: SlotModelMap,
+      onSaved?: (arg: SaveCallbackArg) => void
+    ) => {
       if (isStreaming || !userMessage.trim()) return;
       setIsStreaming(true);
 
       const turnIndex = turns.length;
-      const tempId = crypto.randomUUID();
+      const turnId = crypto.randomUUID();
 
       setTurns((prev) => [
         ...prev,
         {
-          id: tempId,
+          id: turnId,
           userMessage,
           openai: { text: '', streaming: true },
           anthropic: { text: '', streaming: true },
@@ -103,18 +120,18 @@ export function useMultiChat(conversationId: string | null) {
 
         return streamProvider(
           ENDPOINTS[provider],
-          messages,
+          { messages, modelId: slotModels[provider], turnId },
           (full) => {
             setTurns((prev) =>
               prev.map((t) =>
-                t.id === tempId ? { ...t, [provider]: { text: full, streaming: true } } : t
+                t.id === turnId ? { ...t, [provider]: { text: full, streaming: true } } : t
               )
             );
           },
           (err) => {
             setTurns((prev) =>
               prev.map((t) =>
-                t.id === tempId ? { ...t, [provider]: { text: '', streaming: false, error: err } } : t
+                t.id === turnId ? { ...t, [provider]: { text: '', streaming: false, error: err } } : t
               )
             );
           },
@@ -122,7 +139,7 @@ export function useMultiChat(conversationId: string | null) {
             results[provider] = full;
             setTurns((prev) =>
               prev.map((t) =>
-                t.id === tempId ? { ...t, [provider]: { text: full, streaming: false } } : t
+                t.id === turnId ? { ...t, [provider]: { text: full, streaming: false } } : t
               )
             );
           }
@@ -133,7 +150,7 @@ export function useMultiChat(conversationId: string | null) {
       setIsStreaming(false);
 
       if (conversationId && onSaved) {
-        onSaved(results);
+        onSaved({ turnId, results });
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps

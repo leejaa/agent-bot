@@ -9,6 +9,7 @@ export const runtime = 'nodejs';
 type Params = { params: Promise<{ id: string }> };
 
 const schema = z.object({
+  turn_id: z.string(),
   user_message: z.string(),
   openai_response: z.string().nullable().optional(),
   anthropic_response: z.string().nullable().optional(),
@@ -32,6 +33,7 @@ export async function POST(req: Request, { params }: Params) {
   const turn = await saveTurnAndTouchConversation({
     userId,
     conversationId: id,
+    turnId: parsed.data.turn_id,
     userMessage: parsed.data.user_message,
     openaiResponse: parsed.data.openai_response ?? null,
     anthropicResponse: parsed.data.anthropic_response ?? null,
