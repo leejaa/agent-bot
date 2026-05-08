@@ -168,6 +168,13 @@ Suggested title patterns: `Show HN: Polymind – One prompt to GPT, Claude, and 
 - ✅ Geist font replacement — Jua removed; `next/font/google` Geist + Geist_Mono with Pretendard as Korean fallback. DevTools verified: Geist applies sitewide, Pretendard fallback registered, `--font-jua` reference 0. Visual + computed-style checks passed on landing, blog, and pSEO pages.
 - ✅ GSC manual indexing requests — submitted 6 URLs via Claude Desktop computer use: `/compare/gpt-vs-claude`, `/compare/claude-vs-gemini`, `/compare/gpt-vs-gemini`, `/alternatives`, `/alternatives/chatgpt`, plus one more (likely `/blog/gpt-vs-claude-vs-gemini-10-prompts`). All "URL not on Google" → "색인 생성 요청됨" confirmed. Expected indexing in 24-72h.
   - 🔍 Note: `/compare` index page may not have been included in the batch. If GSC report 24-72h later shows it not indexed, re-submit manually.
+- ✅ IndexNow infrastructure installed — Bing/Yandex/Naver/Seznam instant-indexing protocol.
+  - Key: `859d35dc-4eae-4750-bf9a-bc7597e40c28` (verification file at `public/<key>.txt`)
+  - Library: `src/lib/seo/indexnow.ts` (runtime helper, not yet wired into deploy hook)
+  - Script: `scripts/notify-indexnow.mjs` — reads sitemap, submits all URLs in one call
+  - Run after each deploy: `npm run notify-indexnow`
+  - Optional: pass specific URLs as args to submit only those, e.g. `npm run notify-indexnow -- https://usepolymind.app/compare/gpt-vs-claude`
+  - Bing daily quota: ~10K URLs (vs Google's much tighter). 200 = success, 202 = first-time key verification.
 - ✅ Bing Webmaster — verified `usepolymind.app/` via HTML meta tag (`msvalidate.01`); sitemap submitted, status "Processing" (normal — Bing will crawl within hours)
 - 🔍 Minor finding: `<meta name="msvalidate.01">` renders on `/` and `/ko` but not on `/en`. Likely a next-intl `localePrefix: 'as-needed'` quirk where `/en` is non-canonical. Bing fetches `/` (the registered URL) so verification works. Logged for later investigation.
 - ✅ Phase 1 #9, #10 — FAQ section added to landing (matches FAQPage schema), Features keywords boosted ("Compare GPT, Claude, and Gemini")
