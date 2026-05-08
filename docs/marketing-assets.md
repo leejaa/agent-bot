@@ -204,6 +204,77 @@ When Korea launch happens, update `messages/ko.json` to match the English tone h
 
 ---
 
+## Blog post sharing copy
+
+When a new blog post goes live, draft sharing copy here (don't fork copy across channels). Newest post first.
+
+### `/blog/gpt-vs-claude-vs-gemini-10-prompts` — 2026-05-08
+
+**Permalink:** https://usepolymind.app/blog/gpt-vs-claude-vs-gemini-10-prompts
+
+#### Twitter/X — single tweet
+> Most "GPT vs Claude vs Gemini" articles are out of date the day they ship.
+>
+> Wrote up the framework we actually use: 10 prompts you run yourself, plus what to look for when the answers diverge.
+>
+> https://usepolymind.app/blog/gpt-vs-claude-vs-gemini-10-prompts
+
+#### Twitter/X — thread (5 tweets)
+> 1/ The honest answer to "which AI model is best?" isn't a benchmark — it's "best at *what?*"
+>
+> So I wrote up the 10-prompt framework we use at Polymind to compare GPT, Claude, and Gemini on the work people actually do.
+>
+> 2/ The trap: benchmarks measure model performance on *general* tasks. You don't do general tasks. You write release notes, review PRs, summarize papers, draft customer emails.
+>
+> The right test is the one that mirrors your actual work.
+>
+> 3/ Each prompt has a constraint that filters models. e.g. "Draft a customer email — *don't apologize*."
+>
+> Some models can't help themselves. They sneak in "we know this may be frustrating" anyway. That's the thing you wanted to learn.
+>
+> 4/ The most useful pattern when running side-by-side: **disagreement between models is information.**
+>
+> All three agree → the answer is probably fine.
+> Two agree, one dissents → read the dissent.
+> All three disagree → think harder than the prompt asked.
+>
+> 5/ Full post with all 10 prompts + the criteria for judging answers:
+>
+> https://usepolymind.app/blog/gpt-vs-claude-vs-gemini-10-prompts
+>
+> Run them in any tool you like. We built Polymind because doing this in three browser tabs is miserable.
+
+#### Hacker News — Show HN (technical-honest, no marketing fluff)
+> **Title:** Show HN: 10 prompts to compare GPT, Claude, and Gemini on your actual work
+>
+> Most "model X vs Y" comparisons measure benchmarks that don't reflect how you'll use the model. Wrote up the framework I use to evaluate them on real work — 10 short prompts spanning summarization, code review, refactoring, customer copy, translation, and brainstorming, plus what to look for when answers diverge.
+>
+> The post is also a soft launch for Polymind, the side-by-side comparison tool I built so I'd stop doing this in three browser tabs. Free during open beta.
+>
+> https://usepolymind.app/blog/gpt-vs-claude-vs-gemini-10-prompts
+
+#### Reddit — r/ClaudeAI / r/ChatGPT / r/SideProject
+> **Title:** I wrote up the 10-prompt framework I use to compare GPT, Claude, and Gemini on real work
+>
+> Got tired of "vs." articles that benchmark trivia and call a winner. Wrote up the actual framework I use — 10 short prompts that mirror common knowledge work (code review, customer copy, translation, brainstorming, etc.), plus the criteria for judging which model wins on each.
+>
+> Run them in whatever tool you like. The point of the post is the framework, not a result that'll be obsolete in three weeks.
+>
+> https://usepolymind.app/blog/gpt-vs-claude-vs-gemini-10-prompts
+>
+> Curious which prompts surface the biggest model differences for *your* work — happy to add to the list.
+
+#### LinkedIn — personal/founder
+> Most "which AI model is best?" questions don't have an answer until you ask "best at *what?*"
+>
+> I wrote up the 10-prompt framework we use to evaluate GPT, Claude, and Gemini on real knowledge work — code review, customer copy, summarization, translation, and others — plus what to actually look for when the answers diverge.
+>
+> Read it: https://usepolymind.app/blog/gpt-vs-claude-vs-gemini-10-prompts
+>
+> Built Polymind because doing this comparison in three browser tabs is unsustainable. Side-by-side is now my default workflow for any nontrivial AI question.
+
+---
+
 ## Maintenance
 
 - When tagline or descriptions change, edit this file *first*, then update:

@@ -38,6 +38,16 @@ export default async function LandingNav() {
         </Link>
 
         <div className="flex items-center gap-3">
+          <Link
+            href="/blog"
+            className="hidden sm:inline-flex items-center text-deep-slate hover:text-primary transition-colors"
+            style={{
+              fontSize: 'var(--text-body-sm)',
+              letterSpacing: 'var(--text-body-sm--letter-spacing)',
+            }}
+          >
+            Blog
+          </Link>
           <LocaleSwitcher />
           <Link
             href="/sign-in"

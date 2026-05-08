@@ -1,0 +1,151 @@
+---
+title: 'GPT vs Claude vs Gemini: 10 prompts to compare them yourself in 2026'
+description: 'A hands-on framework for comparing GPT-5.5, Claude Opus 4.7, and Gemini 3 Pro on the work you actually do — with 10 prompts you can run side by side in five minutes.'
+publishedAt: '2026-05-08'
+author: 'Polymind'
+tags: ['ai-comparison', 'gpt', 'claude', 'gemini', 'prompts']
+---
+
+> **TL;DR.** Benchmark articles are stale before they're published — model behavior changes every release. The reliable way to pick a model for *your* work is to run the same prompt across all three and compare. This post gives you 10 prompts, organized by task type, plus the criteria to judge them. You can run all 10 in [Polymind](https://usepolymind.app) in about five minutes.
+
+If you've spent any time looking for "GPT vs Claude vs Gemini" comparisons in 2026, you've seen the same article 50 times. Someone runs a benchmark, declares a winner, and three weeks later a new model ships and the article is wrong. Worse, those benchmarks rarely match the work you actually do — coding interviews and trivia don't tell you whether a model can write your release notes the way you'd write them.
+
+We built [Polymind](https://usepolymind.app) because the only honest answer to "which model is best?" is "best at *what?*" — and the only way to know is to send the same prompt to all three and compare the answers side by side. That's it. That's the whole product.
+
+This post is the framework we use ourselves: ten prompts that span the work most knowledge workers actually do, plus what to look for when the answers diverge. Run them in your tool of choice (or save yourself the copy-pasting and run them in Polymind).
+
+## How to read a three-way comparison
+
+Before the prompts, a few notes on what makes one answer better than another. These apply across all task types.
+
+- **Faithfulness to the brief.** Did the model do what you asked, or did it pick a more flattering version of the question? Watch for skipped constraints.
+- **Calibration.** Does the model say "I don't know" when it shouldn't know? Confidence on the wrong answer is the most expensive failure mode.
+- **Style match.** If you asked for terse, did you get terse? Length is the easiest signal of whether a model is listening.
+- **Recoverability.** When you push back ("that's not what I meant"), does the next reply actually change, or does it just rephrase the same thing?
+- **Cost-shape.** Some prompts only need a small model; using a frontier model for them is wasteful. Side-by-side makes the marginal value visible.
+
+Now the prompts. Each one is short on purpose — long prompts hide which model is actually better at the task vs. which one is better at parsing instructions.
+
+## 1. Summarize without flattening
+
+> Read the abstract of any recent paper in your field. Prompt: *"Summarize this in three bullet points for a colleague who knows the area but not this paper. Keep technical terms."*
+
+**What to compare.** Does the summary lose the *specific* claim, or does it preserve it? Generic-sounding summaries ("This paper explores...") usually mean the model couldn't grip the actual contribution. The best answers will name the method or finding directly.
+
+**Common divergence.** One model writes a summary you could have written about *any* paper in the field. Another names the actual mechanism. The gap is the model's domain reading ability, and it varies a lot more than benchmarks suggest.
+
+## 2. Explain a concept to a specific audience
+
+> *"Explain WebSockets to a junior backend engineer who has used HTTP but never built a real-time feature. Three paragraphs, no analogies that involve telephones."*
+
+**What to compare.** The "no telephones" instruction is a trap — does the model follow it? Models that ignore exclusion constraints will quietly do so on more important constraints later. Also check whether the explanation is calibrated to "junior backend who knows HTTP" — too-basic answers waste their time, too-advanced answers don't teach.
+
+**Common divergence.** Pedagogical sense. Some models genuinely understand what a junior engineer already knows; others write a Wikipedia paragraph and hope.
+
+## 3. Code review on a small diff
+
+Paste a 30–60 line code change (PR diff, gist, snippet) and ask:
+
+> *"Review this change. What's wrong, what's risky, what's unclear? Don't restate what the code does."*
+
+**What to compare.** The "don't restate" instruction filters models that pad responses. Look for whether each model finds genuine issues vs. invents nitpicks to seem useful. Real reviews catch one or two specific things; performative reviews list ten generic ones.
+
+**Common divergence.** Confidence on subtle bugs. Some models will tell you a race condition exists and be right; some will tell you a race condition exists and be wrong; some won't notice. Side-by-side makes the disagreement visible — which is itself a signal worth investigating.
+
+## 4. Refactor with a constraint
+
+> Paste a 50-line function. Prompt: *"Refactor this so it's easier to test. Don't change behavior. Don't introduce new dependencies."*
+
+**What to compare.** Does the refactor actually improve testability, or does it just rearrange the code? Did the model respect "no new dependencies"? Run the diff in your head — does it preserve behavior?
+
+**Common divergence.** Engineering taste. Some models extract a sensible seam (a pure function, an injectable dependency); others split things along arbitrary lines. The "no new dependencies" constraint catches models that reflexively reach for libraries.
+
+## 5. Draft a cold email or release note
+
+> *"Draft a 4-sentence email to a customer announcing that we've discontinued feature X. Tone: direct but warm. Don't apologize. Offer the alternative (feature Y)."*
+
+**What to compare.** "Don't apologize" is the constraint — does the model sneak in an apology anyway ("we know this may be frustrating...")? Tone control under explicit instructions is one of the clearest model differentiators in 2026.
+
+**Common divergence.** Default warmth. Some models cannot write a "direct but warm" email without hedging; others can. If you write a lot of customer-facing copy, this single test predicts a lot.
+
+## 6. Pick apart a flawed argument
+
+Find an opinion piece you disagree with. Prompt:
+
+> *"Steelman the strongest version of this argument in two paragraphs. Then give the single best counter-argument."*
+
+**What to compare.** Steelmanning is hard — most models either parrot the original or replace it with their own preferred view. A good steelman makes you nod even when you disagree. Then check whether the counter-argument actually engages the steelmanned version or attacks the original weak version.
+
+**Common divergence.** Intellectual honesty under instruction. This is one of the prompts where you can almost feel the model's training preferences leaking through.
+
+## 7. Estimate something with stated assumptions
+
+> *"How many software engineers in the US write Rust as their primary language in 2026? Show your assumptions and arithmetic."*
+
+**What to compare.** Does the model show assumptions clearly enough that you could disagree with them? Does the arithmetic actually follow from the assumptions? You don't care if the answer is right — you care if the *method* is auditable.
+
+**Common divergence.** Calibration. Some models give a confident number with hand-waved reasoning. Others give a wider range with explicit assumptions. The latter is almost always more useful, even when the point estimate is "wronger."
+
+## 8. Long-tail factual recall
+
+Pick a niche fact from your domain that isn't on the front page of Wikipedia. Ask the question directly.
+
+> Example: *"What was the breaking change between Next.js 15 and Next.js 16 that affected the cookies() API?"*
+
+**What to compare.** Does the model say "I don't know" or hallucinate? Does it caveat what it's uncertain about? In 2026, the gap between models on recall is smaller than the gap on calibration — they all know less than they pretend, but some pretend less.
+
+**Common divergence.** Hedging discipline. The wrong-but-confident answer is usually faster, which is exactly why it's dangerous. This prompt is your single best test of whether you can trust a model's unhedged claims.
+
+## 9. Translate while preserving register
+
+Take a paragraph in English (or your strongest language) and ask:
+
+> *"Translate this to [target language]. Match the register — if the original is casual, keep it casual."*
+
+**What to compare.** If you speak the target language, you'll feel the difference instantly. If you don't, ask the model that *didn't* produce the translation to evaluate it. This is a useful trick generally — using one model to grade another exposes failure modes that side-by-side viewing alone might miss.
+
+**Common divergence.** Register sensitivity, especially for languages with strong formal/informal distinctions (Korean, Japanese, German). A literal translation in the wrong register is sometimes worse than a looser one in the right register.
+
+## 10. Brainstorm without converging too early
+
+> *"Give me 10 different angles for a blog post about [topic you actually need a post about]. Don't repeat yourself. Don't list the obvious five first."*
+
+**What to compare.** Look at the back half. Are angles 6–10 still meaningfully different from 1–5, or is the model padding? Models with weaker divergent thinking start repeating themselves around #4. The best ones get *more* interesting toward the end because they've exhausted the obvious framings.
+
+**Common divergence.** This one is genuinely subjective — but it's also where personality comes through most. Some models brainstorm like a thoughtful colleague; others like an over-eager intern. You'll know which is which within ten responses.
+
+## What this comparison actually tells you
+
+Here's the part most "vs." articles miss: **you're not picking a winner across all ten prompts**. You're learning which model wins for *your* work.
+
+A few patterns that show up consistently when teams run this exercise:
+
+| If your work is mostly... | The differentiator that matters most | Prompts that surface it |
+|---|---|---|
+| Writing customer-facing copy | Tone control under constraint | 5, 6 |
+| Code review, refactoring, debugging | Calibration on subtle bugs | 3, 4 |
+| Research synthesis, technical reading | Faithfulness to specific claims | 1, 7, 8 |
+| Translation, cross-cultural work | Register sensitivity | 9 |
+| Strategy, creative ideation | Divergent thinking, intellectual honesty | 6, 10 |
+
+In practice, most people who run this for a week converge on a *primary* model and a *fallback*. The fallback isn't there because it's "almost as good" — it's there because the failure modes are uncorrelated. When the primary is being weirdly evasive, the fallback usually isn't, and vice versa.
+
+That's the actual reason side-by-side comparison is worth doing as ongoing practice and not just as a one-time evaluation: **disagreement between models is information**. When all three agree, the answer is probably fine. When two agree and one dissents, the dissent is worth reading. When all three disagree, you almost certainly need to think harder than the prompt asked them to.
+
+## The faster way to run this
+
+Each of these prompts takes 30 seconds to write. Running them in three separate tabs, copying the answers into a doc, and trying to compare row-by-row takes about 20 minutes per prompt — most of which is mechanical drudgery. By prompt #4 you've stopped being curious and started cutting corners.
+
+This is the whole reason [Polymind](https://usepolymind.app) exists. You write the prompt once, all three models answer in parallel, and the answers sit next to each other on screen. The 10 prompts above take about five minutes end-to-end, and you spend that time *reading* instead of *copy-pasting*. That's the difference between an honest comparison and one you abandoned halfway through.
+
+Free during open beta — bring your own questions.
+
+## The model versions in 2026
+
+For reference, when this post was written, the current frontier versions were:
+
+- **GPT-5.5** (OpenAI)
+- **Claude Opus 4.7** (Anthropic)
+- **Gemini 3 Pro** (Google)
+
+Run the prompts again the next time any of these ship a new version. The point of this framework is that it doesn't expire — it just produces a different answer.

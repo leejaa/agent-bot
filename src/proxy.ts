@@ -39,15 +39,16 @@ export default auth((req) => {
   // 3. User-facing pages: locale handling first
   const intlResponse = intlMiddleware(req);
 
-  // Public locale-aware paths: /, /sign-in (with optional /en or /ko prefix)
+  // Public locale-aware paths: /, /sign-in, /blog/* (with optional /en or /ko prefix)
   const stripped = stripLocale(pathname);
-  const isPublic = stripped === '/' || stripped === '/sign-in';
+  const isLandingOrSignIn = stripped === '/' || stripped === '/sign-in';
+  const isBlog = stripped === '/blog' || stripped.startsWith('/blog/');
+  const isPublic = isLandingOrSignIn || isBlog;
 
   if (isPublic) {
-    // Authenticated users skip the landing/sign-in pages entirely. Doing this
-    // at the middleware layer lets the page itself be fully static (no per-
-    // request `auth()` call) so it can be CDN-cached.
-    if (req.auth) {
+    // Logged-in users on the landing/sign-in pages get bounced to /chat.
+    // Blog pages stay readable to everyone — including logged-in users.
+    if (req.auth && isLandingOrSignIn) {
       const prefix = localePrefix(pathname);
       return NextResponse.redirect(new URL(`${prefix}/chat`, req.nextUrl));
     }

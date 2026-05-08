@@ -29,7 +29,8 @@
 | **Demo video** | `public/demo.mp4` (1920×1080 · 30 s · 2.3 MB) |
 | **Screenshots** | `public/screenshots/01-landing.png · 02-streaming.png · 03-done.png` |
 | **Logo PNG** | `public/brand/polymind-logo-{256,512,1024}.png` |
-| **Last updated** | 2026-05-07 |
+| **First blog post** | `/blog/gpt-vs-claude-vs-gemini-10-prompts` (2026-05-08) |
+| **Last updated** | 2026-05-08 |
 
 ---
 
@@ -48,6 +49,8 @@
 | Reddit posts (r/SideProject, r/ChatGPT, r/SaaS) | ⚪ Pending | Same week as PH |
 | Twitter/X build-in-public | ⚪ Pending | Set up account first |
 | LinkedIn personal post | ⚪ Pending | Optional, founder-focused |
+| Content engine — blog infrastructure | ✅ Done — 2026-05-08 | MDX + `/blog` routes (en/ko), sitemap, Article schema, force-static |
+| Content engine — first post | ✅ Drafted — 2026-05-08 | "GPT vs Claude vs Gemini: 10 prompts to compare them yourself" — awaiting deploy + share |
 
 ---
 
@@ -156,8 +159,16 @@ Suggested title patterns: `Show HN: Polymind – One prompt to GPT, Claude, and 
 - ⏸️ Bing Webmaster — account signed in (Google SSO), Import-from-GSC blocked by Bing outage; retry later
 
 ### 2026-05-08
+- ✅ Content engine — blog infrastructure: MDX (next-mdx-remote + gray-matter + remark-gfm), `/blog` index + `/blog/[slug]` routes under `[locale]`, Article JSON-LD per post, OG/Twitter metadata per post, sitemap auto-includes posts. All blog routes `force-static`. Build green: `/en/blog`, `/ko/blog`, `/en/blog/<slug>`, `/ko/blog/<slug>` all SSG.
+- ✅ First blog post drafted — `gpt-vs-claude-vs-gemini-10-prompts.mdx` (~2.5k words, MDX). Framework-style hands-on comparison (10 prompts for readers to run themselves) — avoids fabricated benchmark numbers, drives readers into Polymind to do the actual comparison. SEO target: "GPT vs Claude vs Gemini" + adjacent intent queries. GEO-friendly (TL;DR, table, named framework, quotable section headers).
 - ✅ Bing Webmaster — verified `usepolymind.app/` via HTML meta tag (`msvalidate.01`); sitemap submitted, status "Processing" (normal — Bing will crawl within hours)
 - 🔍 Minor finding: `<meta name="msvalidate.01">` renders on `/` and `/ko` but not on `/en`. Likely a next-intl `localePrefix: 'as-needed'` quirk where `/en` is non-canonical. Bing fetches `/` (the registered URL) so verification works. Logged for later investigation.
+- ✅ Phase 1 #9, #10 — FAQ section added to landing (matches FAQPage schema), Features keywords boosted ("Compare GPT, Claude, and Gemini")
+- 🔍 Speed Insights baseline (mobile P75, 7d): RES 64; FCP 4.86s, LCP 4.86s, TTFB 1.92s, INP 120ms (good), CLS 0 (good). Worst route /chat (RES 57); best /sign-in (100).
+- ✅ web-quality-audit (Addy Osmani skill) installed; cross-checked RUM with code review — 3 root causes identified (Pretendard CDN render-blocking, getModels SSR blocking, HeroDemo bundle in critical path)
+- ✅ SEO/perf Phase A deployed: Pretendard self-hosted via next/font/local; landing made `force-static` with auth redirect moved to middleware; HeroDemo split into dynamic chunk; getModels() now streams via Suspense boundary
+  - Verification: `x-nextjs-prerender: 1` + `x-vercel-cache: HIT` confirmed (icn1 POP serving Korea); 0 references to cdn.jsdelivr.net; Pretendard auto-preloaded same-origin
+  - RUM impact will surface in 24-48h; expected: Korean P75 TTFB 1.92s → ~150ms, RES 64 → 88+
 
 ---
 
