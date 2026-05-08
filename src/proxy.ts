@@ -44,6 +44,13 @@ export default auth((req) => {
   const isPublic = stripped === '/' || stripped === '/sign-in';
 
   if (isPublic) {
+    // Authenticated users skip the landing/sign-in pages entirely. Doing this
+    // at the middleware layer lets the page itself be fully static (no per-
+    // request `auth()` call) so it can be CDN-cached.
+    if (req.auth) {
+      const prefix = localePrefix(pathname);
+      return NextResponse.redirect(new URL(`${prefix}/chat`, req.nextUrl));
+    }
     return intlResponse;
   }
 

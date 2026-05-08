@@ -102,7 +102,7 @@
   --text-display--letter-spacing: -0.036em;
 
   /* ---------- Fonts ---------- */
-  --font-sans: var(--font-jua), 'Pretendard Variable', 'Pretendard',
+  --font-sans: var(--font-jua), var(--font-pretendard),
                -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
 

@@ -1,38 +1,37 @@
-import { auth } from '@/lib/auth';
-import { redirect } from '@/i18n/navigation';
-import { getModels } from '@/lib/models';
+import { Suspense } from 'react';
+import dynamicImport from 'next/dynamic';
+import { getModels, FALLBACK_MODELS, type ModelEntry } from '@/lib/models';
 import { IS_BETA } from '@/lib/beta';
 import LandingNav from '@/components/landing/LandingNav';
 import Hero from '@/components/landing/Hero';
-import HeroDemo from '@/components/landing/HeroDemo';
 import Features from '@/components/landing/Features';
 import Pricing from '@/components/landing/Pricing';
 import BetaNotice from '@/components/landing/BetaNotice';
 import FAQ from '@/components/landing/FAQ';
 import LandingFooter from '@/components/landing/LandingFooter';
 
-type Props = {
-  params: Promise<{ locale: string }>;
-};
+// HeroDemo pulls in the full chat component tree (TurnItem, ModelColumn,
+// ChatInputView, the demo choreographer with its RAF loop). Splitting it
+// into its own chunk keeps the main landing JS bundle lean while still
+// SSR-rendering the demo (so the markup is in the initial HTML).
+const HeroDemo = dynamicImport(() => import('@/components/landing/HeroDemo'));
 
-export default async function RootPage({ params }: Props) {
-  const { locale } = await params;
-  const session = await auth();
+// Fully static — every visitor gets the same prerendered HTML, served from
+// Vercel's edge CDN. The auth-redirect for already-signed-in users is handled
+// in the middleware (src/proxy.ts) so this page no longer needs to call
+// `auth()` per request. Models load from the AI Gateway is wrapped in
+// <Suspense> so it streams in without holding up the static shell.
+export const dynamic = 'force-static';
 
-  // Authenticated users go straight to chat
-  if (session?.user?.id) {
-    redirect({ href: '/chat', locale: locale as 'en' | 'ko' });
-    return null;
-  }
-
-  const models = await getModels();
-
+export default async function RootPage() {
   return (
     <div className="min-h-screen bg-ghost-white">
       <LandingNav />
       <main>
         <Hero />
-        <HeroDemo models={models} />
+        <Suspense fallback={<HeroDemo models={[...FALLBACK_MODELS] as ModelEntry[]} />}>
+          <HeroDemoServer />
+        </Suspense>
         <Features />
         <FAQ />
         {IS_BETA ? <BetaNotice /> : <Pricing />}
@@ -40,4 +39,9 @@ export default async function RootPage({ params }: Props) {
       <LandingFooter />
     </div>
   );
+}
+
+async function HeroDemoServer() {
+  const models = await getModels();
+  return <HeroDemo models={models} />;
 }
