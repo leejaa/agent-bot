@@ -102,9 +102,10 @@
   --text-display--letter-spacing: -0.036em;
 
   /* ---------- Fonts ---------- */
-  --font-sans: var(--font-jua), var(--font-pretendard),
+  /* Geist for Latin (UI + body); Pretendard kicks in for Korean glyphs. */
+  --font-sans: var(--font-geist), var(--font-pretendard),
                -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
 
   /* ---------- Shadows ---------- */
   --shadow-elevated: rgba(0, 0, 0, 0.01) 0px 1px 3px 0px,
