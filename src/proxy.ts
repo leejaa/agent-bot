@@ -39,11 +39,15 @@ export default auth((req) => {
   // 3. User-facing pages: locale handling first
   const intlResponse = intlMiddleware(req);
 
-  // Public locale-aware paths: /, /sign-in, /blog/* (with optional /en or /ko prefix)
+  // Public locale-aware paths: /, /sign-in, /blog/*, /compare/*, /alternatives/*
+  // (with optional /en or /ko prefix)
   const stripped = stripLocale(pathname);
   const isLandingOrSignIn = stripped === '/' || stripped === '/sign-in';
   const isBlog = stripped === '/blog' || stripped.startsWith('/blog/');
-  const isPublic = isLandingOrSignIn || isBlog;
+  const isCompare = stripped === '/compare' || stripped.startsWith('/compare/');
+  const isAlternatives =
+    stripped === '/alternatives' || stripped.startsWith('/alternatives/');
+  const isPublic = isLandingOrSignIn || isBlog || isCompare || isAlternatives;
 
   if (isPublic) {
     // Logged-in users on the landing/sign-in pages get bounced to /chat.

@@ -51,6 +51,8 @@
 | LinkedIn personal post | ⚪ Pending | Optional, founder-focused |
 | Content engine — blog infrastructure | ✅ Done — 2026-05-08 | MDX + `/blog` routes (en/ko), sitemap, Article schema, force-static |
 | Content engine — first post | ✅ Drafted — 2026-05-08 | "GPT vs Claude vs Gemini: 10 prompts to compare them yourself" — awaiting deploy + share |
+| Programmatic SEO — infra | ✅ Done — 2026-05-08 | `/compare/[slug]`, `/alternatives/[slug]` routes; data layer in `src/lib/seo/`; 8 template components |
+| Programmatic SEO — first 4 pages | ✅ Drafted — 2026-05-08 | `/compare/gpt-vs-claude`, `/compare/claude-vs-gemini`, `/compare/gpt-vs-gemini`, `/alternatives/chatgpt`. Article + FAQPage JSON-LD, ~1100 words each |
 
 ---
 
@@ -161,6 +163,9 @@ Suggested title patterns: `Show HN: Polymind – One prompt to GPT, Claude, and 
 ### 2026-05-08
 - ✅ Content engine — blog infrastructure: MDX (next-mdx-remote + gray-matter + remark-gfm), `/blog` index + `/blog/[slug]` routes under `[locale]`, Article JSON-LD per post, OG/Twitter metadata per post, sitemap auto-includes posts. All blog routes `force-static`. Build green: `/en/blog`, `/ko/blog`, `/en/blog/<slug>`, `/ko/blog/<slug>` all SSG.
 - ✅ First blog post drafted — `gpt-vs-claude-vs-gemini-10-prompts.mdx` (~2.5k words, MDX). Framework-style hands-on comparison (10 prompts for readers to run themselves) — avoids fabricated benchmark numbers, drives readers into Polymind to do the actual comparison. SEO target: "GPT vs Claude vs Gemini" + adjacent intent queries. GEO-friendly (TL;DR, table, named framework, quotable section headers).
+- ✅ Programmatic SEO infrastructure — `/compare/[slug]`, `/alternatives/[slug]` routes under `[locale]`; data layer (`src/lib/seo/models.ts`, `comparisons/`, `alternatives/`); 8 template components (`ComparisonPage`, `AlternativePage`, `TaskMatrix`, `ModelSpecCard`, `ComparisonVerdict`, `WhenToPickPanel`, `FaqList`, `PolymindCTA`). All routes `force-static`. Article + FAQPage JSON-LD per page. Sitemap + middleware + footer wired.
+- ✅ pSEO first 4 pages live in build (10 SSG routes incl. en/ko + indexes): `/compare/gpt-vs-claude`, `/compare/claude-vs-gemini`, `/compare/gpt-vs-gemini`, `/alternatives/chatgpt`. Each ~1100 words of unique copy (10-task matrix + verdict + when-to-pick + 5 FAQs + reasons-to-switch). Designed to avoid thin-content penalty — every page contains an actual argument, not template variable substitution.
+- ✅ Geist font replacement — Jua removed; `next/font/google` Geist + Geist_Mono with Pretendard as Korean fallback. DevTools verified: Geist applies sitewide, Pretendard fallback registered, `--font-jua` reference 0. Visual + computed-style checks passed on landing, blog, and pSEO pages.
 - ✅ Bing Webmaster — verified `usepolymind.app/` via HTML meta tag (`msvalidate.01`); sitemap submitted, status "Processing" (normal — Bing will crawl within hours)
 - 🔍 Minor finding: `<meta name="msvalidate.01">` renders on `/` and `/ko` but not on `/en`. Likely a next-intl `localePrefix: 'as-needed'` quirk where `/en` is non-canonical. Bing fetches `/` (the registered URL) so verification works. Logged for later investigation.
 - ✅ Phase 1 #9, #10 — FAQ section added to landing (matches FAQPage schema), Features keywords boosted ("Compare GPT, Claude, and Gemini")

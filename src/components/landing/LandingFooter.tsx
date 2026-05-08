@@ -22,7 +22,21 @@ export default async function LandingFooter() {
           </span>
         </div>
 
-        <div className="flex items-center gap-5">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <Link
+            href="/compare"
+            className="text-deep-slate hover:text-primary transition-colors"
+            style={linkStyle}
+          >
+            Compare
+          </Link>
+          <Link
+            href="/alternatives"
+            className="text-deep-slate hover:text-primary transition-colors"
+            style={linkStyle}
+          >
+            Alternatives
+          </Link>
           <Link
             href="/blog"
             className="text-deep-slate hover:text-primary transition-colors"
