@@ -27,7 +27,9 @@
     "dev": "remotion studio",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "render:demo": "remotion render PolymindDemo --output ../public/demo.mp4",
+    "render:001": "remotion render Shorts-001 --output renders/shorts-001.mp4"
   },
   "sideEffects": [
     "*.css"
