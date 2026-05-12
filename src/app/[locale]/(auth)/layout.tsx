@@ -1,5 +1,3 @@
-import LocaleSwitcher from '@/components/layout/LocaleSwitcher';
-
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex items-center justify-center bg-ghost-white px-6">
@@ -11,9 +9,6 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         }}
         aria-hidden
       />
-      <div className="absolute top-4 right-4 z-10">
-        <LocaleSwitcher />
-      </div>
       <div className="relative">{children}</div>
     </div>
   );

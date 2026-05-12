@@ -1,6 +1,5 @@
 import { getTranslations } from 'next-intl/server';
 import Logo from '@/components/brand/Logo';
-import LocaleSwitcher from '@/components/layout/LocaleSwitcher';
 import { Link } from '@/i18n/navigation';
 import { IS_BETA } from '@/lib/beta';
 
@@ -48,7 +47,6 @@ export default async function LandingNav() {
           >
             Blog
           </Link>
-          <LocaleSwitcher />
           <Link
             href="/sign-in"
             className="px-4 h-9 inline-flex items-center rounded-[var(--radius-button)] bg-deep-graphite text-paper-white hover:brightness-110 transition-all"
