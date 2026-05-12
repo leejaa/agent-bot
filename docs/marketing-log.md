@@ -24,13 +24,17 @@
 
 | | |
 |---|---|
-| **Phase** | Pre-launch beta — asset preparation complete, distribution starting |
+| **Phase** | Pre-launch beta — social channels live, Lemon Squeezy review pending |
 | **Live URL** | https://usepolymind.app |
+| **X account** | [@usepolymind](https://x.com/usepolymind) — profile complete, 3 tweets live |
+| **Email** | team@usepolymind.app (Zoho Mail, fully operational) |
 | **Demo video** | `public/demo.mp4` (1920×1080 · 30 s · 2.3 MB) |
+| **Twitter banner** | `public/twitter-banner.png` (1500×500, dark gradient) |
 | **Screenshots** | `public/screenshots/01-landing.png · 02-streaming.png · 03-done.png` |
 | **Logo PNG** | `public/brand/polymind-logo-{256,512,1024}.png` |
 | **First blog post** | `/blog/gpt-vs-claude-vs-gemini-10-prompts` (2026-05-08) |
-| **Last updated** | 2026-05-08 |
+| **Pricing** | Starter $9.99/25cr · Pro $24.99/75cr · Free trial 10cr |
+| **Last updated** | 2026-05-12 |
 
 ---
 
@@ -47,7 +51,7 @@
 | Product Hunt launch | ⚪ Pending | Target launch date: TBD (Tue/Wed/Thu PST 0:01 ≈ KST 17:01) |
 | Hacker News (Show HN) | ⚪ Pending | Same day as PH or following day |
 | Reddit posts (r/SideProject, r/ChatGPT, r/SaaS) | ⚪ Pending | Same week as PH |
-| Twitter/X build-in-public | ⚪ Pending | Set up account first |
+| Twitter/X build-in-public | 🟡 Started — 2026-05-12 | @usepolymind live, 3 tweets posted, tweet 1 pinned. Ongoing posting needed. |
 | LinkedIn personal post | ⚪ Pending | Optional, founder-focused |
 | Content engine — blog infrastructure | ✅ Done — 2026-05-08 | MDX + `/blog` routes (en/ko), sitemap, Article schema, force-static |
 | Content engine — first post | ✅ Drafted — 2026-05-08 | "GPT vs Claude vs Gemini: 10 prompts to compare them yourself" — awaiting deploy + share |
@@ -82,6 +86,25 @@ Add rows as you submit additional directories beyond the priority 10.
 
 ---
 
+## Lemon Squeezy
+
+| Date | Action | Status | Notes |
+|---|---|---|---|
+| 2026-05-12 | Initial application | submitted | Awaiting review |
+| 2026-05-12 | Review email received (Sama) | — | Requested: demo video, pricing plan, social profiles |
+| 2026-05-12 | Review reply sent | submitted | Attached demo.mp4, provided pricing plan + @usepolymind X profile |
+
+**Pricing plan confirmed (2026-05-12):**
+- Free trial: 10 credits on signup (no card)
+- Starter Pack: $9.99 / 25 credits
+- Pro Pack: $24.99 / 75 credits
+- Pay-as-you-go, no subscription, credits never expire
+- 1 credit = 1 prompt to all 3 frontier models simultaneously
+
+**Note:** Pro Pack ($24.99) needs to be created in LS dashboard once approved. Currently only Starter variant exists (`LEMONSQUEEZY_VARIANT_ID_STARTER`).
+
+---
+
 ## Product Hunt
 
 | Date | Action | Status | Link | Notes |
@@ -106,10 +129,15 @@ Suggested subreddits when ready: r/SideProject · r/ChatGPT · r/ClaudeAI · r/S
 
 ## Twitter / X
 
+**Account**: [@usepolymind](https://x.com/usepolymind) · Profile complete (photo, banner, bio, website) · Email: team@usepolymind.app
+
 | Date | Tweet URL | Topic | Notes |
 |---|---|---|---|
+| 2026-05-12 | https://x.com/usepolymind | "The insight behind Polymind" | Build-in-public, why we built it. Posted 3rd (earliest). |
+| 2026-05-12 | https://x.com/usepolymind | GPT vs Claude vs Gemini blog post share | Links to /blog/gpt-vs-claude-vs-gemini-10-prompts. Posted 2nd. |
+| 2026-05-12 | https://x.com/usepolymind | "Polymind is live 🟠" | Product intro + beta CTA. Posted 1st (latest), **📌 pinned**. |
 
-Suggested tweet types: build-in-public progress, demo screen recordings, ask-me-anything, comparison threads ("Asked GPT, Claude, Gemini same question — here's what each said"). Pin the demo video tweet on launch day.
+Suggested next tweet types: build-in-public progress, demo screen recordings, ask-me-anything, comparison threads ("Asked GPT, Claude, Gemini same question — here's what each said").
 
 ---
 
@@ -160,6 +188,15 @@ Suggested title patterns: `Show HN: Polymind – One prompt to GPT, Claude, and 
 - ✅ Google Search Console — property `usepolymind.app` (Domain type) verified via DNS TXT, sitemap submitted (4 URLs, status "Couldn't fetch" — Google will retry within 24h)
 - ⏸️ Bing Webmaster — account signed in (Google SSO), Import-from-GSC blocked by Bing outage; retry later
 
+### 2026-05-12
+- ✅ Lemon Squeezy review email received (reviewer: Sama) — requested demo video, pricing plan, social profiles
+- ✅ Pricing plan finalized: Starter $9.99/25cr · Pro $24.99/75cr · Free 10cr. Gross margin ~87.5% (Vercel AI Gateway zero markup, API costs pass-through)
+- ✅ Lemon Squeezy review reply sent — attached `public/demo.mp4`, pricing plan, @usepolymind X profile
+- ✅ Zoho Mail set up — `team@usepolymind.app` (free plan, send + receive). Cloudflare DNS (MX×3, SPF, DKIM, TXT verification) added via API.
+- ✅ X account created — @usepolymind. Profile: logo, dark gradient banner (`public/twitter-banner.png`), bio, website.
+- ✅ First 3 tweets posted on @usepolymind — "Polymind is live" (📌 pinned), blog post share, build-in-public insight
+- ✅ Locale switcher removed — app is English-only now
+
 ### 2026-05-08
 - ✅ Content engine — blog infrastructure: MDX (next-mdx-remote + gray-matter + remark-gfm), `/blog` index + `/blog/[slug]` routes under `[locale]`, Article JSON-LD per post, OG/Twitter metadata per post, sitemap auto-includes posts. All blog routes `force-static`. Build green: `/en/blog`, `/ko/blog`, `/en/blog/<slug>`, `/ko/blog/<slug>` all SSG.
 - ✅ First blog post drafted — `gpt-vs-claude-vs-gemini-10-prompts.mdx` (~2.5k words, MDX). Framework-style hands-on comparison (10 prompts for readers to run themselves) — avoids fabricated benchmark numbers, drives readers into Polymind to do the actual comparison. SEO target: "GPT vs Claude vs Gemini" + adjacent intent queries. GEO-friendly (TL;DR, table, named framework, quotable section headers).
@@ -192,10 +229,12 @@ Suggested title patterns: `Show HN: Polymind – One prompt to GPT, Claude, and 
 
 ## TODOs / follow-up
 
+- [ ] Lemon Squeezy — await approval; once approved, create Pro Pack ($24.99/75cr) in LS dashboard and add `LEMONSQUEEZY_VARIANT_ID_PRO` env var
 - [ ] Pick Product Hunt launch date (Tue/Wed/Thu, KST 17:01 = PST 0:01)
 - [ ] Schedule PH product at least 7 days in advance for "Coming Soon" page boost
+- [ ] Link @usepolymind X account to Product Hunt profile before launch
 - [ ] After top 10 AI directories: evaluate bulk submission service for the long-tail 40+
-- [ ] Set up dedicated Twitter/X account if not using personal — write bio matching tagline
+- [ ] Continue posting on @usepolymind — aim for 3-5 tweets/week
 - [ ] Confirm Reddit account in good standing before posting
 - [ ] Decide whether to create separate LinkedIn company page or post via personal
 - [ ] Plan post-launch retention email (first thank-you to beta signups)

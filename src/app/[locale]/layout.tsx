@@ -115,62 +115,7 @@ function buildJsonLd(siteUrl: string) {
     ],
   };
 
-  const faqPage = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What is Polymind?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'A multi-AI chat that sends one prompt to GPT, Claude, and Gemini at the same time. You see all three answers side by side and pick the one that fits — without juggling tabs or copy-pasting.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Why not just use ChatGPT, Claude, or Gemini directly?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Because no single AI is best at everything. If you already check answers across multiple models for important tasks, Polymind removes the friction — same workflow, but in one chat instead of three tabs.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Is Polymind really free?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: `Yes, completely free during open beta. New accounts get 200 credits (1 credit roughly equals 1 prompt to all 3 models). For more credits during beta, email ${BETA_FEEDBACK_EMAIL}.`,
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Will Polymind charge later?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes — paid plans launch when beta ends. Pricing will be pay-as-you-go credit packs, not subscription. Beta users keep their feedback-shaping influence on the v1 launch.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Where does my data go?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Prompts and responses are stored in your account so you can revisit them. They are never used to train models — Polymind routes through Vercel AI Gateway, which has zero data retention by default. You can delete any conversation anytime.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Can I switch which AI models Polymind uses?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes — each of the three columns can be set to any chat-capable model on Vercel AI Gateway (100+ models). The default is the latest frontier GPT, Claude, and Gemini. Click any column header to swap.',
-        },
-      },
-    ],
-  };
-
-  return [softwareApplication, organization, faqPage];
+  return [softwareApplication, organization];
 }
 
 export default async function LocaleLayout({ children, params }: Props) {
