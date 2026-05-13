@@ -135,9 +135,22 @@ export default function ChatView({
       userMessage: string;
       results: { openai: string; anthropic: string; google: string };
     }) => saveTurn(convId, turnId, userMessage, results),
+    onMutate: async () => {
+      await queryClient.cancelQueries({ queryKey: ['credit-balance'] });
+      const prev = queryClient.getQueryData<{ balance: number }>(['credit-balance']);
+      if (prev) {
+        queryClient.setQueryData(['credit-balance'], { balance: Math.max(0, prev.balance - 1) });
+      }
+      return { prev };
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['conversations'] });
       queryClient.invalidateQueries({ queryKey: ['credit-balance'] });
+    },
+    onError: (_err, _vars, ctx) => {
+      if (ctx?.prev) {
+        queryClient.setQueryData(['credit-balance'], ctx.prev);
+      }
     },
   });
 

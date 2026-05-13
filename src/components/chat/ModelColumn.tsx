@@ -63,7 +63,12 @@ export default function ModelColumn({ name, modelId, text, streaming, error, pic
           <span className="text-alert-red">{error}</span>
         ) : text ? (
           text
-        ) : streaming ? null : (
+        ) : streaming ? (
+          <div className="space-y-2 pt-1">
+            <div className="h-3 rounded bg-cool-gray/15 animate-pulse w-3/4" />
+            <div className="h-3 rounded bg-cool-gray/15 animate-pulse w-1/2" />
+          </div>
+        ) : (
           <span className="text-cool-gray italic">{t('waiting')}</span>
         )}
       </div>

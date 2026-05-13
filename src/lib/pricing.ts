@@ -45,6 +45,7 @@ async function loadModels(): Promise<AvailableModel[]> {
       ),
     ]);
 
+    const seen = new Set<string>();
     const data: AvailableModel[] = res.models
       .filter((m) => m.modelType === 'language' && !isInternalCodename(m.name ?? m.id))
       .map((m) => ({
@@ -53,7 +54,13 @@ async function loadModels(): Promise<AvailableModel[]> {
         provider: m.id.split('/')[0] ?? 'unknown',
         description: m.description ?? '',
         pricing: parsePricing(m.id, m.pricing),
-      }));
+      }))
+      .filter((m) => {
+        if (m.pricing === null) return false;
+        if (seen.has(m.id)) return false;
+        seen.add(m.id);
+        return true;
+      });
 
     memCache = { data, at: Date.now() };
     return data;
@@ -102,5 +109,6 @@ function parsePricing(modelId: string, raw: RawPricing): ModelPricing | null {
   const input = typeof raw.input === 'string' ? parseFloat(raw.input) : raw.input;
   const output = typeof raw.output === 'string' ? parseFloat(raw.output) : raw.output;
   if (!Number.isFinite(input) || !Number.isFinite(output)) return null;
+  if (input === 0 && output === 0) return null;
   return { modelId, inputPerToken: input as number, outputPerToken: output as number };
 }
