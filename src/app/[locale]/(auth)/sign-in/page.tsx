@@ -2,6 +2,7 @@ import { signIn } from '@/lib/auth';
 import { getTranslations } from 'next-intl/server';
 import { getModels } from '@/lib/models';
 import Logo from '@/components/brand/Logo';
+import { Link } from '@/i18n/navigation';
 import GoogleButton from './GoogleButton';
 import AppleButton from './AppleButton';
 
@@ -90,7 +91,11 @@ export default async function SignInPage({ searchParams }: PageProps) {
           letterSpacing: 'var(--text-caption--letter-spacing)',
         }}
       >
-        {t('terms')}
+        By continuing, you agree to our{' '}
+        <Link href="/legal/terms" className="underline hover:text-deep-slate transition-colors">
+          terms of service
+        </Link>
+        .
       </p>
     </div>
   );

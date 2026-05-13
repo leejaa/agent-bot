@@ -44,9 +44,9 @@ export default function HeroDemo({ models }: Props) {
           className="flex flex-col min-h-[440px] md:min-h-[480px] transition-opacity duration-300"
           style={{ opacity }}
         >
-          <div className="flex-1 overflow-y-auto">
+          <div className="flex-1 overflow-y-auto overflow-x-hidden">
             {turn ? (
-              <TurnItem turn={turn} models={models} />
+              <TurnItem turn={turn} models={models} noBleed />
             ) : (
               <IdleHint typing={phase === 'typing'} />
             )}

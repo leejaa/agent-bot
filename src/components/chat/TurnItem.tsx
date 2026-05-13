@@ -11,9 +11,12 @@ type Props = {
   /** Optional per-slot picker renderer. When provided, the column header
    *  becomes interactive; when omitted (HeroDemo, etc.) the static name shows. */
   renderPicker?: (slot: ProviderKey, model: ModelEntry) => React.ReactNode;
+  /** When true, disables the negative-margin bleed so columns stay within a
+   *  constrained container (e.g. the landing-page HeroDemo card). */
+  noBleed?: boolean;
 };
 
-export default function TurnItem({ turn, models, renderPicker }: Props) {
+export default function TurnItem({ turn, models, renderPicker, noBleed }: Props) {
   const t = useTranslations('Chat');
 
   return (
@@ -41,22 +44,19 @@ export default function TurnItem({ turn, models, renderPicker }: Props) {
       </div>
 
       <div
-        className="
-          flex md:grid md:grid-cols-3
-          items-start
-          overflow-x-auto md:overflow-visible
-          snap-x snap-mandatory md:snap-none
-          gap-3
-          -mx-4 sm:-mx-6 md:mx-0
-          px-4 sm:px-6 md:px-0
-          pb-2 md:pb-0
-          [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden
-        "
+        className={[
+          'flex md:grid md:grid-cols-3 items-start gap-3',
+          'overflow-x-auto md:overflow-visible',
+          'snap-x snap-mandatory md:snap-none',
+          'pb-2 md:pb-0',
+          '[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden',
+          noBleed ? '' : '-mx-4 sm:-mx-6 md:mx-0 px-4 sm:px-6 md:px-0',
+        ].join(' ')}
       >
         {models.map((m) => (
           <div
             key={m.key}
-            className="snap-center shrink-0 w-[86vw] sm:w-[60vw] md:w-auto"
+            className={noBleed ? 'shrink-0 w-[80%] md:w-auto snap-center' : 'snap-center shrink-0 w-[86vw] sm:w-[60vw] md:w-auto'}
           >
             <ModelColumn
               name={m.displayName}

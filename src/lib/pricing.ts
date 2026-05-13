@@ -46,7 +46,7 @@ async function loadModels(): Promise<AvailableModel[]> {
     ]);
 
     const data: AvailableModel[] = res.models
-      .filter((m) => m.modelType === 'language')
+      .filter((m) => m.modelType === 'language' && !isInternalCodename(m.name ?? m.id))
       .map((m) => ({
         id: m.id,
         name: m.name ?? m.id,
@@ -86,6 +86,14 @@ export function usdToCredits(usd: number): number {
 }
 
 // ---------- internals ----------
+
+// Vercel AI Gateway occasionally surfaces image-generation models or internal
+// codename variants (e.g. "Nano Banana") under modelType="language". Filter
+// them out so they don't show up in the model picker.
+const INTERNAL_CODENAME_RE = /nano.banana|\(.*\bimage\b.*\)/i;
+function isInternalCodename(name: string): boolean {
+  return INTERNAL_CODENAME_RE.test(name);
+}
 
 type RawPricing = { input?: string | number; output?: string | number } | null | undefined;
 
