@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import MarkdownContent from './MarkdownContent';
 
 type Props = {
   name: string;
@@ -62,7 +63,7 @@ export default function ModelColumn({ name, modelId, text, streaming, error, pic
         {error ? (
           <span className="text-alert-red">{error}</span>
         ) : text ? (
-          text
+          <MarkdownContent>{text}</MarkdownContent>
         ) : streaming ? (
           <div className="space-y-2 pt-1">
             <div className="h-3 rounded bg-cool-gray/15 animate-pulse w-3/4" />

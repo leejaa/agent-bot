@@ -47,7 +47,8 @@ export default auth((req) => {
   const isCompare = stripped === '/compare' || stripped.startsWith('/compare/');
   const isAlternatives =
     stripped === '/alternatives' || stripped.startsWith('/alternatives/');
-  const isPublic = isLandingOrSignIn || isBlog || isCompare || isAlternatives;
+  const isLegal = stripped === '/legal' || stripped.startsWith('/legal/');
+  const isPublic = isLandingOrSignIn || isBlog || isCompare || isAlternatives || isLegal;
 
   if (isPublic) {
     // Logged-in users on the landing/sign-in pages get bounced to /chat.
