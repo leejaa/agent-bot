@@ -16,3 +16,4 @@ export function ensureLemonSqueezy() {
 
 export const LS_STORE_ID = process.env.LEMONSQUEEZY_STORE_ID ?? '';
 export const LS_VARIANT_ID_STARTER = process.env.LEMONSQUEEZY_VARIANT_ID_STARTER ?? '';
+export const LS_VARIANT_ID_PRO = process.env.LEMONSQUEEZY_VARIANT_ID_PRO ?? '';

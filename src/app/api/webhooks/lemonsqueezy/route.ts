@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-import { addCredits, CREDITS_PER_STARTER_PACK } from '@/db/queries/credits';
+import { addCredits, CREDITS_PER_STARTER_PACK, CREDITS_PER_PRO_PACK } from '@/db/queries/credits';
 
 export const runtime = 'nodejs';
 
@@ -50,9 +50,14 @@ export async function POST(req: Request) {
   }
 
   if (eventName === 'order_created') {
-    const quantity = event.data.attributes.first_order_item?.quantity ?? 1;
-    const credits = CREDITS_PER_STARTER_PACK * quantity;
-    await addCredits(userId, credits, 'purchase', `ls_order:${orderId}`);
+    const item = event.data.attributes.first_order_item;
+    const quantity = item?.quantity ?? 1;
+    const variantId = String(item?.variant_id ?? '');
+    const creditsPerUnit =
+      variantId === process.env.LEMONSQUEEZY_VARIANT_ID_PRO
+        ? CREDITS_PER_PRO_PACK
+        : CREDITS_PER_STARTER_PACK;
+    await addCredits(userId, creditsPerUnit * quantity, 'purchase', `ls_order:${orderId}`);
   }
 
   return new Response(null, { status: 200 });

@@ -5,6 +5,7 @@ import { IS_BETA, BETA_SIGNUP_BONUS } from '@/lib/beta';
 
 export const SIGNUP_BONUS = IS_BETA ? BETA_SIGNUP_BONUS : 10;
 export const CREDITS_PER_STARTER_PACK = 25;
+export const CREDITS_PER_PRO_PACK = 75;
 
 export type LedgerReason =
   | 'signup_bonus'
