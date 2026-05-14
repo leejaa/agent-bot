@@ -12,7 +12,7 @@ type Props = {
 
 const DEFAULT_HEADLINE = 'See the difference yourself in five minutes';
 const DEFAULT_BODY =
-  'Polymind sends one prompt to GPT, Claude, and Gemini at the same time and shows their answers side by side. Free during open beta — no credit card.';
+  'Polymind sends one prompt to GPT, Claude, and Gemini at the same time and shows their answers side by side. Start free — 25 credits included, no card required.';
 
 export default function PolymindCTA({
   headline = DEFAULT_HEADLINE,

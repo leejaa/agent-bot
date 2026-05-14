@@ -95,7 +95,7 @@ export const OutroScene: React.FC = () => {
               marginTop: 8,
             }}
           >
-            usepolymind.app — Free during beta
+            usepolymind.app — 25 free credits
           </p>
         </div>
       </div>

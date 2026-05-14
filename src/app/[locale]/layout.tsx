@@ -90,7 +90,7 @@ function buildJsonLd(siteUrl: string) {
       '@type': 'Offer',
       price: '0',
       priceCurrency: 'USD',
-      description: 'Free during open beta',
+      description: '25 free credits to start — no card required.',
     },
     creator: {
       '@type': 'Organization',

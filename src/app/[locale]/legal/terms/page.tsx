@@ -55,8 +55,8 @@ export default function TermsPage() {
           <section>
             <h2 className="font-semibold mb-3">3. Accounts and Credits</h2>
             <p>
-              You may sign in with Google or Apple. New accounts receive a free credit allocation
-              during the open beta. Credits are consumed when you submit a prompt. Credits have no
+              You may sign in with Google or Apple. New accounts receive 25 free credits on
+              sign-up. Credits are consumed when you submit a prompt. Credits have no
               cash value and are non-refundable unless required by applicable law.
             </p>
           </section>

@@ -33,7 +33,7 @@ This page is the honest landscape: what people actually mean when they search fo
       body: "Building habits and prompt libraries inside one chat tool is a lock-in cost that compounds over time. Comparison tools keep your workflow portable — your prompts work the same way no matter which model is hot this quarter.",
     },
   ],
-  whyPolymind: `Polymind is the simplest answer if "ChatGPT alternative" really means "I want GPT *plus* Claude *plus* Gemini, side by side." You write one prompt, all three models answer in parallel, and the answers sit next to each other on screen. No tab-switching, no copy-pasting, no per-tool prompt rewriting. Free during open beta.
+  whyPolymind: `Polymind is the simplest answer if "ChatGPT alternative" really means "I want GPT *plus* Claude *plus* Gemini, side by side." You write one prompt, all three models answer in parallel, and the answers sit next to each other on screen. No tab-switching, no copy-pasting, no per-tool prompt rewriting. New accounts start with 25 free credits — no card required.
 
 If your work involves any of: comparing multiple models for a real decision, switching tools because one isn't quite right today, or training your eye on where each model genuinely differs — Polymind is built for that exact loop. It's not trying to be a better single chat. It's trying to make the comparison itself fast enough that you actually do it instead of just defaulting to whichever tool you opened last.`,
   otherAlternatives: [
@@ -72,7 +72,7 @@ If your work involves any of: comparing multiple models for a real decision, swi
     {
       question: 'Is there a free ChatGPT alternative?',
       answer:
-        'Several. Claude has a free tier at claude.ai. Gemini has a free tier at gemini.google.com. Polymind is free during open beta and gives you all three at once. Perplexity has a free tier with usage limits. The free tiers are usually sufficient for casual or comparison use; paid tiers unlock heavier workloads.',
+        'Several. Claude has a free tier at claude.ai. Gemini has a free tier at gemini.google.com. Polymind gives you all three at once — new accounts start with 25 free credits, no card required. Perplexity has a free tier with usage limits. The free tiers are usually sufficient for casual or comparison use; paid tiers unlock heavier workloads.',
     },
     {
       question: 'Can I use Claude and ChatGPT together?',

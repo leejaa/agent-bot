@@ -6,6 +6,7 @@ import {
   ensureLemonSqueezy,
   LS_STORE_ID,
   LS_VARIANT_ID_STARTER,
+  LS_VARIANT_ID_PRO,
 } from '@/lib/lemonsqueezy';
 
 export const runtime = 'nodejs';
@@ -35,7 +36,8 @@ export async function POST(req: Request) {
   ensureLemonSqueezy();
 
   const body = await req.json().catch(() => ({}));
-  const variantId = (body.variantId as string | undefined) ?? LS_VARIANT_ID_STARTER;
+  const pack = (body.pack as string | undefined) ?? 'starter';
+  const variantId = pack === 'pro' ? LS_VARIANT_ID_PRO : LS_VARIANT_ID_STARTER;
 
   const result = await createCheckout(LS_STORE_ID, variantId, {
     checkoutData: {

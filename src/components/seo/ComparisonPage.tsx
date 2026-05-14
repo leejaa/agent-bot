@@ -100,7 +100,7 @@ export default function ComparisonPage({ comparison }: Props) {
 
           <PolymindCTA
             headline={`Run ${a.shortName} and ${b.shortName} side by side`}
-            body={`Stop guessing which model wins for your work. Send one prompt to ${a.shortName}, ${b.shortName}, and Gemini at the same time and compare answers in five minutes. Free during open beta.`}
+            body={`Stop guessing which model wins for your work. Send one prompt to ${a.shortName}, ${b.shortName}, and Gemini at the same time and compare answers in five minutes. Start free — 25 credits included, no card required.`}
           />
 
           <FaqList faqs={comparison.faqs} />

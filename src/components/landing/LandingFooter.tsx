@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import Logo from '@/components/brand/Logo';
 import { Link } from '@/i18n/navigation';
-import { IS_BETA, BETA_FEEDBACK_EMAIL } from '@/lib/beta';
+import { BETA_FEEDBACK_EMAIL } from '@/lib/beta';
 
 export default async function LandingFooter() {
   const tBrand = await getTranslations('Brand');
@@ -44,15 +44,13 @@ export default async function LandingFooter() {
           >
             Blog
           </Link>
-          {IS_BETA && (
-            <a
-              href={`mailto:${BETA_FEEDBACK_EMAIL}`}
-              className="text-deep-slate hover:text-primary transition-colors"
-              style={linkStyle}
-            >
-              {tFooter('feedback', { email: BETA_FEEDBACK_EMAIL })}
-            </a>
-          )}
+          <a
+            href={`mailto:${BETA_FEEDBACK_EMAIL}`}
+            className="text-deep-slate hover:text-primary transition-colors"
+            style={linkStyle}
+          >
+            {tFooter('feedback', { email: BETA_FEEDBACK_EMAIL })}
+          </a>
         </div>
       </div>
     </footer>

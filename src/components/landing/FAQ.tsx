@@ -1,5 +1,4 @@
 import { getTranslations } from 'next-intl/server';
-import { BETA_FEEDBACK_EMAIL } from '@/lib/beta';
 
 const ITEM_KEYS = ['1', '2', '3', '4', '5', '6'] as const;
 
@@ -8,7 +7,7 @@ export default async function FAQ() {
 
   const items = ITEM_KEYS.map((k) => ({
     q: t(`q${k}`),
-    a: t(`a${k}`, { email: BETA_FEEDBACK_EMAIL }),
+    a: t(`a${k}`),
   }));
 
   return (

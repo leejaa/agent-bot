@@ -46,7 +46,7 @@ For: Twitter/X bio, compact directory listings, social previews.
 ### Product Hunt — ~234 chars
 For: Product Hunt main description field (260-char limit).
 
-> Stop copy-pasting prompts between GPT, Claude, and Gemini tabs. Polymind sends one question to every top AI at once — answers stream side by side, you pick the answer that fits, then save it for later. Free during beta — no card needed.
+> Stop copy-pasting prompts between GPT, Claude, and Gemini tabs. Polymind sends one question to every top AI at once — answers stream side by side, you pick the answer that fits, then save it for later. Start free — 25 credits included, no card needed.
 
 ### Long — 3 paragraphs (~570 chars)
 For: AI directory detail pages, FAQ intros, About sections.
@@ -55,7 +55,7 @@ For: AI directory detail pages, FAQ intros, About sections.
 >
 > Send one question to every top AI at once. Answers stream in parallel, side by side, in a single chat. No more copy-paste, no more "wait, which tab said that?". Just the workflow you already do, minus the friction.
 >
-> You're probably already paying for these AIs separately. Polymind just lets you use them all in one place. Free during beta — no card needed.
+> You're probably already paying for these AIs separately. Polymind just lets you use them all in one place. Start free — 25 credits included, no card needed.
 
 ---
 
@@ -67,7 +67,7 @@ For: directory "Features" fields, structured listings, comparison tables.
 - Compare GPT, Claude, and Gemini answers side by side
 - Pick the answer that fits, save what works
 - No more tab-juggling or copy-pasting
-- Free during open beta — no card required
+- Start free — 25 credits included, no card required
 
 ---
 
@@ -79,11 +79,11 @@ A multi-AI chat that sends one prompt to GPT, Claude, and Gemini at the same tim
 ### Q2. Why not just use ChatGPT (or Claude, or Gemini) directly?
 Because no single AI is best at everything. If you already check answers across multiple models for important tasks, Polymind removes the friction — same workflow, but in one chat instead of three tabs.
 
-### Q3. Is it really free?
-Yes, completely free during open beta. New accounts get 200 credits (1 credit ≈ 1 prompt to all 3 models). Need more? Email `leejahun0@gmail.com` — happy to top you up.
+### Q3. How do I get started?
+Sign up with Google or Apple — no card needed. New accounts get 25 free credits (1 credit = 1 prompt to all 3 models at once).
 
-### Q4. Will you charge later?
-Yes — paid plans launch when beta ends (estimated within 1-2 months). Pricing will be pay-as-you-go credit packs, not subscription. Beta users keep their feedback-shaping influence on the v1 launch.
+### Q4. How much does it cost?
+After your 25 free credits, Starter Pack is $9.99 for 25 credits and Pro Pack is $24.99 for 75 credits. No subscription — buy credits when you need them. Credits never expire.
 
 ### Q5. Where does my data go?
 Prompts and responses are stored in your account so you can revisit them. They're never used to train models — Polymind routes through Vercel AI Gateway, which has zero data retention by default. You can delete any conversation anytime.
@@ -104,7 +104,7 @@ I built this because I was already comparing AI answers for important questions:
 
 Polymind sends one prompt to every top AI at once and shows answers side by side. The whole conversation lives in one chat, so it's actually easier to compare and save what works.
 
-Free during open beta — would love your feedback. Happy to AMA below.
+25 free credits to start — would love your feedback. Happy to AMA below.
 
 — [Your name / handle]
 ```
@@ -117,9 +117,9 @@ Replace `[Your name / handle]` with your real name or X handle before posting.
 
 Most directories ask "Pricing model" — answer:
 
-- **Pricing**: Freemium (free during beta) → pay-as-you-go after beta
-- **Free trial**: Yes, 200 free credits at signup
-- **Has free tier**: Yes (during beta)
+- **Pricing**: Freemium — 25 free credits at signup, then pay-as-you-go credit packs
+- **Free trial**: Yes, 25 free credits at signup (no card required)
+- **Has free tier**: Yes (25 free credits)
 - **Subscription required**: No
 
 ---
@@ -249,7 +249,7 @@ When a new blog post goes live, draft sharing copy here (don't fork copy across 
 >
 > Most "model X vs Y" comparisons measure benchmarks that don't reflect how you'll use the model. Wrote up the framework I use to evaluate them on real work — 10 short prompts spanning summarization, code review, refactoring, customer copy, translation, and brainstorming, plus what to look for when answers diverge.
 >
-> The post is also a soft launch for Polymind, the side-by-side comparison tool I built so I'd stop doing this in three browser tabs. Free during open beta.
+> The post is also a soft launch for Polymind, the side-by-side comparison tool I built so I'd stop doing this in three browser tabs. Start free — 25 credits included.
 >
 > https://usepolymind.app/blog/gpt-vs-claude-vs-gemini-10-prompts
 

@@ -130,7 +130,7 @@ export const CTAScene: React.FC = () => {
             fontWeight: 400,
           }}
         >
-          Free during beta
+          25 free credits
         </span>
       </div>
     </AbsoluteFill>

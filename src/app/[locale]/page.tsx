@@ -1,12 +1,10 @@
 import { Suspense } from 'react';
 import dynamicImport from 'next/dynamic';
 import { getModels, FALLBACK_MODELS, type ModelEntry } from '@/lib/models';
-import { IS_BETA, BETA_FEEDBACK_EMAIL } from '@/lib/beta';
 import LandingNav from '@/components/landing/LandingNav';
 import Hero from '@/components/landing/Hero';
 import Features from '@/components/landing/Features';
 import Pricing from '@/components/landing/Pricing';
-import BetaNotice from '@/components/landing/BetaNotice';
 import FAQ from '@/components/landing/FAQ';
 import LandingFooter from '@/components/landing/LandingFooter';
 
@@ -32,18 +30,18 @@ const faqSchema = {
     },
     {
       '@type': 'Question',
-      name: 'Is Polymind really free?',
+      name: 'How do I get started?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: `Yes, completely free during open beta. New accounts get 200 credits (1 credit roughly equals 1 prompt to all 3 models). For more credits during beta, email ${BETA_FEEDBACK_EMAIL}.`,
+        text: 'Sign up with Google or Apple — no card needed. New accounts get 25 free credits (1 credit = 1 prompt to all three models at once).',
       },
     },
     {
       '@type': 'Question',
-      name: 'Will Polymind charge later?',
+      name: 'How much does it cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes — paid plans launch when beta ends. Pricing will be pay-as-you-go credit packs, not subscription. Beta users keep their feedback-shaping influence on the v1 launch.',
+        text: 'After your 25 free credits, Starter Pack is $9.99 for 25 credits and Pro Pack is $24.99 for 75 credits. No subscription — buy credits when you need them. Credits never expire.',
       },
     },
     {
@@ -93,7 +91,7 @@ export default async function RootPage() {
         </Suspense>
         <Features />
         <FAQ />
-        {IS_BETA ? <BetaNotice /> : <Pricing />}
+        <Pricing />
       </main>
       <LandingFooter />
     </div>
