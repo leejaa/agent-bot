@@ -24,7 +24,7 @@
 
 | | |
 |---|---|
-| **Phase** | Pre-launch beta — social channels live, Lemon Squeezy review pending |
+| **Phase** | Official launch — Lemon Squeezy live mode active, beta removed |
 | **Live URL** | https://usepolymind.app |
 | **X account** | [@usepolymind](https://x.com/usepolymind) — profile complete, 3 tweets live |
 | **Email** | team@usepolymind.app (Zoho Mail, fully operational) |
@@ -32,9 +32,10 @@
 | **Twitter banner** | `public/twitter-banner.png` (1500×500, dark gradient) |
 | **Screenshots** | `public/screenshots/01-landing.png · 02-streaming.png · 03-done.png` |
 | **Logo PNG** | `public/brand/polymind-logo-{256,512,1024}.png` |
-| **First blog post** | `/blog/gpt-vs-claude-vs-gemini-10-prompts` (2026-05-08) |
-| **Pricing** | Starter $9.99/25cr · Pro $24.99/75cr · Free trial 10cr |
-| **Last updated** | 2026-05-12 |
+| **Blog post 1** | `/blog/gpt-vs-claude-vs-gemini-10-prompts` (2026-05-08) |
+| **Blog post 2** | `/blog/when-ai-models-disagree` (2026-05-14) |
+| **Pricing** | Starter $9.99/25cr · Pro $24.99/75cr · Free signup 25cr |
+| **Last updated** | 2026-05-14 |
 
 ---
 
@@ -54,7 +55,8 @@
 | Twitter/X build-in-public | 🟡 Started — 2026-05-12 | @usepolymind live, 3 tweets posted, tweet 1 pinned. Ongoing posting needed. |
 | LinkedIn personal post | ⚪ Pending | Optional, founder-focused |
 | Content engine — blog infrastructure | ✅ Done — 2026-05-08 | MDX + `/blog` routes (en/ko), sitemap, Article schema, force-static |
-| Content engine — first post | ✅ Drafted — 2026-05-08 | "GPT vs Claude vs Gemini: 10 prompts to compare them yourself" — awaiting deploy + share |
+| Content engine — first post | ✅ Live — 2026-05-08 | "GPT vs Claude vs Gemini: 10 prompts to compare them yourself" — deployed + GSC indexed |
+| Content engine — second post | ✅ Live — 2026-05-14 | "One AI said it was fine. Another said it would corrupt the data." — story-driven GEO angle on model disagreement |
 | Programmatic SEO — infra | ✅ Done — 2026-05-08 | `/compare/[slug]`, `/alternatives/[slug]` routes; data layer in `src/lib/seo/`; 8 template components |
 | Programmatic SEO — first 4 pages | ✅ Drafted — 2026-05-08 | `/compare/gpt-vs-claude`, `/compare/claude-vs-gemini`, `/compare/gpt-vs-gemini`, `/alternatives/chatgpt`. Article + FAQPage JSON-LD, ~1100 words each |
 
@@ -77,6 +79,15 @@ Submit using copy from `docs/marketing-assets.md`. Logo: `public/brand/polymind-
 | | AItoolKit (aitoolkit.org) | pending |  | Not attempted. |
 | | Insidr AI (insidr.ai/ai-tools) | pending |  | Not attempted. |
 
+## Review Platforms (GEO 목적)
+
+ChatGPT/Claude 등 AI 추천에 노출되려면 G2/Capterra 등재가 핵심. 99-100%의 AI 추천 제품이 여기 등록됨.
+
+| Date | Site | Status | Live URL | Notes |
+|---|---|---|---|---|
+| 2026-05-14 | G2 (g2.com) | live | https://www.g2.com/products/polymind/reviews | 프로필 공개됨. Claim 요청 제출 완료(team@usepolymind.app). G2 팀 수동 검토 중, 영업일 3일 내 결과 이메일 예정. 승인 후 로고/스크린샷 추가 및 리뷰 요청 링크 생성 가능. |
+| 2026-05-14 | Capterra (capterra.com) | submitted |  | Claude Desktop으로 등록 진행 중. |
+
 ## AI Directories — long tail (after top 10)
 
 Add rows as you submit additional directories beyond the priority 10.
@@ -93,15 +104,17 @@ Add rows as you submit additional directories beyond the priority 10.
 | 2026-05-12 | Initial application | submitted | Awaiting review |
 | 2026-05-12 | Review email received (Sama) | — | Requested: demo video, pricing plan, social profiles |
 | 2026-05-12 | Review reply sent | submitted | Attached demo.mp4, provided pricing plan + @usepolymind X profile |
+| 2026-05-14 | Live mode approved | ✅ live | Lemon Squeezy 심사 통과. Live mode 전환 완료. |
+| 2026-05-14 | Live products created | ✅ done | Starter (ID: 1652153, $9.99/25cr) · Pro (ID: 1652159, $24.99/75cr) |
+| 2026-05-14 | Webhook secret set | ✅ done | 40-char hex, HMAC-SHA256 |
+| 2026-05-14 | Vercel production env vars updated | ✅ done | LEMONSQUEEZY_API_KEY(live JWT), PRODUCT_ID(1053496), VARIANT_ID_STARTER(1652153), VARIANT_ID_PRO(1652159), WEBHOOK_SECRET |
 
-**Pricing plan confirmed (2026-05-12):**
-- Free trial: 10 credits on signup (no card)
+**Pricing plan confirmed (2026-05-14, 정식출시 기준):**
+- Free signup: 25 credits on signup (no card)
 - Starter Pack: $9.99 / 25 credits
 - Pro Pack: $24.99 / 75 credits
 - Pay-as-you-go, no subscription, credits never expire
 - 1 credit = 1 prompt to all 3 frontier models simultaneously
-
-**Note:** Pro Pack ($24.99) needs to be created in LS dashboard once approved. Currently only Starter variant exists (`LEMONSQUEEZY_VARIANT_ID_STARTER`).
 
 ---
 
@@ -188,6 +201,17 @@ Suggested title patterns: `Show HN: Polymind – One prompt to GPT, Claude, and 
 - ✅ Google Search Console — property `usepolymind.app` (Domain type) verified via DNS TXT, sitemap submitted (4 URLs, status "Couldn't fetch" — Google will retry within 24h)
 - ⏸️ Bing Webmaster — account signed in (Google SSO), Import-from-GSC blocked by Bing outage; retry later
 
+### 2026-05-14
+- ✅ Lemon Squeezy live mode 전환 완료 — Starter/Pro 라이브 제품 생성, 웹훅 시크릿 설정, Vercel 프로덕션 env vars 업데이트
+- ✅ 정식출시 준비 — IS_BETA=false, 베타 관련 문구 전체 제거, 무료 크레딧 10→25개로 변경
+- ✅ 두 번째 블로그 포스트 배포 — `when-ai-models-disagree.mdx` (스토리 기반, AI 모델 불일치를 신호로 활용하는 내용)
+- ✅ IndexNow 실행 — 16개 URL 제출 (신규 블로그 포스트 포함), Bing/Naver/Yandex 전달 완료 (200 OK)
+- ✅ Google Search Console — 새 블로그 포스트 URL 색인 생성 요청 완료
+- ✅ Search Console 현황 점검 — 색인 7페이지, 오류 없음, 리디렉션 3페이지(next-intl 정상 동작)
+- ✅ GEO 전략 수립 — G2/Capterra 등록이 AI 추천 노출의 핵심 신호임을 확인
+- ✅ G2 제품 등록 — "Profile Approved" 완료. 이메일로 프로필 링크 대기 중
+- 🔄 Capterra 제품 등록 — 진행 중 (Claude Desktop)
+
 ### 2026-05-12
 - ✅ Lemon Squeezy review email received (reviewer: Sama) — requested demo video, pricing plan, social profiles
 - ✅ Pricing plan finalized: Starter $9.99/25cr · Pro $24.99/75cr · Free 10cr. Gross margin ~87.5% (Vercel AI Gateway zero markup, API costs pass-through)
@@ -229,7 +253,9 @@ Suggested title patterns: `Show HN: Polymind – One prompt to GPT, Claude, and 
 
 ## TODOs / follow-up
 
-- [ ] Lemon Squeezy — await approval; once approved, create Pro Pack ($24.99/75cr) in LS dashboard and add `LEMONSQUEEZY_VARIANT_ID_PRO` env var
+- [ ] G2 — 이메일로 프로필 링크 수신 후 URL 업데이트, 리뷰 5개+ 수집 목표
+- [ ] Capterra — 등록 완료 후 URL 업데이트
+- [ ] G2/Capterra 리뷰 수집 전략 수립 (초기 사용자 리뷰 요청)
 - [ ] Pick Product Hunt launch date (Tue/Wed/Thu, KST 17:01 = PST 0:01)
 - [ ] Schedule PH product at least 7 days in advance for "Coming Soon" page boost
 - [ ] Link @usepolymind X account to Product Hunt profile before launch
